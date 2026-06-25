@@ -5,9 +5,9 @@
   "author": {
     "name": "Catalina Barria Otto",
     "email": "cata.barria@gmail.com",
-    "url": "https://catussi.dev"
+    "url": "https://catussi-os.vercel.app"
   },
-  "homepage": "https://catussi.dev",
+  "homepage": "https://catussi-os.vercel.app",
   "repository": {
     "type": "git",
     "url": "https://github.com/Catussi/catussi-os.git"

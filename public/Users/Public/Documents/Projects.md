@@ -22,7 +22,7 @@ Next.js · TypeScript · escritorio web interactivo
 
 Escritorio en el navegador con apps, archivos y documentación integrada.
 
-- [GitHub](https://github.com/Catussi/catussi-os) · [catussi.dev](https://catussi.dev/)
+- [GitHub](https://github.com/Catussi/catussi-os) · [catussi-os.vercel.app](https://catussi-os.vercel.app/)
 
 ## Academic Pathways · Tesis ML + XAI
 

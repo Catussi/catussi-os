@@ -3,7 +3,7 @@
 Portafolio interactivo de **Catalina Barria Otto ([@Catussi](https://github.com/Catussi))** — un escritorio completo en el navegador con apps, explorador de archivos, terminal y documentación integrada.
 
 <p align="center">
-  <a href="https://catussi.dev/"><img alt="Sitio en vivo" src="https://img.shields.io/badge/Sitio-catussi.dev-000?style=for-the-badge" /></a>
+  <a href="https://catussi-os.vercel.app/"><img alt="Sitio en vivo" src="https://img.shields.io/badge/Sitio-catussi--os.vercel.app-000?style=for-the-badge" /></a>
   <a href="https://github.com/Catussi/catussi-os"><img alt="Repo" src="https://img.shields.io/badge/Repo-catussi--os-000?style=for-the-badge&logo=github" /></a>
   <a href="https://www.linkedin.com/in/catalinabarriaotto/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-000?style=for-the-badge&logo=linkedin" /></a>
 </p>
@@ -12,7 +12,7 @@ Portafolio interactivo de **Catalina Barria Otto ([@Catussi](https://github.com/
 
 | | |
 | --- | --- |
-| **Portafolio** | [catussi.dev](https://catussi.dev/) |
+| **Portafolio** | [catussi-os.vercel.app](https://catussi-os.vercel.app/) |
 | **Este repo** | [github.com/Catussi/catussi-os](https://github.com/Catussi/catussi-os) |
 | **Perfil GitHub** | [github.com/Catussi/Catussi](https://github.com/Catussi/Catussi) |
 | **ELVIR-Demo** | [github.com/Catussi/ELVIR-Demo](https://github.com/Catussi/ELVIR-Demo) · [demo](https://elvir-demo.vercel.app/) |
@@ -20,7 +20,7 @@ Portafolio interactivo de **Catalina Barria Otto ([@Catussi](https://github.com/
 
 ## Escritorio
 
-Al abrir [catussi.dev](https://catussi.dev/) verás un escritorio en español con accesos a:
+Al abrir [catussi-os.vercel.app](https://catussi-os.vercel.app/) verás un escritorio en español con accesos a:
 
 - Sobre mí · Experiencia · Proyectos · Educación
 - Habilidades · Contacto

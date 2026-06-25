@@ -12,4 +12,4 @@ Bienvenida a la carpeta de documentación del portafolio. Cada archivo correspon
 | [Contacto](./Contact.md) | Enlaces y email |
 | `CV_SWE.pdf` | CV Full Stack · ML (PDF del escritorio) |
 
-**Sitio:** [catussi.dev](https://catussi.dev/) · **GitHub:** [@Catussi](https://github.com/Catussi)
+**Sitio:** [catussi-os.vercel.app](https://catussi-os.vercel.app/) · **GitHub:** [@Catussi](https://github.com/Catussi)

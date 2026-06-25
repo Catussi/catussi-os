@@ -32,7 +32,7 @@ export const bookmarks: Bookmark[] = [
   {
     icon: FAVICON_BASE_PATH,
     name: "Catussi",
-    url: "https://catussi.dev/",
+    url: "https://catussi-os.vercel.app/",
   },
   {
     icon: "/System/Icons/Favicons/dir.webp",

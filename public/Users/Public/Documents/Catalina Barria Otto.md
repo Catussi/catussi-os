@@ -6,7 +6,7 @@ Valparaíso, Chile · @Catussi
 
 | | |
 | --- | --- |
-| Portfolio | [catussi.dev](https://catussi.dev/) |
+| Portfolio | [catussi-os.vercel.app](https://catussi-os.vercel.app/) |
 | GitHub | [github.com/Catussi](https://github.com/Catussi) |
 | LinkedIn | [catalinabarriaotto](https://www.linkedin.com/in/catalinabarriaotto/) |
 | Email | [cata.barria@gmail.com](mailto:cata.barria@gmail.com) |
@@ -43,7 +43,7 @@ Construyendo **[ELVIR-Demo](https://github.com/Catussi/ELVIR-Demo)** — platafo
 
 ## catussi-os
 
-Este escritorio es mi portafolio: **[catussi-os](https://github.com/Catussi/catussi-os)** en **[catussi.dev](https://catussi.dev)**.
+Este escritorio es mi portafolio: **[catussi-os](https://github.com/Catussi/catussi-os)** en **[catussi-os.vercel.app](https://catussi-os.vercel.app)**.
 
 No es una landing estática — es un entorno navegable con apps, archivos, CV en PDF y documentación integrada.
 

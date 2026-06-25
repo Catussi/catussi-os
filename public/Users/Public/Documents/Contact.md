@@ -10,7 +10,7 @@ Valparaíso, Chile
 
 | | |
 | --- | --- |
-| **Portfolio** | [catussi.dev](https://catussi.dev/) |
+| **Portfolio** | [catussi-os.vercel.app](https://catussi-os.vercel.app/) |
 | **GitHub** | [github.com/Catussi](https://github.com/Catussi) |
 | **LinkedIn** | [catalinabarriaotto](https://www.linkedin.com/in/catalinabarriaotto/) |
 | **Email** | [cata.barria@gmail.com](mailto:cata.barria@gmail.com) |

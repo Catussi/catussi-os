@@ -376,7 +376,7 @@ export const PACKAGE_DATA = {
     email: "cata.barria@gmail.com",
     name: "Catalina Barria Otto",
     npub: "npub10uc7hg6wdxhhd7ee8x9c5lr9d0ux7272rv2m0mc03ds54q7quxjss02r3p",
-    url: "https://catussi.dev",
+    url: "https://catussi-os.vercel.app",
   },
   description:
     "catussi-os — interactive browser desktop portfolio by @Catussi. Full Stack Developer & ML Engineer.",

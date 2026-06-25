@@ -9,7 +9,7 @@ El copyright del upstream figura en [LICENSE](./LICENSE).
 
 ## Autora del fork
 
-**Catalina Barria Otto (@Catussi)** — personalización, contenido, marca y despliegue en [catussi.dev](https://catussi.dev/).
+**Catalina Barria Otto (@Catussi)** — personalización, contenido, marca y despliegue en [catussi-os.vercel.app](https://catussi-os.vercel.app/).
 
 ## Otras dependencias
 
