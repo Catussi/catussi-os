@@ -2,5 +2,5 @@
   "buildCommand": "npm run build",
   "outputDirectory": "out",
   "framework": null,
-  "installCommand": "NODE_OPTIONS=--openssl-legacy-provider yarn install --ignore-scripts"
+  "installCommand": "YARN_PRODUCTION=false NODE_OPTIONS=--openssl-legacy-provider yarn install --ignore-scripts"
 }
