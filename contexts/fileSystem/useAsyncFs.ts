@@ -17,7 +17,7 @@ import {
   supportsIndexedDB,
 } from "contexts/fileSystem/core";
 import FileSystemConfig from "contexts/fileSystem/FileSystemConfig";
-import { isExistingFile } from "components/system/Files/FileEntry/functions";
+import { isExistingFile, getStatTimeMs } from "components/system/Files/FileEntry/functions";
 
 export type AsyncFS = {
   exists: (path: string) => Promise<boolean>;
@@ -187,10 +187,9 @@ const useAsyncFs = (): AsyncFSModule => {
                     FileType.FILE,
                     get9pSize(path),
                     stats.mode,
-                    stats.atimeMs,
-                    stats.mtimeMs,
-                    stats.ctimeMs,
-                    stats.birthtimeMs
+                    new Date(getStatTimeMs(stats, "atime")),
+                    new Date(getStatTimeMs(stats, "mtime")),
+                    new Date(getStatTimeMs(stats, "ctime"))
                   )
                 : stats
             );

@@ -76,20 +76,35 @@ type VideoElementWithSeek = HTMLVideoElement & {
   seekToNextFrame: () => Promise<void>;
 };
 
-export const isExistingFile = (
-  { birthtimeMs, ctimeMs }: Stats = {} as Stats
-): boolean => Boolean(birthtimeMs && birthtimeMs === ctimeMs);
+export const getStatTimeMs = (
+  stats: Partial<FileStat>,
+  key: "atime" | "birthtime" | "ctime" | "mtime"
+): number => {
+  const msKey = `${key}Ms` as keyof FileStat;
+  const msValue = stats[msKey];
+
+  if (typeof msValue === "number") return msValue;
+
+  const dateValue = stats[key];
+
+  return dateValue instanceof Date ? dateValue.getTime() : 0;
+};
+
+export const isExistingFile = (stats: Partial<FileStat> = {}): boolean => {
+  const birthtimeMs = getStatTimeMs(stats, "birthtime");
+  const ctimeMs = getStatTimeMs(stats, "ctime");
+
+  return Boolean(birthtimeMs && birthtimeMs === ctimeMs);
+};
 
 export const getModifiedTime = (path: string, stats: FileStat): number => {
-  const { mtimeMs } = stats;
-
   if (isExistingFile(stats)) {
     const storedMtime = get9pModifiedTime(path);
 
     if (storedMtime > 0) return storedMtime;
   }
 
-  return mtimeMs;
+  return getStatTimeMs(stats, "mtime");
 };
 
 export const getIconFromIni = (
