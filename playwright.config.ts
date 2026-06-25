@@ -11,21 +11,31 @@ const {
 const baseURL = OVERRIDE_URL || `http://localhost:${PORT}`;
 const config: PlaywrightTestConfig = {
   fullyParallel: true,
-  projects: [
-    {
-      name: "chromium",
-      use: CI
-        ? chrome
-        : {
+  projects: CI
+    ? [
+        {
+          name: "chromium",
+          use: {
             ...chrome,
             launchOptions: {
               args: ["--enable-gpu", "--use-gl=angle"],
             },
           },
-    },
-    { name: "firefox", use: firefox },
-    { name: "webkit", use: safari },
-  ],
+        },
+      ]
+    : [
+        {
+          name: "chromium",
+          use: {
+            ...chrome,
+            launchOptions: {
+              args: ["--enable-gpu", "--use-gl=angle"],
+            },
+          },
+        },
+        { name: "firefox", use: firefox },
+        { name: "webkit", use: safari },
+      ],
   reporter: [["list"], ["html", { open: CI ? "never" : "always" }]],
   retries: CI ? 3 : 1,
   testDir: "e2e",
