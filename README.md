@@ -56,4 +56,4 @@ Next.js · React · TypeScript · styled-components · BrowserFS
 
 ## Créditos
 
-Este proyecto incluye código de terceros bajo licencias open source. Ver [ATTRIBUTION.md](./ATTRIBUTION.md) y [LICENSE](./LICENSE).
+Librerías y aplicaciones embebidas de terceros: [public/CREDITS.md](./public/CREDITS.md).

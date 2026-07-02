@@ -22,6 +22,16 @@ Construyendo **[ELVIR-Demo](https://github.com/Catussi/ELVIR-Demo)** — platafo
 
 ---
 
+## Proyectos personales · destacados
+
+**OpsPulse** — plataforma retail data-driven (FastAPI, Celery, dbt, Airflow, Terraform AWS, MLflow).  
+[github.com/Catussi/opspulse](https://github.com/Catussi/opspulse)
+
+**catussi-os** — portafolio interactivo como escritorio web.  
+[catussi-os.vercel.app](https://catussi-os.vercel.app/) · [GitHub](https://github.com/Catussi/catussi-os)
+
+---
+
 ## Universidad Adolfo Ibáñez
 
 **Digital Assistant**  

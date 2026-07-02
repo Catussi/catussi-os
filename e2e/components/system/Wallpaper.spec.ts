@@ -31,8 +31,8 @@ test("can change background", async ({ headless, browserName, page }) => {
 
   await clickDesktop({ page }, true);
   await contextMenuIsVisible({ page });
-  await clickContextMenuEntry(/^Background$/, { page });
-  await clickContextMenuEntry(/^Picture Slideshow$/, { page });
+  await clickContextMenuEntry(/^Fondo$/, { page });
+  await clickContextMenuEntry(/^Presentación de imágenes$/, { page });
 
   await pictureSlideshowResponse();
 
@@ -61,9 +61,9 @@ test.describe("can set background", () => {
     await clickFileExplorerEntry("audio.png", { page }, true);
     await contextMenuIsVisible({ page });
 
-    await clickContextMenuEntry(/^Set as background$/, { page });
+    await clickContextMenuEntry(/^Establecer como fondo$/, { page });
     await sessionIsWriteable({ page });
-    await clickContextMenuEntry(/^Tile$/, { page });
+    await clickContextMenuEntry(/^Mosaico$/, { page });
 
     await backgroundIsUrl({ page });
     await canvasBackgroundIsHidden({ page });

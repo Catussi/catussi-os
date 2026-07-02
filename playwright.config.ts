@@ -45,7 +45,11 @@ const config: PlaywrightTestConfig = {
     video: "retain-on-failure",
   },
   webServer: {
-    command: OVERRIDE_URL ? "" : CI ? "yarn serve" : "yarn dev",
+    command: OVERRIDE_URL
+      ? ""
+      : CI
+        ? "npm run serve"
+        : "npm run dev",
     reuseExistingServer: Boolean(OVERRIDE_URL),
     url: OVERRIDE_URL || baseURL,
   },

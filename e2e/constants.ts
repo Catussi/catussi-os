@@ -131,10 +131,10 @@ export const TASKBAR_ENTRY_SELECTOR = `${TASKBAR_ENTRIES_SELECTOR}>li`;
 export const TASKBAR_ENTRY_PEEK_SELECTOR = `${TASKBAR_ENTRY_SELECTOR}>div:not([title])`;
 export const TASKBAR_ENTRY_PEEK_IMAGE_SELECTOR = `${TASKBAR_ENTRY_PEEK_SELECTOR}>img`;
 export const SEARCH_MENU_SELECTOR = `${DESKTOP_SELECTOR}>nav#searchMenu`;
-export const SEARCH_MENU_INPUT_SELECTOR = `${SEARCH_MENU_SELECTOR} input[placeholder='Type here to search']`;
+export const SEARCH_MENU_INPUT_SELECTOR = `${SEARCH_MENU_SELECTOR} input[placeholder='Escribe aquí para buscar']`;
 export const SEARCH_MENU_RESULTS_SELECTOR = `${SEARCH_MENU_SELECTOR}>div>.content>div>.list>figure:first-child>ol`;
-export const SEARCH_BUTTON_SELECTOR = `${TASKBAR_SELECTOR}>[title='Type here to search']`;
-export const START_BUTTON_SELECTOR = `${TASKBAR_SELECTOR}>[title=Start]`;
+export const SEARCH_BUTTON_SELECTOR = `${TASKBAR_SELECTOR}>[title='Escribe aquí para buscar']`;
+export const START_BUTTON_SELECTOR = `${TASKBAR_SELECTOR}>[title=Inicio]`;
 export const START_MENU_SELECTOR = `${DESKTOP_SELECTOR}>nav#startMenu`;
 export const START_MENU_SIDEBAR_SELECTOR = `${START_MENU_SELECTOR}>nav`;
 export const WINDOW_SELECTOR = `${DESKTOP_SELECTOR}>${WINDOW_DRAG_SELECTOR}>section`;
@@ -192,58 +192,58 @@ export const WEBGPU_HEADLESS_NOT_SUPPORTED_BROWSERS = new Set([
 
 export const FILE_MENU_ITEMS = [
   /^Open$/,
-  /^Open with$/,
-  /^Add to archive...$/,
-  /^Download$/,
-  /^Cut$/,
-  /^Copy$/,
-  /^Create shortcut$/,
-  /^Delete$/,
-  /^Rename$/,
-  /^Properties$/,
+  /^Abrir con$/,
+  /^Agregar al archivo\.\.\.$/,
+  /^Descargar$/,
+  /^Cortar$/,
+  /^Copiar$/,
+  /^Crear acceso directo$/,
+  /^Eliminar$/,
+  /^Renombrar$/,
+  /^Propiedades$/,
 ];
 export const FOLDER_MENU_ITEMS: MenuItems = {
-  "Add file(s)": true,
-  "Map directory": (browserName: string): boolean =>
+  "Agregar archivo(s)": true,
+  "Mapear carpeta": (browserName: string): boolean =>
     !DIRECTORY_PICKER_NOT_SUPPORTED_BROWSERS.has(browserName),
-  New: true,
-  "Open Terminal here": true,
-  Paste: true,
-  Properties: true,
-  Refresh: true,
-  "Sort by": true,
+  Nuevo: true,
+  "Abrir terminal aquí": true,
+  Pegar: true,
+  Propiedades: true,
+  Actualizar: true,
+  "Ordenar por": true,
 };
 export const DESKTOP_MENU_ITEMS: MenuItems = {
   ...FOLDER_MENU_ITEMS,
-  Background: true,
-  "Capture screen": (browserName: string): boolean =>
+  Fondo: true,
+  "Capturar pantalla": (browserName: string): boolean =>
     !MEDIA_RECORDER_HEADLESS_NOT_SUPPORTED_BROWSERS.has(browserName),
-  Inspect: true,
-  Properties: false,
-  "View page source": true,
-  "Window close effect": true,
+  Inspeccionar: true,
+  Propiedades: false,
+  "Ver código fuente de la página": true,
+  "Efecto al cerrar ventana": true,
 };
 
-export const CLOCK_MENU_ITEMS = [/^Local time$/, /^Server time$/];
+export const CLOCK_MENU_ITEMS = [/^Hora local$/, /^Hora del servidor$/];
 
 export const TASKBAR_ENTRIES_MENU_ITEMS = (hasWebGpu: boolean): RegExp[] => [
-  /^Enter full screen$/,
+  /^Pantalla completa$/,
   ...(hasWebGpu ? [/^Show Talos button$/] : []),
-  /^Show the desktop$/,
+  /^Mostrar el escritorio$/,
 ];
 
 export const TASKBAR_ENTRY_MENU_ITEMS = [
-  /^Restore$/,
-  /^Minimize$/,
-  /^Maximize$/,
-  /^Close$/,
+  /^Restaurar$/,
+  /^Minimizar$/,
+  /^Maximizar$/,
+  /^Cerrar$/,
 ];
 
 export const START_BUTTON_MENU_ITEMS = [
   /^Terminal$/,
-  /^File Explorer$/,
-  /^Run$/,
-  /^Desktop$/,
+  /^Explorador de archivos$/,
+  /^Ejecutar$/,
+  /^Escritorio$/,
 ];
 
 export const START_MENU_APPS = [

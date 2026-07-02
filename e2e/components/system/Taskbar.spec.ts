@@ -140,26 +140,26 @@ test.describe("entries", () => {
       });
 
       test("can close", async ({ page }) => {
-        await clickContextMenuEntry(/^Close$/, { page });
+        await clickContextMenuEntry(/^Cerrar$/, { page });
         await taskbarEntryIsHidden(TEST_APP_TITLE, { page });
       });
 
       test("can minimize & restore", async ({ page }) => {
         await windowIsOpaque({ page });
-        await clickContextMenuEntry(/^Minimize$/, { page });
+        await clickContextMenuEntry(/^Minimizar$/, { page });
         await windowIsTransparent({ page });
 
         await clickTaskbarEntry(TEST_APP_TITLE, { page }, true);
-        await clickContextMenuEntry(/^Restore$/, { page });
+        await clickContextMenuEntry(/^Restaurar$/, { page });
         await windowIsOpaque({ page });
       });
 
       test("can maximize & restore", async ({ page }) => {
-        await clickContextMenuEntry(/^Maximize$/, { page });
+        await clickContextMenuEntry(/^Maximizar$/, { page });
         await windowIsMaximized({ page });
 
         await clickTaskbarEntry(TEST_APP_TITLE, { page }, true);
-        await clickContextMenuEntry(/^Restore$/, { page });
+        await clickContextMenuEntry(/^Restaurar$/, { page });
         await windowIsMaximized({ page }, false);
       });
     });

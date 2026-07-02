@@ -2,7 +2,7 @@
 
 **Full Stack Developer · Machine Learning Engineer**
 
-Valparaíso, Chile · @Catussi
+Valparaíso, Chile · @Catussi · Ingeniería Civil Informática
 
 | | |
 | --- | --- |
@@ -15,11 +15,11 @@ Valparaíso, Chile · @Catussi
 
 ## Sobre mí
 
-Desarrollo **plataformas web full stack** y **pipelines de machine learning aplicado**, con foco en productos que conectan arquitectura de software, datos e impacto real.
+> No solo escribo código — **convierto ideas en sistemas que funcionan**: APIs, arquitectura, datos y producto en un mismo flujo.
+
+Desarrollo **plataformas web full stack** y **pipelines de machine learning aplicado**, con foco en productos que conectan arquitectura de software, datos e impacto real: salud, empleabilidad, educación y accesibilidad.
 
 Trabajo con **Angular, FastAPI y PostgreSQL** en sistemas multirol con APIs REST, JWT y trazabilidad. En paralelo, aplico **ML, XAI y analítica** en investigación y producto.
-
-No solo escribo código — convierto ideas en sistemas que funcionan, se mantienen y escalan.
 
 ---
 
@@ -35,9 +35,22 @@ No solo escribo código — convierto ideas en sistemas que funcionan, se mantie
 ## Dónde estoy hoy
 
 **Instituto de Tecnología para la Innovación en Salud y Bienestar**  
-Full Stack Developer · Práctica profesional · Ene 2026 – Presente
+Full Stack Developer · Práctica profesional · Ene 2026 – Presente · Viña del Mar
 
 Construyendo **[ELVIR-Demo](https://github.com/Catussi/ELVIR-Demo)** — plataforma de simulaciones laborales con IA para entrenamiento en entrevistas.
+
+- [Demo en vivo](https://elvir-demo.vercel.app/) · Angular · FastAPI · PostgreSQL · Docker · LiveAvatar
+
+---
+
+## Proyectos destacados
+
+| Proyecto | Qué es | Enlace |
+| --- | --- | --- |
+| **ELVIR-Demo** | Simulaciones laborales con IA | [Demo](https://elvir-demo.vercel.app/) · [Repo](https://github.com/Catussi/ELVIR-Demo) |
+| **OpsPulse** | Retail data-driven: ETL, dbt, Airflow, MLflow | [Repo](https://github.com/Catussi/opspulse) |
+| **catussi-os** | Este portafolio interactivo | [Live](https://catussi-os.vercel.app/) · [Repo](https://github.com/Catussi/catussi-os) |
+| **eSports Analytics** | ML sobre partidas CS:GO | [Demo](https://esports-analytics-platform-tau.vercel.app/) · [Repo](https://github.com/Catussi/esports-analytics-platform) |
 
 ---
 
@@ -45,7 +58,7 @@ Construyendo **[ELVIR-Demo](https://github.com/Catussi/ELVIR-Demo)** — platafo
 
 Este escritorio es mi portafolio: **[catussi-os](https://github.com/Catussi/catussi-os)** en **[catussi-os.vercel.app](https://catussi-os.vercel.app)**.
 
-No es una landing estática — es un entorno navegable con apps, archivos, CV en PDF y documentación integrada.
+No es una landing estática — es un entorno navegable con apps, archivos, CVs en PDF y documentación integrada.
 
 ---
 
@@ -60,12 +73,22 @@ Ver detalle en [Education.md](./Education.md).
 
 ---
 
+## CVs en el escritorio
+
+| Acceso directo | Archivo |
+| --- | --- |
+| **CV ICI** | Currículum principal (Full Stack · ML) |
+| **CV Data Scientist** | Enfoque ciencia de datos |
+| **CV Software Engineer** | Enfoque ingeniería de software |
+
+---
+
 ## Más en este escritorio
 
 | Acceso | Qué encontrarás |
 | --- | --- |
-| **Experience** | Historial laboral completo |
-| **Projects** | Repos y demos con contexto |
+| **Experiencia** | Historial laboral completo |
+| **Proyectos** | Repos, demos y contexto técnico |
 | **Skills** | Stack por área |
-| **Contact** | Enlaces y cómo escribirme |
-| **CV Full Stack ML** | CV en PDF |
+| **Contacto** | Enlaces, GitHub, LinkedIn |
+| **GitHub / LinkedIn** | Accesos directos en el escritorio |

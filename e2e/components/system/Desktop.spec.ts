@@ -78,8 +78,8 @@ test.describe("has context menu", () => {
     test("can create folder", async ({ page }) => {
       await desktopEntryIsHidden(NEW_FOLDER_LABEL, { page });
 
-      await clickContextMenuEntry(/^New$/, { page });
-      await clickContextMenuEntry(/^Folder$/, { page });
+      await clickContextMenuEntry(/^Nuevo$/, { page });
+      await clickContextMenuEntry(/^Carpeta$/, { page });
 
       await desktopEntryIsVisible(NEW_FOLDER_LABEL, { page });
 
@@ -92,8 +92,8 @@ test.describe("has context menu", () => {
     test("can create file", async ({ page }) => {
       await desktopEntryIsHidden(NEW_FILE_LABEL, { page });
 
-      await clickContextMenuEntry(/^New$/, { page });
-      await clickContextMenuEntry(/^Text Document$/, { page });
+      await clickContextMenuEntry(/^Nuevo$/, { page });
+      await clickContextMenuEntry(/^Documento de texto$/, { page });
 
       await desktopEntryIsVisible(NEW_FILE_LABEL, { page });
 
@@ -108,7 +108,7 @@ test.describe("has context menu", () => {
 
       const uploadPromise = page.waitForEvent("filechooser");
 
-      await clickContextMenuEntry(/^Add file\(s\)$/, { page });
+      await clickContextMenuEntry(/^Agregar archivo\(s\)$/, { page });
 
       await (
         await uploadPromise
@@ -123,17 +123,17 @@ test.describe("has context menu", () => {
   });
 
   test("can inspect page", async ({ page }) => {
-    await clickContextMenuEntry(/^Inspect$/, { page });
+    await clickContextMenuEntry(/^Inspeccionar$/, { page });
     await appIsOpen(/^DevTools$/, page);
   });
 
   test("can view page source", async ({ page }) => {
-    await clickContextMenuEntry(/^View page source$/, { page });
+    await clickContextMenuEntry(/^Ver código fuente de la página$/, { page });
     await appIsOpen(/^index.html - Monaco Editor$/, page);
   });
 
   test("can open terminal", async ({ page }) => {
-    await clickContextMenuEntry(/^Open Terminal here$/, { page });
+    await clickContextMenuEntry(/^Abrir terminal aquí$/, { page });
     await appIsOpen(/^Terminal$/, page);
   });
 });
@@ -141,12 +141,12 @@ test.describe("has context menu", () => {
 test.describe("has keyboard shortcuts", () => {
   test("can open run dialog (ctrl + shift + r)", async ({ page }) => {
     await pressDesktopKeys("Control+Shift+KeyR", { page });
-    await appIsOpen(/^Run$/, page);
+    await appIsOpen(/^Ejecutar$/, page);
   });
 
   test("can open file explorer (ctrl + shift + e)", async ({ page }) => {
     await pressDesktopKeys("Control+Shift+KeyE", { page });
-    await appIsOpen(/^My PC$/, page);
+    await appIsOpen(/^Mi PC$/, page);
   });
 
   test("can open terminal (shift + f10)", async ({ page }) => {

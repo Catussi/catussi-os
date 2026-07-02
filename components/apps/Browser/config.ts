@@ -1,5 +1,4 @@
 import { type ProxyState } from "components/apps/Browser/useProxyMenu";
-import { get9pModifiedTime } from "contexts/fileSystem/core";
 import { FAVICON_BASE_PATH } from "utils/constants";
 
 type Bookmark = {
@@ -20,26 +19,32 @@ export const DINO_GAME = {
   url: "chrome://dino",
 };
 
-export const SURF_TO_MISC = {
-  icon: "/Users/Public/Documents/OldSite/favicon.ico",
-  name: "The Ultimate Misc Page",
-  path: "/Users/Public/Documents/OldSite/index.html",
-  // eslint-disable-next-line sonarjs/no-clear-text-protocols
-  url: "http://surf.to/misc",
-};
-
 export const bookmarks: Bookmark[] = [
   {
     icon: FAVICON_BASE_PATH,
-    name: "Catussi",
+    name: "catussi-os",
     url: "https://catussi-os.vercel.app/",
   },
   {
-    icon: "/System/Icons/Favicons/dir.webp",
-    name: "Index of /",
-    url: "http://localhost/",
+    icon: "/System/Icons/pc.webp",
+    name: "ELVIR Demo",
+    url: "https://elvir-demo.vercel.app/",
   },
-  ...(get9pModifiedTime(SURF_TO_MISC.path) === -1 ? [] : [SURF_TO_MISC]),
+  {
+    icon: "/System/Icons/python.webp",
+    name: "eSports Analytics",
+    url: "https://esports-analytics-platform-tau.vercel.app/",
+  },
+  {
+    icon: "/System/Icons/documents.webp",
+    name: "GitHub @Catussi",
+    url: "https://github.com/Catussi",
+  },
+  {
+    icon: "/System/Icons/messenger.webp",
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/catalinabarriaotto/",
+  },
   DINO_GAME,
   {
     icon: "/System/Icons/Favicons/google.webp",
@@ -51,24 +56,9 @@ export const bookmarks: Bookmark[] = [
     name: "Wikipedia",
     url: "https://www.wikipedia.org/",
   },
-  {
-    icon: "/System/Icons/Favicons/archive.webp",
-    name: "Internet Archive",
-    url: "https://archive.org/",
-  },
-  {
-    icon: "/System/Icons/webamp.webp",
-    name: "Winamp Skin Museum",
-    url: "https://skins.webamp.org/",
-  },
-  {
-    icon: "/System/Icons/Favicons/aos.webp",
-    name: "AaronOS",
-    url: "https://aaronos.dev/",
-  },
 ];
 
-export const HOME_PAGE = "https://www.google.com/webhp?igu=1";
+export const HOME_PAGE = "https://catussi-os.vercel.app/";
 
 export const NOT_FOUND =
   '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"><html><head><title>404 Not Found</title><style>h1{display:inline;}</style></head><body><h1>Not Found</h1><p>The requested URL was not found on this server.</p></body></html>';

@@ -1,6 +1,8 @@
-# Credits
+# Créditos open source · catussi-os
 
-This project is greatly augmented by code from the open source community. Thank you to all the developers who have contributed to these projects!
+Proyecto de **Catalina Barria Otto ([@Catussi](https://github.com/Catussi))** — [catussi-os.vercel.app](https://catussi-os.vercel.app/).
+
+Este escritorio web incluye código y librerías de la comunidad open source. Gracias a todos los desarrolladores que contribuyen a estos proyectos.
 
 ## Frameworks
 

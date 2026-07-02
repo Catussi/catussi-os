@@ -137,7 +137,7 @@ test.describe("has files & folders", () => {
     });
 
     test("can open with", async ({ page }) => {
-      await clickContextMenuEntry(/^Open with$/, { page });
+      await clickContextMenuEntry(/^Abrir con$/, { page });
       await clickContextMenuEntry(TEST_ROOT_FILE_ALT_APP, { page });
       await windowTitlebarTextIsVisible(
         `${TEST_ROOT_FILE_TEXT} - ${TEST_ROOT_FILE_ALT_APP}`,
@@ -155,7 +155,7 @@ test.describe("has files & folders", () => {
         await mockSaveFilePicker({ page }, TEST_ROOT_FILE_TEXT);
       }
 
-      await clickContextMenuEntry(/^Download$/, { page });
+      await clickContextMenuEntry(/^Descargar$/, { page });
 
       const download = await downloadPromise;
 
@@ -164,34 +164,34 @@ test.describe("has files & folders", () => {
     });
 
     test("can cut", async ({ page }) => {
-      await clickContextMenuEntry(/^Cut$/, { page });
+      await clickContextMenuEntry(/^Cortar$/, { page });
 
       const { width = 0 } =
         (await page.locator(DESKTOP_SELECTOR).boundingBox()) || {};
 
       await clickDesktop({ page }, true, width - 25, 25);
       await contextMenuIsVisible({ page });
-      await clickContextMenuEntry(/^Paste$/, { page });
+      await clickContextMenuEntry(/^Pegar$/, { page });
 
       await desktopEntryIsVisible(TEST_ROOT_FILE, { page });
       await fileExplorerEntryIsHidden(TEST_ROOT_FILE, { page });
     });
 
     test("can copy", async ({ page }) => {
-      await clickContextMenuEntry(/^Copy$/, { page });
+      await clickContextMenuEntry(/^Copiar$/, { page });
 
       const { width = 0 } =
         (await page.locator(DESKTOP_SELECTOR).boundingBox()) || {};
 
       await clickDesktop({ page }, true, width - 25, 25);
       await contextMenuIsVisible({ page });
-      await clickContextMenuEntry(/^Paste$/, { page });
+      await clickContextMenuEntry(/^Pegar$/, { page });
       await desktopEntryIsVisible(TEST_ROOT_FILE, { page });
       await fileExplorerEntryIsVisible(TEST_ROOT_FILE, { page });
     });
 
     test("can delete file", async ({ page }) => {
-      await clickContextMenuEntry(/^Delete$/, { page });
+      await clickContextMenuEntry(/^Eliminar$/, { page });
 
       await fileExplorerEntryIsHidden(TEST_ROOT_FILE, { page });
       await fileExplorerEntriesAreVisible({ page });
@@ -204,7 +204,7 @@ test.describe("has files & folders", () => {
     });
 
     test("can rename", async ({ page }) => {
-      await clickContextMenuEntry(/^Rename$/, { page });
+      await clickContextMenuEntry(/^Renombrar$/, { page });
 
       const flippedName = [...dirname(TEST_ROOT_FILE_TEXT)].reverse().join("");
 
@@ -216,7 +216,7 @@ test.describe("has files & folders", () => {
     });
 
     test("can archive", async ({ page }) => {
-      await clickContextMenuEntry(/^Add to archive...$/, { page });
+      await clickContextMenuEntry(/^Agregar al archivo\.\.\.$/, { page });
       await fileExplorerEntryIsVisible(TEST_ROOT_ARCHIVE, { page });
     });
 
@@ -225,7 +225,7 @@ test.describe("has files & folders", () => {
 
       await fileExplorerEntryIsHidden(shortcutFile, { page });
 
-      await clickContextMenuEntry(/^Create shortcut$/, { page });
+      await clickContextMenuEntry(/^Crear acceso directo$/, { page });
 
       await fileExplorerEntryIsVisible(shortcutFile, { page });
       await fileExplorerEntryHasShortcutIcon(shortcutFile, { page });
@@ -238,8 +238,8 @@ test.describe("has files & folders", () => {
     });
 
     test("has properties", async ({ page }) => {
-      await clickContextMenuEntry(/^Properties$/, { page });
-      await appIsOpen(`${TEST_ROOT_FILE_TEXT} Properties`, page);
+      await clickContextMenuEntry(/^Propiedades$/, { page });
+      await appIsOpen(`${TEST_ROOT_FILE_TEXT} Propiedades`, page);
     });
   });
 
@@ -462,8 +462,8 @@ test.describe("has context menu", () => {
   });
 
   test("has properties", async ({ page }) => {
-    await clickContextMenuEntry(/^Properties$/, { page });
-    await appIsOpen(/^Properties$/, page);
+    await clickContextMenuEntry(/^Propiedades$/, { page });
+    await appIsOpen(/^Propiedades$/, page);
   });
 });
 

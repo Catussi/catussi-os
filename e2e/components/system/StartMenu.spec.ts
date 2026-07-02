@@ -33,8 +33,8 @@ test.beforeEach(startMenuIsVisible);
 
 test.describe("has sidebar", () => {
   test("has buttons", async ({ page }) => {
-    await startMenuSidebarEntryIsVisible(/^All apps$/, { page });
-    await startMenuSidebarEntryIsVisible(/^Power$/, { page });
+    await startMenuSidebarEntryIsVisible(/^Todas las apps$/, { page });
+    await startMenuSidebarEntryIsVisible(/^Apagar$/, { page });
   });
 
   test("can expand", async ({ page }) => {

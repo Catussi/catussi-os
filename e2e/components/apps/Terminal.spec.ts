@@ -268,7 +268,7 @@ test.describe("has commands", () => {
 
   test("license", async ({ page }) => {
     await sendToTerminal({ page }, "license");
-    await terminalHasText({ page }, "MIT License", 2);
+    await terminalHasText({ page }, "Licencia MIT", 2);
   });
 
   test("mediainfo", async ({ page }) => {
