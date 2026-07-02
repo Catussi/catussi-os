@@ -1,15 +1,14 @@
 # Catalina Barria Otto
 
-**Full Stack Developer · Machine Learning Engineer**
-
+**Full Stack Developer · Machine Learning Engineer**  
 Valparaíso, Chile · @Catussi · Ingeniería Civil Informática
 
 | | |
 | --- | --- |
-| Portfolio | [catussi-os.vercel.app](https://catussi-os.vercel.app/) |
-| GitHub | [github.com/Catussi](https://github.com/Catussi) |
-| LinkedIn | [catalinabarriaotto](https://www.linkedin.com/in/catalinabarriaotto/) |
-| Email | [cata.barria@gmail.com](mailto:cata.barria@gmail.com) |
+| **Portfolio** | [catussi-os.vercel.app](https://catussi-os.vercel.app/) |
+| **GitHub** | [github.com/Catussi](https://github.com/Catussi) |
+| **LinkedIn** | [catalinabarriaotto](https://www.linkedin.com/in/catalinabarriaotto/) |
+| **Email** | [cata.barria@gmail.com](mailto:cata.barria@gmail.com) |
 
 ---
 
@@ -17,78 +16,77 @@ Valparaíso, Chile · @Catussi · Ingeniería Civil Informática
 
 > No solo escribo código — **convierto ideas en sistemas que funcionan**: APIs, arquitectura, datos y producto en un mismo flujo.
 
-Desarrollo **plataformas web full stack** y **pipelines de machine learning aplicado**, con foco en productos que conectan arquitectura de software, datos e impacto real: salud, empleabilidad, educación y accesibilidad.
+Soy **desarrolladora full stack** y **ML engineer** desde Valparaíso. Me mueve construir plataformas web modernas donde la tecnología tenga impacto real: **salud, empleabilidad, educación, accesibilidad y datos**.
 
-Trabajo con **Angular, FastAPI y PostgreSQL** en sistemas multirol con APIs REST, JWT y trazabilidad. En paralelo, aplico **ML, XAI y analítica** en investigación y producto.
-
----
-
-## Mi sello
-
-- **Producto end-to-end** — de la idea al deploy
-- **Backend y arquitectura** — APIs, RBAC, modelado relacional
-- **ML interpretable** — SHAP, XAI, analítica educativa
-- **Software con trazabilidad** — decisiones documentadas, entornos reproducibles
+Trabajo con **Angular, FastAPI y PostgreSQL** en sistemas multirol (JWT, RBAC, sesiones). En paralelo aplico **machine learning, SHAP/XAI y analítica** en investigación y producto.
 
 ---
 
-## Dónde estoy hoy
+## Mi sello profesional
+
+| Pilar | Qué significa en la práctica |
+| --- | --- |
+| **Producto end-to-end** | De la idea al deploy: diseño, implementación, documentación y entrega |
+| **Backend y arquitectura** | APIs REST mantenibles, modelado relacional, permisos y trazabilidad |
+| **ML interpretable** | Modelos que se pueden explicar — SHAP, XAI, equidad algorítmica |
+| **Datos con propósito** | ETL, pipelines, dashboards y decisiones basadas en evidencia |
+
+---
+
+## Dónde estoy hoy · 2026
 
 **Instituto de Tecnología para la Innovación en Salud y Bienestar**  
-Full Stack Developer · Práctica profesional · Ene 2026 – Presente · Viña del Mar
+Full Stack Developer · Práctica profesional · Viña del Mar
 
-Construyendo **[ELVIR-Demo](https://github.com/Catussi/ELVIR-Demo)** — plataforma de simulaciones laborales con IA para entrenamiento en entrevistas.
+Construyendo **[ELVIR-Demo](https://github.com/Catussi/ELVIR-Demo)** — simulaciones laborales con IA para entrenamiento en entrevistas, accesibilidad y empleabilidad.
 
-- [Demo en vivo](https://elvir-demo.vercel.app/) · Angular · FastAPI · PostgreSQL · Docker · LiveAvatar
+- **Stack:** Angular · FastAPI · PostgreSQL · Docker · LiveAvatar · JWT · RBAC
+- **Demo:** [elvir-demo.vercel.app](https://elvir-demo.vercel.app/)
 
 ---
 
-## Proyectos destacados
+## Proyectos que me representan
 
-| Proyecto | Qué es | Enlace |
+| Proyecto | Rol | Live / Repo |
 | --- | --- | --- |
-| **ELVIR-Demo** | Simulaciones laborales con IA | [Demo](https://elvir-demo.vercel.app/) · [Repo](https://github.com/Catussi/ELVIR-Demo) |
-| **OpsPulse** | Retail data-driven: ETL, dbt, Airflow, MLflow | [Repo](https://github.com/Catussi/opspulse) |
-| **catussi-os** | Este portafolio interactivo | [Live](https://catussi-os.vercel.app/) · [Repo](https://github.com/Catussi/catussi-os) |
-| **eSports Analytics** | ML sobre partidas CS:GO | [Demo](https://esports-analytics-platform-tau.vercel.app/) · [Repo](https://github.com/Catussi/esports-analytics-platform) |
+| **ELVIR-Demo** | Full stack + IA · proyecto actual | [Demo](https://elvir-demo.vercel.app/) · [GitHub](https://github.com/Catussi/ELVIR-Demo) |
+| **OpsPulse** | Plataforma retail data-driven | [GitHub](https://github.com/Catussi/opspulse) |
+| **catussi-os** | Este portafolio interactivo | [Live](https://catussi-os.vercel.app/) · [GitHub](https://github.com/Catussi/catussi-os) |
+| **eSports Analytics** | ML + plataforma analítica | [Demo](https://esports-analytics-platform-tau.vercel.app/) · [GitHub](https://github.com/Catussi/esports-analytics-platform) |
 
 ---
 
-## catussi-os
+## Formación resumida
 
-Este escritorio es mi portafolio: **[catussi-os](https://github.com/Catussi/catussi-os)** en **[catussi-os.vercel.app](https://catussi-os.vercel.app)**.
+| Título | Institución | Periodo |
+| --- | --- | --- |
+| **Ingeniería Civil Informática** | Universidad Andrés Bello | 2020 – 2025 |
+| **IBM Data Science Professional Certificate** | IBM / Coursera | 2025 |
 
-No es una landing estática — es un entorno navegable con apps, archivos, CVs en PDF y documentación integrada.
+Tesis: **Academic Pathways** — ML aplicado a trayectorias académicas con **SHAP** y enfoque **XAI**.
 
----
-
-## Formación
-
-**Ingeniería Civil Informática** · Universidad Andrés Bello · 2020 – 2025  
-Tesis en ML aplicado a trayectorias académicas con modelos interpretables (SHAP, XAI).
-
-**IBM Data Science Professional Certificate** · IBM / Coursera · 2025
-
-Ver detalle en [Education.md](./Education.md).
+Detalle en [Educación](./Education.md).
 
 ---
 
-## CVs en el escritorio
+## Este escritorio · catussi-os
 
-| Acceso directo | Archivo |
+No es una landing estática: es un **sistema operativo en el navegador** con apps, archivos, CV en PDF y documentación integrada.
+
+| Acceso directo | Contenido |
 | --- | --- |
-| **CV ICI** | Currículum principal (Full Stack · ML) |
-| **CV Data Scientist** | Enfoque ciencia de datos |
-| **CV Software Engineer** | Enfoque ingeniería de software |
-
----
-
-## Más en este escritorio
-
-| Acceso | Qué encontrarás |
-| --- | --- |
+| **Sobre mí** | Este documento |
 | **Experiencia** | Historial laboral completo |
 | **Proyectos** | Repos, demos y contexto técnico |
-| **Skills** | Stack por área |
-| **Contacto** | Enlaces, GitHub, LinkedIn |
-| **GitHub / LinkedIn** | Accesos directos en el escritorio |
+| **Educación** | Formación, tesis e idiomas |
+| **Habilidades** | Stack por área |
+| **Contacto** | Enlaces y cómo escribirme |
+| **CV ICI** | Currículum en PDF |
+| **GitHub / LinkedIn** | Perfiles profesionales |
+| **ELVIR / eSports / OpsPulse** | Demos y repos destacados |
+
+---
+
+## Disponibilidad
+
+Abierta a oportunidades y colaboraciones en **producto web**, **backend**, **ML aplicado** y proyectos con impacto en salud, educación, empleabilidad o retail.

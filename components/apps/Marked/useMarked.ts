@@ -43,8 +43,11 @@ const useMarked = ({
     const markdownFile = await readFile(url);
     const container = getContainer();
 
+    const isPortfolioDoc = url.includes("/Users/Public/Documents/");
+
     if (container instanceof HTMLElement) {
       container.classList.remove("drop");
+      container.classList.toggle("portfolio", isPortfolioDoc);
       container.innerHTML = window.DOMPurify.sanitize(
         window.marked.parse(markdownFile.toString(), {
           headerIds: false,
