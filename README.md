@@ -48,7 +48,7 @@ npx serve out -l 3010
 
 ## Deploy
 
-El sitio se publica en **Vercel** desde este repo (`npm run build`, output `out`). Detalle en [DEPLOY.md](./DEPLOY.md).
+El sitio se publica en **[catussi-os.vercel.app](https://catussi-os.vercel.app/)** desde este repo con Vercel (`npm run build`, output `out`).
 
 ## Stack principal
 
