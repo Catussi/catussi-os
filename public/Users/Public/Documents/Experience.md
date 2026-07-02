@@ -1,8 +1,8 @@
-# Experience
+# Experiencia profesional
 
 Historial profesional de **Catalina Barria Otto** — full stack, datos y machine learning con foco en producto.
 
-> **Hilo conductor:** construir sistemas completos, documentados y con impacto en personas reales.
+> **Lectura rápida:** tabla resumen abajo → detalle por rol. CV en PDF: icono **CV ICI** en el escritorio.
 
 ---
 

@@ -1,8 +1,8 @@
-# Technical Skills
+# Habilidades técnicas
 
 Stack técnico de **Catalina Barria Otto** — alineado con proyectos en [github.com/Catussi](https://github.com/Catussi).
 
-> **Perfil:** Full Stack Developer · Machine Learning Engineer · Data-driven product builder
+> **Lectura rápida:** panorama por área y nivel → detalle por tecnología. Evidencia en repos y demos del escritorio.
 
 ---
 

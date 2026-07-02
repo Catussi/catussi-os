@@ -1,10 +1,11 @@
 {
   "iconPositions": {
-    "/Users/Public/Desktop/Sobre mí.url": { "gridColumnStart": 1, "gridRowStart": 1 },
-    "/Users/Public/Desktop/Experiencia.url": { "gridColumnStart": 1, "gridRowStart": 2 },
-    "/Users/Public/Desktop/Proyectos.url": { "gridColumnStart": 1, "gridRowStart": 3 },
-    "/Users/Public/Desktop/Educación.url": { "gridColumnStart": 1, "gridRowStart": 4 },
-    "/Users/Public/Desktop/Habilidades.url": { "gridColumnStart": 1, "gridRowStart": 5 },
+    "/Users/Public/Desktop/Empezar aquí.url": { "gridColumnStart": 1, "gridRowStart": 1 },
+    "/Users/Public/Desktop/Sobre mí.url": { "gridColumnStart": 1, "gridRowStart": 2 },
+    "/Users/Public/Desktop/Experiencia.url": { "gridColumnStart": 1, "gridRowStart": 3 },
+    "/Users/Public/Desktop/Proyectos.url": { "gridColumnStart": 1, "gridRowStart": 4 },
+    "/Users/Public/Desktop/Educación.url": { "gridColumnStart": 1, "gridRowStart": 5 },
+    "/Users/Public/Desktop/Habilidades.url": { "gridColumnStart": 1, "gridRowStart": 6 },
     "/Users/Public/Desktop/Contacto.url": { "gridColumnStart": 2, "gridRowStart": 1 },
     "/Users/Public/Desktop/CV ICI.url": { "gridColumnStart": 2, "gridRowStart": 2 },
     "/Users/Public/Desktop/GitHub.url": { "gridColumnStart": 2, "gridRowStart": 3 },

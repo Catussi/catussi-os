@@ -1,8 +1,8 @@
-# Projects
+# Proyectos
 
 Portafolio completo de **Catalina Barria Otto** — full stack, machine learning, datos e investigación.
 
-> **Impacto:** salud y bienestar · empleabilidad · educación · retail · datos
+> **Lectura rápida:** índice con demos en vivo → detalle técnico por proyecto. ¿Solo quieres ver algo funcionando? Abre **ELVIR Demo** en el escritorio.
 
 ---
 

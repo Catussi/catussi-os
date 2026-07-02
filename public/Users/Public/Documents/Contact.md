@@ -1,8 +1,10 @@
-# Contact · @Catussi
+# Contacto · @Catussi
 
 **Catalina Barria Otto**  
 Full Stack Developer · Machine Learning Engineer  
 Valparaíso, Chile
+
+> **La forma más directa:** [cata.barria@gmail.com](mailto:cata.barria@gmail.com) — o [LinkedIn](https://www.linkedin.com/in/catalinabarriaotto/). CV en PDF: icono **CV ICI** en el escritorio.
 
 ---
 

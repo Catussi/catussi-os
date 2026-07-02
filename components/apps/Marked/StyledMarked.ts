@@ -5,12 +5,24 @@ import { DEFAULT_SCROLLBAR_WIDTH } from "utils/constants";
 
 const portfolioArticleStyles = `
     &.portfolio {
+      align-items: center;
       background: linear-gradient(165deg, #f8fbff 0%, #f4f7fa 38%, #eef3f8 100%);
       color: #1a2332;
+      display: flex;
+      flex-direction: column;
       font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-      padding: 28px 40px 40px;
+      font-size: 17px;
+      line-height: 1.7;
+      padding: 28px 32px 48px;
+
+      > * {
+        box-sizing: border-box;
+        max-width: 720px;
+        width: 100%;
+      }
 
       &::before {
+        align-self: stretch;
         background: linear-gradient(
           90deg,
           #0d9488 0%,
@@ -20,8 +32,10 @@ const portfolioArticleStyles = `
         );
         content: "";
         display: block;
+        flex-shrink: 0;
         height: 4px;
         left: 0;
+        max-width: none;
         position: sticky;
         top: 0;
         width: 100%;
@@ -46,7 +60,12 @@ const portfolioArticleStyles = `
       h1 + p strong,
       h1 + p {
         color: #475569;
-        font-size: 1.05em;
+        font-size: 1.08em;
+        line-height: 1.5;
+      }
+
+      h1 + p strong {
+        color: #334155;
       }
 
       h2 {
@@ -88,8 +107,19 @@ const portfolioArticleStyles = `
         border-radius: 0 12px 12px 0;
         box-shadow: 0 1px 3px rgb(15 23 42 / 6%);
         color: #334155;
+        font-size: 1.02em;
         margin: 1.25em 0;
-        padding: 14px 18px;
+        padding: 16px 20px;
+
+        p {
+          margin: 0;
+        }
+      }
+
+      blockquote:first-of-type {
+        background: linear-gradient(135deg, #e0f2fe 0%, #ecfdf5 100%);
+        border-left-color: #0d9488;
+        font-size: 1.05em;
       }
 
       hr {
@@ -119,10 +149,16 @@ const portfolioArticleStyles = `
         th {
           background: linear-gradient(180deg, #f1f5f9 0%, #e8eef4 100%);
           color: #0f172a;
-          font-size: 0.85em;
+          font-size: 0.8em;
           font-weight: 600;
-          letter-spacing: 0.02em;
+          letter-spacing: 0.03em;
           text-transform: uppercase;
+          white-space: nowrap;
+        }
+
+        td:first-child {
+          color: #0f172a;
+          font-weight: 500;
         }
 
         tr:nth-child(even) td {
@@ -141,12 +177,21 @@ const portfolioArticleStyles = `
         }
       }
 
+      ol {
+        padding-left: 1.5em;
+      }
+
+      ol > li {
+        margin: 0.55em 0;
+        padding-left: 0.25em;
+      }
+
       ul {
         padding-left: 1.4em;
       }
 
       li {
-        margin: 0.35em 0;
+        margin: 0.4em 0;
       }
 
       li::marker {

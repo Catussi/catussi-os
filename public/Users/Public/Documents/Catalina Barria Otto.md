@@ -3,12 +3,16 @@
 **Full Stack Developer · Machine Learning Engineer**  
 Valparaíso, Chile · @Catussi · Ingeniería Civil Informática
 
+> **Para reclutadores:** perfil full stack + ML con producto en producción (ELVIR-Demo). CV en PDF → icono **CV ICI**. Contacto directo → [cata.barria@gmail.com](mailto:cata.barria@gmail.com).
+
 | | |
 | --- | --- |
 | **Portfolio** | [catussi-os.vercel.app](https://catussi-os.vercel.app/) |
 | **GitHub** | [github.com/Catussi](https://github.com/Catussi) |
 | **LinkedIn** | [catalinabarriaotto](https://www.linkedin.com/in/catalinabarriaotto/) |
 | **Email** | [cata.barria@gmail.com](mailto:cata.barria@gmail.com) |
+| **CV (PDF)** | Icono **CV ICI** en el escritorio |
+| **Disponibilidad** | Abierta a oportunidades full stack y ML aplicado |
 
 ---
 
@@ -75,6 +79,7 @@ No es una landing estática: es un **sistema operativo en el navegador** con app
 
 | Acceso directo | Contenido |
 | --- | --- |
+| **Empezar aquí** | Guía rápida (~3 min) para reclutadores |
 | **Sobre mí** | Este documento |
 | **Experiencia** | Historial laboral completo |
 | **Proyectos** | Repos, demos y contexto técnico |

@@ -1,6 +1,8 @@
-# Education
+# Educación y formación
 
 Formación académica y certificaciones de **Catalina Barria Otto**.
+
+> **Dato clave:** Ingeniería Civil Informática (UNAB) + IBM Data Science Certificate. Tesis en ML con enfoque XAI (SHAP).
 
 ---
 
