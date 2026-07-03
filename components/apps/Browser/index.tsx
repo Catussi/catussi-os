@@ -47,9 +47,10 @@ import {
   label,
 } from "utils/functions";
 import {
-  embedBlockedAppTitle,
+  embedBlockedBrowserTitle,
+  isBrowserEmbedPage,
   isEmbedBlockedUrl,
-  resolveEmbedBlockedApp,
+  resolveEmbedBlockedBrowserUrl,
 } from "utils/externalUrls";
 import {
   getInfoWithExtension,
@@ -131,24 +132,35 @@ const Browser: FC<ComponentProcessProps> = ({ id }) => {
       const { contentWindow } = iframeRef.current || {};
 
       if (contentWindow?.location) {
+        const htmlPath = addressInput.split("#")[0].split("?")[0];
         const isHtml =
-          [".htm", ".html"].includes(getExtension(addressInput)) &&
-          (await exists(addressInput));
+          [".htm", ".html"].includes(getExtension(htmlPath)) &&
+          (await exists(htmlPath));
 
         setLoading(true);
-        if (isHtml) {
-          setSrcDoc((await readFile(addressInput)).toString());
-        }
         setIcon(id, processDirectory.Browser.icon);
 
         const loadLocalSite = (localPath: string, localTitle: string): void => {
           iframeRef.current?.removeAttribute("sandbox");
+          setSrcDoc("");
           changeIframeWindowLocation(
             `${window.location.origin}${localPath}`,
             contentWindow
           );
           prependFileToTitle(localTitle);
         };
+
+        if (isHtml && isBrowserEmbedPage(htmlPath)) {
+          loadLocalSite(
+            addressInput.startsWith("/") ? addressInput : `/${addressInput}`,
+            embedBlockedBrowserTitle(addressInput)
+          );
+          return;
+        }
+
+        if (isHtml) {
+          setSrcDoc((await readFile(htmlPath)).toString());
+        }
         const lowerAddressInput = addressInput.toLowerCase();
 
         if (lowerAddressInput.startsWith(DINO_GAME.url)) {
@@ -338,13 +350,18 @@ const Browser: FC<ComponentProcessProps> = ({ id }) => {
               : processedUrl.href;
 
             if (isEmbedBlockedUrl(processedUrl.href)) {
-              const embedApp = resolveEmbedBlockedApp(processedUrl.href);
+              const browserUrl = resolveEmbedBlockedBrowserUrl(
+                processedUrl.href
+              );
 
-              if (embedApp) {
-                open(embedApp.processId, {
-                  initialTitle: embedBlockedAppTitle(embedApp),
-                  url: embedApp.url,
-                });
+              if (browserUrl) {
+                iframeRef.current?.removeAttribute("sandbox");
+                setSrcDoc("");
+                changeIframeWindowLocation(
+                  `${window.location.origin}${browserUrl.startsWith("/") ? browserUrl : `/${browserUrl}`}`,
+                  contentWindow
+                );
+                prependFileToTitle(embedBlockedBrowserTitle(browserUrl));
                 setLoading(false);
                 return;
               }
@@ -492,13 +509,10 @@ const Browser: FC<ComponentProcessProps> = ({ id }) => {
           <Button
             key={name}
             onClick={({ ctrlKey }) => {
-              const embedApp = resolveEmbedBlockedApp(bookmarkUrl);
+              const browserUrl = resolveEmbedBlockedBrowserUrl(bookmarkUrl);
 
-              if (embedApp && !ctrlKey) {
-                open(embedApp.processId, {
-                  initialTitle: embedBlockedAppTitle(embedApp),
-                  url: embedApp.url,
-                });
+              if (browserUrl && !ctrlKey) {
+                goToLink(browserUrl);
                 return;
               }
 

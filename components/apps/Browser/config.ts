@@ -38,12 +38,12 @@ export const bookmarks: Bookmark[] = [
   {
     icon: "/System/Icons/documents.webp",
     name: "GitHub @Catussi",
-    url: "https://github.com/Catussi",
+    url: "/Program Files/Browser/profiles/GitHub.html",
   },
   {
     icon: "/System/Icons/messenger.webp",
     name: "LinkedIn",
-    url: "https://www.linkedin.com/in/catalinabarriaotto/",
+    url: "/Program Files/Browser/profiles/LinkedIn.html",
   },
   DINO_GAME,
   {

@@ -6,9 +6,9 @@ import { useProcesses } from "contexts/process";
 import { haltEvent, isYouTubeUrl, getExtension } from "utils/functions";
 import { resolveDocumentPath } from "utils/resolveDocumentPath";
 import {
-  embedBlockedAppTitle,
+  embedBlockedBrowserTitle,
   isEmbedBlockedUrl,
-  resolveEmbedBlockedApp,
+  resolveEmbedBlockedBrowserUrl,
 } from "utils/externalUrls";
 import { useSession } from "contexts/session";
 
@@ -31,12 +31,12 @@ export const useLinkHandler = (): LinkHandler => {
 
       if (isYouTubeUrl(url)) open("VideoPlayer", { url });
       else if (isEmbedBlockedUrl(url)) {
-        const embedApp = resolveEmbedBlockedApp(url);
+        const browserUrl = resolveEmbedBlockedBrowserUrl(url);
 
-        if (embedApp) {
-          open(embedApp.processId, {
-            initialTitle: embedBlockedAppTitle(embedApp),
-            url: embedApp.url,
+        if (browserUrl) {
+          open("Browser", {
+            initialTitle: embedBlockedBrowserTitle(browserUrl),
+            url: browserUrl,
           });
         } else {
           open("ExternalURL", { url });

@@ -1,6 +1,6 @@
 [InternetShortcut]
-BaseURL=GitHub
+BaseURL=Browser
 Comment=@Catussi en GitHub
 IconFile=/System/Icons/documents.webp
 Type=System
-URL=https://github.com/Catussi
+URL=/Program Files/Browser/profiles/GitHub.html

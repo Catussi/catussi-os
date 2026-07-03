@@ -5,10 +5,10 @@ const EMBED_BLOCKED_HOSTS = new Set([
   "www.linkedin.com",
 ]);
 
-export type EmbedBlockedApp = {
-  processId: "GitHub" | "LinkedIn";
-  url: string;
-};
+export const GITHUB_BROWSER_PAGE =
+  "/Program Files/Browser/profiles/GitHub.html";
+export const LINKEDIN_BROWSER_PAGE =
+  "/Program Files/Browser/profiles/LinkedIn.html";
 
 export const isEmbedBlockedUrl = (url?: string): boolean => {
   if (!url) return false;
@@ -22,21 +22,33 @@ export const isEmbedBlockedUrl = (url?: string): boolean => {
   }
 };
 
-export const resolveEmbedBlockedApp = (
+export const resolveEmbedBlockedBrowserUrl = (
   url?: string
-): EmbedBlockedApp | undefined => {
+): string | undefined => {
   if (!url || !isEmbedBlockedUrl(url)) return undefined;
 
   try {
     const parsed = new URL(url.replace(/^http:/i, "https://"));
     const host = parsed.hostname.replace(/^www\./, "");
 
-    if (host === "github.com") {
-      return { processId: "GitHub", url: parsed.href };
+    if (host === "linkedin.com") {
+      return LINKEDIN_BROWSER_PAGE;
     }
 
-    if (host === "linkedin.com") {
-      return { processId: "LinkedIn", url: parsed.href };
+    if (host === "github.com") {
+      const parts = parsed.pathname.split("/").filter(Boolean);
+
+      if (!parts.length) return GITHUB_BROWSER_PAGE;
+
+      const [owner, repo, type, branch, ...rest] = parts;
+
+      if (type === "blob" || type === "tree") {
+        return `${GITHUB_BROWSER_PAGE}#/${owner}/${repo}/${branch || "main"}/${rest.join("/")}`;
+      }
+
+      if (repo) return `${GITHUB_BROWSER_PAGE}#/${owner}/${repo}`;
+
+      return `${GITHUB_BROWSER_PAGE}#/${owner}`;
     }
   } catch {
     return undefined;
@@ -45,19 +57,33 @@ export const resolveEmbedBlockedApp = (
   return undefined;
 };
 
-export const embedBlockedAppTitle = (app: EmbedBlockedApp): string => {
-  if (app.processId === "GitHub") {
-    try {
-      const { pathname } = new URL(app.url);
-      const parts = pathname.split("/").filter(Boolean);
+export const embedBlockedBrowserTitle = (browserUrl: string): string => {
+  if (browserUrl.includes("LinkedIn")) return "LinkedIn";
+
+  if (browserUrl.includes("GitHub")) {
+    const hash = browserUrl.split("#")[1];
+
+    if (hash) {
+      const parts = hash.replace(/^\//, "").split("/").filter(Boolean);
 
       if (parts.length >= 2) return `${parts[0]}/${parts[1]}`;
-
-      return "GitHub @Catussi";
-    } catch {
-      return "GitHub";
     }
+
+    return "GitHub @Catussi";
   }
 
-  return "LinkedIn";
+  return "Navegador";
+};
+
+export const isBrowserEmbedPage = (url?: string): boolean => {
+  if (!url) return false;
+
+  const base = url.split("#")[0].split("?")[0];
+
+  return (
+    base === GITHUB_BROWSER_PAGE ||
+    base === LINKEDIN_BROWSER_PAGE ||
+    base.endsWith("/Browser/profiles/GitHub.html") ||
+    base.endsWith("/Browser/profiles/LinkedIn.html")
+  );
 };

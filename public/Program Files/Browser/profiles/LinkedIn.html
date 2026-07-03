@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LinkedIn · Catalina Barria Otto</title>
+    <style>
+      :root {
+        --bg: #f3f2ef;
+        --paper: #fff;
+        --text: #191919;
+        --muted: #666;
+        --border: #e0dfdc;
+        --link: #0a66c2;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui,
+          sans-serif;
+        font-size: 14px;
+        line-height: 1.55;
+      }
+      .content {
+        margin: 0 auto;
+        max-width: 560px;
+        padding: 16px 16px 32px;
+      }
+      .card {
+        background: var(--paper);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        margin-bottom: 12px;
+        overflow: hidden;
+      }
+      .banner {
+        background: linear-gradient(135deg, #dce4ea, #b8c5d0);
+        height: 80px;
+      }
+      .profile-top {
+        margin-top: -36px;
+        padding: 0 20px 20px;
+      }
+      .avatar {
+        align-items: center;
+        background: #3d4f5f;
+        border: 3px solid #fff;
+        border-radius: 50%;
+        color: #fff;
+        display: flex;
+        font-size: 1.6rem;
+        font-weight: 600;
+        height: 72px;
+        justify-content: center;
+        width: 72px;
+      }
+      h1 {
+        font-size: 1.35rem;
+        margin: 12px 0 4px;
+      }
+      .headline {
+        margin: 0 0 6px;
+      }
+      .location {
+        color: var(--muted);
+        font-size: 13px;
+        margin: 0;
+      }
+      .section {
+        padding: 16px 20px 20px;
+      }
+      .section h2 {
+        font-size: 1rem;
+        margin: 0 0 14px;
+      }
+      .role {
+        margin-bottom: 18px;
+      }
+      .role h3 {
+        font-size: 14px;
+        margin: 0 0 2px;
+      }
+      .role .company {
+        font-weight: 600;
+        margin: 0 0 2px;
+      }
+      .role .period {
+        color: var(--muted);
+        font-size: 12px;
+        margin: 0 0 8px;
+      }
+      .role ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+      .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .skill {
+        background: var(--bg);
+        border-radius: 16px;
+        color: #444;
+        font-size: 13px;
+        padding: 6px 12px;
+      }
+      a {
+        color: var(--link);
+        font-weight: 600;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .project {
+        margin-bottom: 16px;
+      }
+      .project p {
+        color: #444;
+        font-size: 13px;
+        margin: 0 0 6px;
+      }
+      .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <section class="card">
+        <div class="banner"></div>
+        <div class="profile-top">
+          <div class="avatar">CB</div>
+          <h1>Catalina Barria Otto</h1>
+          <p class="headline">Full Stack Developer · Machine Learning Engineer</p>
+          <p class="location">Valparaíso, Chile · Ingeniería Civil Informática</p>
+        </div>
+      </section>
+
+      <section class="card section">
+        <h2>Acerca de</h2>
+        <p>
+          Desarrolladora full stack y ML engineer. Construyo plataformas web con
+          impacto en salud, empleabilidad y datos: Angular, FastAPI, PostgreSQL,
+          pipelines de datos y ML interpretable (SHAP, XAI).
+        </p>
+      </section>
+
+      <section class="card section">
+        <h2>Experiencia</h2>
+        <article class="role">
+          <h3>Full Stack Developer</h3>
+          <p class="company">Instituto de Tecnología para la Innovación en Salud y Bienestar</p>
+          <p class="period">Ene 2026 – Presente · Viña del Mar</p>
+          <ul>
+            <li>ELVIR-Demo: simulaciones laborales con IA</li>
+            <li>Angular · FastAPI · PostgreSQL · LiveAvatar · Vercel</li>
+          </ul>
+        </article>
+        <article class="role">
+          <h3>Digital Assistant</h3>
+          <p class="company">Universidad Adolfo Ibáñez</p>
+          <p class="period">May 2024 – Sep 2024</p>
+          <ul>
+            <li>Landing pages, hosting, SSL y contenido digital</li>
+          </ul>
+        </article>
+        <article class="role">
+          <h3>Web Development Intern</h3>
+          <p class="company">ACHIYA (Mujeres en IA)</p>
+          <p class="period">Abr 2022 – Ago 2022</p>
+          <ul>
+            <li>Desarrollo web y dashboards Power BI</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="card section">
+        <h2>Proyectos</h2>
+        <article class="project">
+          <h3>ELVIR-Demo</h3>
+          <p>Simulaciones laborales con IA.</p>
+          <div class="links">
+            <a href="https://elvir-demo.vercel.app/">Demo</a>
+            <a href="/Program Files/Browser/profiles/GitHub.html#/Catussi/ELVIR-Demo">GitHub</a>
+          </div>
+        </article>
+        <article class="project">
+          <h3>OpsPulse</h3>
+          <p>Retail data-driven · FastAPI · dbt · Airflow · AWS.</p>
+          <div class="links">
+            <a href="/Program Files/Browser/profiles/GitHub.html#/Catussi/opspulse">GitHub</a>
+          </div>
+        </article>
+        <article class="project">
+          <h3>catussi-os</h3>
+          <p>Este portafolio interactivo.</p>
+          <div class="links">
+            <a href="https://catussi-os.vercel.app/">Sitio</a>
+            <a href="/Program Files/Browser/profiles/GitHub.html#/Catussi/catussi-os">GitHub</a>
+          </div>
+        </article>
+      </section>
+
+      <section class="card section">
+        <h2>Habilidades</h2>
+        <div class="skills">
+          <span class="skill">Angular</span>
+          <span class="skill">FastAPI</span>
+          <span class="skill">PostgreSQL</span>
+          <span class="skill">Python</span>
+          <span class="skill">TypeScript</span>
+          <span class="skill">Docker</span>
+          <span class="skill">Machine Learning</span>
+          <span class="skill">dbt</span>
+          <span class="skill">Airflow</span>
+          <span class="skill">AWS</span>
+        </div>
+      </section>
+
+      <section class="card section">
+        <h2>Contacto</h2>
+        <p><a href="mailto:cata.barria@gmail.com">cata.barria@gmail.com</a></p>
+        <p>
+          <a href="/Program Files/Browser/profiles/GitHub.html#/Catussi">GitHub @Catussi</a>
+        </p>
+      </section>
+    </div>
+  </body>
+</html>
