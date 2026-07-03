@@ -46,6 +46,7 @@ import {
   haltEvent,
   label,
 } from "utils/functions";
+import { isEmbedBlockedUrl } from "utils/externalUrls";
 import {
   getInfoWithExtension,
   getModifiedTime,
@@ -330,6 +331,12 @@ const Browser: FC<ComponentProcessProps> = ({ id }) => {
               ? await PROXIES[proxyState](processedUrl.href)
               : processedUrl.href;
 
+            if (isEmbedBlockedUrl(addressUrl)) {
+              open("ExternalURL", { url: addressUrl });
+              setLoading(false);
+              return;
+            }
+
             changeIframeWindowLocation(addressUrl, contentWindow);
 
             if (addressUrl.startsWith(GOOGLE_SEARCH_QUERY)) {
@@ -468,6 +475,11 @@ const Browser: FC<ComponentProcessProps> = ({ id }) => {
           <Button
             key={name}
             onClick={({ ctrlKey }) => {
+              if (isEmbedBlockedUrl(bookmarkUrl)) {
+                open("ExternalURL", { url: bookmarkUrl });
+                return;
+              }
+
               if (ctrlKey) {
                 open("Browser", { url: bookmarkUrl });
               } else {
