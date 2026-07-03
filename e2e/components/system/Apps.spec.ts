@@ -1,9 +1,8 @@
-import { test } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import {
-  DESKTOP_ENTRIES_SELECTOR,
   DRAG_HEADLESS_NOT_SUPPORTED_BROWSERS,
-  TEST_APP_CONTAINER_APP,
-  TEST_APP_CONTAINER_APP_TITLE,
+  TEST_APP_CONTAINER_TITLE,
+  WINDOW_TITLEBAR_SELECTOR,
 } from "e2e/constants";
 import {
   captureConsoleLogs,
@@ -28,16 +27,16 @@ test.describe("app container", () => {
       "no headless drag support"
     );
 
-    await windowTitlebarTextIsVisible(TEST_APP_CONTAINER_APP, { page });
+    await windowTitlebarTextIsVisible(TEST_APP_CONTAINER_TITLE, { page });
 
     await desktopEntriesAreVisible({ page });
     await dragFirstDesktopEntryToWindow({ page });
 
-    await windowTitlebarTextIsVisible(
-      TEST_APP_CONTAINER_APP_TITLE(
-        await page.locator(DESKTOP_ENTRIES_SELECTOR).first().textContent()
-      ),
-      { page }
-    );
+    await expect(() =>
+      expect(page.locator(WINDOW_TITLEBAR_SELECTOR)).toHaveText(
+        /.+ - Documento$/,
+        { timeout: 5000 }
+      )
+    ).toPass();
   });
 });

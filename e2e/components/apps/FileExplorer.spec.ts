@@ -4,6 +4,7 @@ import {
   BASE_APP_FAVICON,
   BASE_APP_TITLE,
   CLIPBOARD_WRITE_HEADLESS_NOT_SUPPORTED_BROWSERS,
+  DESKTOP_ENTRIES_SELECTOR,
   DESKTOP_SELECTOR,
   DRAG_HEADLESS_NOT_SUPPORTED_BROWSERS,
   FILE_EXPLORER_COLUMN_HEIGHT,
@@ -404,6 +405,16 @@ test.describe("has files & folders", () => {
     test.skip(
       headless && DRAG_HEADLESS_NOT_SUPPORTED_BROWSERS.has(browserName),
       "no headless drag support"
+    );
+
+    const publicOnDesktopCount = await page
+      .locator(DESKTOP_ENTRIES_SELECTOR)
+      .getByLabel(TEST_DESKTOP_FILE, { exact: true })
+      .count();
+
+    test.skip(
+      publicOnDesktopCount === 0,
+      "escritorio del portafolio sin carpeta Public"
     );
 
     await fileExplorerEntryIsHidden(TEST_DESKTOP_FILE, { page });

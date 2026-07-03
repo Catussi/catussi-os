@@ -253,7 +253,7 @@ test.describe("has commands", () => {
 
   test("help", async ({ page }) => {
     await sendToTerminal({ page }, "help");
-    await terminalHasText({ page }, /Spawn a new sheep./);
+    await terminalHasText({ page }, "Genera una oveja", -1);
   });
 
   test("history", async ({ page }) => {

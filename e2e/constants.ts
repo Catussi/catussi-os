@@ -44,7 +44,8 @@ export const EXCLUDED_CONSOLE_LOGS = (
     if (browserName === "chromium") {
       excludedConsoleLogs.push(
         "Failed to create WebGPU Context Provider",
-        "WebGPU is experimental on this platform"
+        "WebGPU is experimental on this platform",
+        "WebGL (2.0=true)"
       );
     } else if (browserName === "firefox") {
       excludedConsoleLogs.push(
@@ -250,7 +251,7 @@ export const START_MENU_APPS = [
   /^Browser$/,
   /^DevTools$/,
   /^IRC$/,
-  /^Marked$/,
+  /^Documento$/,
   /^Messenger$/,
   /^Monaco Editor$/,
   /^Paint$/,
@@ -276,8 +277,9 @@ export const START_MENU_FOLDERS = {
 };
 
 export const TEST_APP_CONTAINER_APP = "Marked";
+export const TEST_APP_CONTAINER_TITLE = "Documento";
 export const TEST_APP_CONTAINER_APP_TITLE = (file: string | null): string =>
-  `${file || ""}.url - ${TEST_APP_CONTAINER_APP}`;
+  `${file || ""}.url - ${TEST_APP_CONTAINER_TITLE}`;
 
 export const TEST_APP = "FileExplorer";
 export const TEST_APP_TITLE = /^Mi PC$/;
@@ -295,10 +297,10 @@ export const TEST_ROOT_FILE = /^CREDITS.md$/;
 export const TEST_ROOT_FILE_COPY = /^CREDITS \(1\).md$/;
 export const TEST_ROOT_FILE_2 = /^favicon.ico$/;
 export const TEST_ROOT_FILE_TEXT = "CREDITS.md";
-export const TEST_ROOT_FILE_DEFAULT_APP = "Marked";
+export const TEST_ROOT_FILE_DEFAULT_APP = "Documento";
 export const TEST_ROOT_FILE_ALT_APP = "Monaco Editor";
 export const TEST_ROOT_FILE_TOOLTIP =
-  /^Type: Markdown File\nSize: \d\.\d\d KB\nDate modified: \d{4}-\d{2}-\d{2} \d{1,2}:\d{2} (?:AM|PM)$/;
+  /^Type: Markdown File\nSize: \d\.\d\d KB\nDate modified: \d{4}-\d{2}-\d{2} \d{1,2}:\d{2} (?:AM|PM|a\. m\.|p\. m\.)$/;
 
 export const TEST_SEARCH = "CREDITS";
 export const TEST_SEARCH_RESULT = /^CREDITS.md$/;

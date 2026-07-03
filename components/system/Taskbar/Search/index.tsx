@@ -47,6 +47,7 @@ import {
   VIDEOS_FOLDER,
 } from "utils/constants";
 import { haltEvent, label, preloadLibs } from "utils/functions";
+import { ui } from "utils/i18n";
 import {
   FILE_INDEX,
   SEARCH_INPUT_PROPS,
@@ -475,7 +476,7 @@ const Search: FC<SearchProps> = ({ toggleSearch }) => {
                 (bestMatchElement as HTMLElement)?.click();
               }
             }}
-            placeholder="Type here to search"
+            placeholder={ui.searchPlaceholder}
             style={{
               caretColor: showCaret ? undefined : "transparent",
             }}
