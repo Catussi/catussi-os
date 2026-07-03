@@ -44,6 +44,27 @@ const StyledTitlebar = styled.header<StyledTitlebarProps>`
   top: 0;
   z-index: 2;
 
+  ${({ $windowChrome = "app" }) =>
+    $windowChrome === "app" &&
+    `
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 7%);
+  `}
+
+  ${({ $foreground, $windowChrome = "app", theme }) =>
+    $windowChrome === "document" &&
+    $foreground &&
+    `
+    &::after {
+      background: ${theme.colors.titleBar.document.accent};
+      bottom: 0;
+      content: "";
+      height: 2px;
+      left: 0;
+      position: absolute;
+      width: 100%;
+    }
+  `}
+
   > button {
     align-items: center;
     color: ${({ $foreground, $windowChrome = "app", theme }) => {
@@ -153,9 +174,7 @@ const StyledTitlebar = styled.header<StyledTitlebarProps>`
 
       &:active {
         background-color: ${({ $windowChrome = "app" }) =>
-          $windowChrome === "document"
-            ? "rgba(13, 148, 136, 0.16)"
-            : "rgb(51 51 51)"};
+          $windowChrome === "document" ? "#e2e2e0" : "rgb(51 51 51)"};
 
         &.close {
           background-color: rgb(139 10 20);

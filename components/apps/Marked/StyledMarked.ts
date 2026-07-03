@@ -5,7 +5,7 @@ import { DEFAULT_SCROLLBAR_WIDTH } from "utils/constants";
 
 const portfolioArticleStyles = `
     &.portfolio {
-      background: #f7f7f5;
+      background: #f3f3f1;
       color: #1c1c1c;
       font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
       font-size: 16px;
@@ -13,55 +13,59 @@ const portfolioArticleStyles = `
       padding: 0;
 
       .portfolio-page {
-        margin: 0 auto;
-        max-width: 700px;
-        padding: 28px 36px 48px;
+        background: #fff;
+        border: 1px solid #e3e3e1;
+        box-shadow: 0 1px 0 rgb(255 255 255 / 80%);
+        margin: 20px auto 28px;
+        max-width: 680px;
+        padding: 32px 40px 44px;
       }
 
       .portfolio-byline {
-        border-bottom: 1px solid #ddd;
-        color: #666;
-        font-size: 0.8rem;
-        letter-spacing: 0.02em;
-        margin: 0 0 28px;
-        padding-bottom: 12px;
+        border-bottom: 1px solid #e8e8e6;
+        color: #5c5c5c;
+        font-size: 0.78rem;
+        font-variant: small-caps;
+        letter-spacing: 0.08em;
+        margin: 0 0 24px;
+        padding-bottom: 10px;
       }
 
       h1 {
         border-bottom: none;
         color: #111;
-        font-size: 1.75rem;
+        font-size: 1.7rem;
         font-weight: 600;
-        letter-spacing: -0.01em;
-        line-height: 1.2;
-        margin: 0 0 0.75em;
+        letter-spacing: -0.015em;
+        line-height: 1.22;
+        margin: 0 0 0.7em;
         padding: 0;
       }
 
       h1 + p {
         color: #444;
-        font-size: 1rem;
+        font-size: 0.98rem;
         margin-top: 0;
       }
 
       h2 {
-        border-bottom: 1px solid #ddd;
-        color: #111;
-        font-size: 1.15rem;
+        border-bottom: 1px solid #e0e0de;
+        color: #1a1a1a;
+        font-size: 1.1rem;
         font-weight: 600;
-        margin-top: 2em;
-        padding-bottom: 0.3em;
+        margin-top: 1.85em;
+        padding-bottom: 0.35em;
       }
 
       h3 {
         color: #222;
         font-size: 1rem;
         font-weight: 600;
-        margin-top: 1.25em;
+        margin-top: 1.2em;
       }
 
       p {
-        margin: 0.65em 0;
+        margin: 0.6em 0;
       }
 
       strong {
@@ -70,24 +74,25 @@ const portfolioArticleStyles = `
       }
 
       a {
-        color: #1a1a1a;
+        color: #2c4a67;
         font-weight: 500;
         text-decoration: underline;
-        text-decoration-color: #999;
+        text-decoration-color: rgb(44 74 103 / 35%);
         text-underline-offset: 2px;
 
         &:hover {
-          text-decoration-color: #1a1a1a;
+          color: #1f3549;
+          text-decoration-color: currentcolor;
         }
       }
 
       blockquote {
-        background: #f0f0ee;
-        border-left: 3px solid #888;
+        background: #f7f7f5;
+        border-left: 3px solid #3d4f5f;
         border-radius: 0;
         color: #333;
-        margin: 1.25em 0;
-        padding: 12px 16px;
+        margin: 1.15em 0;
+        padding: 11px 15px;
 
         p {
           margin: 0;
@@ -98,40 +103,45 @@ const portfolioArticleStyles = `
         background: #ddd;
         border: none;
         height: 1px;
-        margin: 2em 0;
+        margin: 1.75em 0;
       }
 
       table {
         background: #fff;
-        border: 1px solid #ccc;
+        border: 1px solid #d4d4d2;
         border-collapse: collapse;
         border-radius: 0;
         border-spacing: 0;
         box-shadow: none;
-        font-size: 0.95rem;
-        margin: 1em 0 1.5em;
+        font-size: 0.94rem;
+        margin: 1em 0 1.35em;
         width: 100%;
 
         th {
-          background: #eee;
-          border: 1px solid #ccc;
-          color: #111;
-          font-size: 0.8rem;
+          background: #f0f0ee;
+          border: 1px solid #d4d4d2;
+          color: #1a1a1a;
+          font-size: 0.78rem;
           font-weight: 600;
-          letter-spacing: 0.01em;
+          letter-spacing: 0.02em;
           padding: 8px 12px;
           text-align: left;
           text-transform: none;
         }
 
         td {
-          border: 1px solid #ddd;
+          border: 1px solid #e0e0de;
           color: #333;
           padding: 8px 12px;
         }
 
+        td:first-child {
+          color: #1a1a1a;
+          font-weight: 500;
+        }
+
         tr:nth-child(even) td {
-          background: #fafafa;
+          background: #fafaf9;
         }
       }
 
@@ -175,7 +185,7 @@ const StyledMarked = styled.div`
     line-height: 1.5;
     overflow-wrap: break-word;
     overflow-y: auto;
-    padding: 16px 32px;
+    padding: 0;
     width: 100%;
 
     * {

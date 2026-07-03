@@ -134,10 +134,10 @@ const directory: Processes = {
   },
   Marked: {
     Component: dynamic(() => import("components/apps/Marked")),
-    backgroundColor: "#f7f7f5",
+    backgroundColor: "#ffffff",
     defaultSize: {
-      height: 580,
-      width: 700,
+      height: 600,
+      width: 720,
     },
     icon: "/System/Icons/marked.webp",
     libs: [
