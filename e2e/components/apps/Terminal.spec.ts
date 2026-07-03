@@ -399,10 +399,13 @@ test.describe("has tab completion", () => {
   });
 
   test("can complete folder name", async ({ page }) => {
-    await sendTextToTerminal({ page }, "Vi");
+    await terminalHasText({ page }, /.*>$/, 1, true);
+    await sendTextToTerminal({ page }, "Vid");
     await sendTabToTerminal({ page });
 
-    await terminalHasText({ page }, "Videos", 1, true);
+    await expect(async () =>
+      terminalHasText({ page }, "Videos", 1, true)
+    ).toPass();
   });
 
   test("can complete command name", async ({ page }) => {
