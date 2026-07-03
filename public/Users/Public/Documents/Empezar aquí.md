@@ -21,11 +21,11 @@
 
 ## Ruta recomendada para reclutadores (~3 min)
 
-1. **[Sobre mí](./Catalina%20Barria%20Otto.md)** — quién soy, enfoque y proyectos clave  
+1. **[Sobre mí](/Users/Public/Documents/Catalina%20Barria%20Otto.md)** — quién soy, enfoque y proyectos clave  
 2. **CV ICI** (escritorio) — currículum en PDF · también en `/Users/Public/Documents/CV_ICI.pdf`  
-3. **[Experiencia](./Experience.md)** — historial laboral con logros y tecnologías  
-4. **[Proyectos](./Projects.md)** — catálogo con demos y repos  
-5. **[Contacto](./Contact.md)** — email, LinkedIn y disponibilidad  
+3. **[Experiencia](/Users/Public/Documents/Experience.md)** — historial laboral con logros y tecnologías  
+4. **[Proyectos](/Users/Public/Documents/Projects.md)** — catálogo con demos y repos  
+5. **[Contacto](/Users/Public/Documents/Contact.md)** — email, LinkedIn y disponibilidad  
 
 Si buscas **formación** o **stack detallado**, abre **Educación** y **Habilidades** en el escritorio.
 

@@ -69,7 +69,7 @@ Construyendo **[ELVIR-Demo](https://github.com/Catussi/ELVIR-Demo)** — simulac
 
 Tesis: **Academic Pathways** — ML aplicado a trayectorias académicas con **SHAP** y enfoque **XAI**.
 
-Detalle en [Educación](./Education.md).
+Detalle en [Educación](/Users/Public/Documents/Education.md).
 
 ---
 

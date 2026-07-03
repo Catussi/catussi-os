@@ -6,6 +6,7 @@ import { useFileSystem } from "contexts/fileSystem";
 import { useProcesses } from "contexts/process";
 import { loadFiles } from "utils/functions";
 import { useLinkHandler } from "hooks/useLinkHandler";
+import { resolveDocumentPath } from "utils/resolveDocumentPath";
 
 export type MarkedOptions = {
   headerIds: boolean;
@@ -67,16 +68,21 @@ const useMarked = ({
     [containerRef]
   );
   const bindLinks = useCallback(
-    (container: HTMLElement) => {
+    (container: HTMLElement, currentUrl: string) => {
       container.querySelectorAll("a").forEach((link) =>
-        link.addEventListener("click", (event) =>
+        link.addEventListener("click", (event) => {
+          const resolvedPath = resolveDocumentPath(
+            link.getAttribute("href") || link.pathname || "",
+            currentUrl
+          );
+
           openLink(
             event,
-            link.href || "",
-            link.pathname,
+            resolvedPath,
+            resolvedPath,
             link.textContent || ""
-          )
-        )
+          );
+        })
       );
     },
     [openLink]
@@ -92,6 +98,18 @@ const useMarked = ({
       container.classList.remove("drop");
       container.classList.toggle("portfolio", isPortfolioDoc);
 
+      if (markdownFile.length === 0) {
+        const missingMessage =
+          "<p><strong>No se encontró este documento.</strong> Vuelve a abrirlo desde el escritorio.</p>";
+
+        container.innerHTML = isPortfolioDoc
+          ? wrapPortfolioContent(missingMessage, getPortfolioDocLabel(url))
+          : missingMessage;
+
+        prependFileToTitle(basename(url));
+        return;
+      }
+
       const html = window.DOMPurify.sanitize(
         window.marked.parse(markdownFile.toString(), {
           headerIds: false,
@@ -103,7 +121,7 @@ const useMarked = ({
         ? wrapPortfolioContent(html, getPortfolioDocLabel(url))
         : html;
 
-      bindLinks(container);
+      bindLinks(container, url);
       container.scrollTop = 0;
     }
 

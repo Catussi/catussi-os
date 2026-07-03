@@ -4,6 +4,7 @@ import { isCorsUrl } from "components/apps/TinyMCE/functions";
 import { getProcessByFileExtension } from "components/system/Files/FileEntry/functions";
 import { useProcesses } from "contexts/process";
 import { haltEvent, isYouTubeUrl, getExtension } from "utils/functions";
+import { resolveDocumentPath } from "utils/resolveDocumentPath";
 import { useSession } from "contexts/session";
 
 type LinkHandler = (
@@ -42,7 +43,7 @@ export const useLinkHandler = (): LinkHandler => {
         );
 
         if (defaultProcess) {
-          const pathUrl = decodeURI(pathName);
+          const pathUrl = resolveDocumentPath(decodeURI(pathName));
 
           open(defaultProcess, { url: pathUrl });
 

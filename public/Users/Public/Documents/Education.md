@@ -111,4 +111,4 @@ Programa profesional en ciencia de datos con enfoque práctico y proyecto capsto
 
 - **Proyectos académicos:** [Academic-Projects](https://github.com/Catussi/Academic-Projects)
 - **Capstone IBM:** [DataScience-Capstone](https://github.com/Catussi/DataScience-Capstone)
-- **Tesis (contexto):** ver [Projects.md](./Projects.md) → Academic Pathways
+- **Tesis (contexto):** ver [Projects.md](/Users/Public/Documents/Projects.md) → Academic Pathways
