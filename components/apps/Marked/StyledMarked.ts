@@ -5,24 +5,15 @@ import { DEFAULT_SCROLLBAR_WIDTH } from "utils/constants";
 
 const portfolioArticleStyles = `
     &.portfolio {
-      align-items: center;
       background: linear-gradient(165deg, #f8fbff 0%, #f4f7fa 38%, #eef3f8 100%);
       color: #1a2332;
-      display: flex;
-      flex-direction: column;
       font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
       font-size: 17px;
       line-height: 1.7;
-      padding: 28px 32px 48px;
-
-      > * {
-        box-sizing: border-box;
-        max-width: 720px;
-        width: 100%;
-      }
+      padding: 32px max(24px, calc((100% - 720px) / 2)) 48px;
+      position: relative;
 
       &::before {
-        align-self: stretch;
         background: linear-gradient(
           90deg,
           #0d9488 0%,
@@ -31,12 +22,9 @@ const portfolioArticleStyles = `
           #818cf8 100%
         );
         content: "";
-        display: block;
-        flex-shrink: 0;
         height: 4px;
         left: 0;
-        max-width: none;
-        position: sticky;
+        position: absolute;
         top: 0;
         width: 100%;
         z-index: 2;
@@ -213,6 +201,9 @@ const portfolioArticleStyles = `
 `;
 
 const StyledMarked = styled.div`
+  height: 100%;
+  width: 100%;
+
   article {
     ${ScrollBars(DEFAULT_SCROLLBAR_WIDTH, 0, 0, "light")};
     background-color: #f9f9f9;

@@ -26,7 +26,6 @@ declare global {
 const useMarked = ({
   containerRef,
   id,
-  loading,
   setLoading,
   url,
 }: ContainerHookProps): void => {
@@ -40,9 +39,10 @@ const useMarked = ({
     [containerRef]
   );
   const loadFile = useCallback(async () => {
+    if (!url) return;
+
     const markdownFile = await readFile(url);
     const container = getContainer();
-
     const isPortfolioDoc = url.includes("/Users/Public/Documents/");
 
     if (container instanceof HTMLElement) {
@@ -73,21 +73,41 @@ const useMarked = ({
   }, [getContainer, openLink, prependFileToTitle, readFile, url]);
 
   useEffect(() => {
-    if (loading) {
-      loadFiles(libs).then(() => {
-        if (window.marked) {
-          setLoading(false);
-        }
-      });
-    }
-  }, [libs, loading, setLoading]);
+    let cancelled = false;
 
-  useEffect(() => {
-    if (!loading) {
-      if (url) loadFile();
-      else getContainer()?.classList.add("drop");
-    }
-  }, [getContainer, loadFile, loading, url]);
+    const bootstrap = async (): Promise<void> => {
+      setLoading(true);
+      await loadFiles(libs);
+
+      if (cancelled) return;
+
+      if (!window.marked) {
+        const container = getContainer();
+
+        if (container instanceof HTMLElement) {
+          container.innerHTML =
+            "<p><strong>No se pudo cargar el visor de documentos.</strong> Recarga la página e inténtalo de nuevo.</p>";
+        }
+
+        setLoading(false);
+        return;
+      }
+
+      if (url) {
+        await loadFile();
+      } else {
+        getContainer()?.classList.add("drop");
+      }
+
+      if (!cancelled) setLoading(false);
+    };
+
+    bootstrap();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [getContainer, libs, loadFile, setLoading, url]);
 };
 
 export default useMarked;
