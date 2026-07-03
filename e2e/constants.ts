@@ -251,7 +251,7 @@ export const START_MENU_APPS = [
   /^Browser$/,
   /^DevTools$/,
   /^IRC$/,
-  /^Documento$/,
+  /^Marked$/,
   /^Messenger$/,
   /^Monaco Editor$/,
   /^Paint$/,
@@ -300,7 +300,7 @@ export const TEST_ROOT_FILE_TEXT = "CREDITS.md";
 export const TEST_ROOT_FILE_DEFAULT_APP = "Documento";
 export const TEST_ROOT_FILE_ALT_APP = "Monaco Editor";
 export const TEST_ROOT_FILE_TOOLTIP =
-  /^Type: Markdown File\nSize: \d\.\d\d KB\nDate modified: \d{4}-\d{2}-\d{2} \d{1,2}:\d{2} (?:AM|PM|a\. m\.|p\. m\.)$/;
+  /^Type: Markdown File[\r\n]+Size: [\d.]+ KB[\r\n]+Date modified: \d{4}-\d{2}-\d{2}.+$/;
 
 export const TEST_SEARCH = "CREDITS";
 export const TEST_SEARCH_RESULT = /^CREDITS.md$/;

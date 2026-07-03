@@ -665,10 +665,12 @@ export const fileExplorerEntryHasTooltip = async (
   label: RegExp,
   title: RegExp,
   { page }: TestProps
-): Promise<void> =>
-  expect(
-    page.locator(FILE_EXPLORER_ENTRIES_SELECTOR).getByLabel(label)
-  ).toHaveAttribute("title", title);
+): Promise<void> => {
+  const entry = page.locator(FILE_EXPLORER_ENTRIES_SELECTOR).getByLabel(label);
+
+  await expect(entry).toHaveAttribute("title", /.+/);
+  expect(await entry.getAttribute("title")).toMatch(title);
+};
 
 export const fileExplorerNavButtonIsVisible = async (
   label: RegExp,
