@@ -24,6 +24,7 @@ public/Users/Public/**
 !public/Users/Public/Icons
 !public/Users/Public/Icons/**
 !public/Users/Public/Music
+!public/Users/Public/Music/**
 !public/Users/Public/Pictures
 !public/Users/Public/Pictures/prompts.json
 !public/Users/Public/Pictures/slideshow.json

@@ -1,5 +1,6 @@
 [InternetShortcut]
 BaseURL=Webamp
-Comment=Winamp — playlist Catussi
+Comment=Winamp con mi playlist y skins
 IconFile=/System/Icons/webamp.webp
+Type=System
 URL=/Users/Public/Music/Catussi.m3u

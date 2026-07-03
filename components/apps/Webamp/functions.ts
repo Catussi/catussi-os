@@ -18,6 +18,9 @@ const BROKEN_PRESETS = new Set([
 
 const WEBAMP_SKINS_PATH = `${HOME}/Documents/Winamp Skins`;
 
+export const DEFAULT_WEBAMP_PLAYLIST = `${HOME}/Music/Catussi.m3u`;
+export const DEFAULT_WEBAMP_SKIN = `${WEBAMP_SKINS_PATH}/Aqua_X.wsz`;
+
 const ALLOWS_CORS_IN_WINAMP_SKIN_MUSEUM =
   typeof window !== "undefined" &&
   ["localhost", PACKAGE_DATA.author.url.replace("https://", "")].includes(
@@ -37,17 +40,17 @@ const createWebampSkinMuseumQuery = (offset: number): string => `
 export const BASE_WEBAMP_OPTIONS = {
   availableSkins: [
     {
-      name: "Aqua X",
+      name: "Aqua X · favorita",
       url: `${WEBAMP_SKINS_PATH}/Aqua_X.wsz`,
     },
     {
-      name: "Nucleo NLog v2G",
-      url: `${WEBAMP_SKINS_PATH}/Nucleo_NLog_v102.wsz`,
+      name: "SpyAMP Professional Edition v5",
+      url: `${WEBAMP_SKINS_PATH}/SpyAMP_Professional_Edition_v5.wsz`,
     },
     ...(ALLOWS_CORS_IN_WINAMP_SKIN_MUSEUM
       ? [
           {
-            defaultName: "Random (Winamp Skin Museum)",
+            defaultName: "Aleatoria (Skin Museum)",
             loading: false,
             get name(): string {
               if (this.loading) return this.defaultName;
@@ -76,14 +79,18 @@ export const BASE_WEBAMP_OPTIONS = {
             },
             skinUrl: "",
             get url(): string {
-              return this.skinUrl || `${WEBAMP_SKINS_PATH}/base-2.91.wsz`;
+              return this.skinUrl || DEFAULT_WEBAMP_SKIN;
             },
           },
         ]
       : []),
     {
-      name: "SpyAMP Professional Edition v5",
-      url: `${WEBAMP_SKINS_PATH}/SpyAMP_Professional_Edition_v5.wsz`,
+      name: "Winamp clásico (2.91)",
+      url: `${WEBAMP_SKINS_PATH}/base-2.91.wsz`,
+    },
+    {
+      name: "Nucleo NLog v2G",
+      url: `${WEBAMP_SKINS_PATH}/Nucleo_NLog_v102.wsz`,
     },
   ],
 };

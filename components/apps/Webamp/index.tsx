@@ -4,6 +4,8 @@ import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import StyledWebamp from "components/apps/Webamp/StyledWebamp";
 import {
   cleanBufferOnSkinLoad,
+  DEFAULT_WEBAMP_PLAYLIST,
+  DEFAULT_WEBAMP_SKIN,
   focusWindow,
   parseTrack,
   tracksFromPlaylist,
@@ -37,31 +39,48 @@ const Webamp: FC<ComponentProcessProps> = ({ id }) => {
   );
   const { zIndex, ...focusableProps } = useFocusable(id, focusEvents);
   const getUrlOptions = useCallback(async (): Promise<Options> => {
-    if (url) {
-      const extension = getExtension(url);
+    const options: Options = {};
+    const targetUrl = url || DEFAULT_WEBAMP_PLAYLIST;
+
+    if (targetUrl) {
+      const extension = getExtension(targetUrl);
 
       if (AUDIO_PLAYLIST_EXTENSIONS.has(extension)) {
-        const initialTracks = await tracksFromPlaylist(
-          (await readFile(url)).toString(),
-          extension,
-          basename(url, extname(url))
-        );
+        try {
+          const initialTracks = await tracksFromPlaylist(
+            (await readFile(targetUrl)).toString(),
+            extension,
+            basename(targetUrl, extname(targetUrl))
+          );
 
-        return initialTracks.length > 0 ? { initialTracks } : {};
-      }
-
-      if (extension === ".mp3") {
-        return {
-          initialTracks: [await parseTrack(await readFile(url), basename(url))],
+          if (initialTracks.length > 0) {
+            options.initialTracks = initialTracks;
+          }
+        } catch {
+          // playlist aún no generada o sin pistas
+        }
+      } else if (extension === ".mp3") {
+        options.initialTracks = [
+          await parseTrack(await readFile(targetUrl), basename(targetUrl)),
+        ];
+      } else if (extension === ".wsz") {
+        options.initialSkin = {
+          url: bufferToUrl(await readFile(targetUrl)),
         };
-      }
-
-      if (extension === ".wsz") {
-        return { initialSkin: { url: bufferToUrl(await readFile(url)) } };
       }
     }
 
-    return {};
+    if (!url && !options.initialSkin) {
+      try {
+        options.initialSkin = {
+          url: bufferToUrl(await readFile(DEFAULT_WEBAMP_SKIN)),
+        };
+      } catch {
+        // skin aún no descargada
+      }
+    }
+
+    return options;
   }, [readFile, url]);
   const loadWebampUrl = useCallback(async () => {
     if (webampCI) {
