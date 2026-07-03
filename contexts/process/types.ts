@@ -46,6 +46,8 @@ export type RelativePosition = {
   top?: number;
 };
 
+export type WindowChrome = "app" | "document";
+
 type BaseProcessArguments = {
   allowResizing?: boolean;
   autoSizing?: boolean;
@@ -63,6 +65,7 @@ type BaseProcessArguments = {
   lockAspectRatio?: boolean;
   peekImage?: string;
   url?: string;
+  windowChrome?: WindowChrome;
 };
 
 export type ProcessArguments = BaseProcessArguments &

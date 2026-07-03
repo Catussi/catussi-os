@@ -20,6 +20,7 @@ const Window: FC<ComponentProcessProps> = ({ children, id }) => {
     Component,
     hideTitlebar,
     peekElement,
+    windowChrome,
   } = process || {};
   const { foregroundId } = useSession();
   const isForeground = id === foregroundId;
@@ -40,6 +41,7 @@ const Window: FC<ComponentProcessProps> = ({ children, id }) => {
         $backgroundBlur={backgroundBlur}
         $backgroundColor={backgroundColor}
         $isForeground={isForeground}
+        $windowChrome={windowChrome}
         {...focusableProps}
         {...windowTransitions}
       >

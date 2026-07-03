@@ -79,12 +79,14 @@ const sizes = {
   titleBar: {
     buttonIconWidth: "10px",
     buttonWidth: "45px",
-    fontSize: "12px",
-    height: 30,
-    iconMarginRight: "4px",
+    documentHeight: 38,
+    fontSize: "12.5px",
+    height: 34,
+    iconMarginRight: "6px",
     iconSize: "16px",
   },
   window: {
+    borderRadius: 10,
     cascadeOffset: 26,
     outline: "1px",
     textTopPadding: 14,

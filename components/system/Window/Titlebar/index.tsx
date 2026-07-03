@@ -37,6 +37,7 @@ const Titlebar: FC<TitlebarProps> = ({ id }) => {
     icon,
     title,
     maximized,
+    windowChrome,
   } = process || {};
   const { foregroundId, setForegroundId } = useSession();
   const isForeground = id === foregroundId;
@@ -124,6 +125,7 @@ const Titlebar: FC<TitlebarProps> = ({ id }) => {
   return (
     <StyledTitlebar
       $foreground={isForeground}
+      $windowChrome={windowChrome}
       className={rndDefaults.dragHandleClassName}
       onDragOver={haltEvent}
       onDrop={haltEvent}
