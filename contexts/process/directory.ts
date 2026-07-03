@@ -32,6 +32,21 @@ const directory: Processes = {
     icon: "/System/Icons/chromium.webp",
     title: "Navegador",
   },
+  GitHub: {
+    Component: dynamic(() => import("components/apps/GitHub")),
+    backgroundColor: "#FFF",
+    defaultSize: {
+      height: 580,
+      width: 760,
+    },
+    icon: "/System/Icons/documents.webp",
+    libs: [
+      "/Program Files/Marked/marked.min.js",
+      "/Program Files/Marked/purify.min.js",
+    ],
+    title: "GitHub",
+    windowChrome: "document",
+  },
   Chess: {
     Component: dynamic(() => import("components/apps/Chess")),
     backgroundColor: "#312E2B",
@@ -157,6 +172,17 @@ const directory: Processes = {
     icon: "/System/Icons/messenger.webp",
     singleton: true,
     title: "Messenger",
+  },
+  LinkedIn: {
+    Component: dynamic(() => import("components/apps/LinkedIn")),
+    backgroundColor: "#f3f2ef",
+    defaultSize: {
+      height: 620,
+      width: 540,
+    },
+    icon: "/System/Icons/messenger.webp",
+    title: "LinkedIn",
+    windowChrome: "document",
   },
   MonacoEditor: {
     Component: dynamic(() => import("components/apps/MonacoEditor")),

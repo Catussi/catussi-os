@@ -46,7 +46,11 @@ import {
   haltEvent,
   label,
 } from "utils/functions";
-import { isEmbedBlockedUrl } from "utils/externalUrls";
+import {
+  embedBlockedAppTitle,
+  isEmbedBlockedUrl,
+  resolveEmbedBlockedApp,
+} from "utils/externalUrls";
 import {
   getInfoWithExtension,
   getModifiedTime,
@@ -132,7 +136,9 @@ const Browser: FC<ComponentProcessProps> = ({ id }) => {
           (await exists(addressInput));
 
         setLoading(true);
-        if (isHtml) setSrcDoc((await readFile(addressInput)).toString());
+        if (isHtml) {
+          setSrcDoc((await readFile(addressInput)).toString());
+        }
         setIcon(id, processDirectory.Browser.icon);
 
         const loadLocalSite = (localPath: string, localTitle: string): void => {
@@ -331,8 +337,19 @@ const Browser: FC<ComponentProcessProps> = ({ id }) => {
               ? await PROXIES[proxyState](processedUrl.href)
               : processedUrl.href;
 
-            if (isEmbedBlockedUrl(addressUrl)) {
-              open("ExternalURL", { url: addressUrl });
+            if (isEmbedBlockedUrl(processedUrl.href)) {
+              const embedApp = resolveEmbedBlockedApp(processedUrl.href);
+
+              if (embedApp) {
+                open(embedApp.processId, {
+                  initialTitle: embedBlockedAppTitle(embedApp),
+                  url: embedApp.url,
+                });
+                setLoading(false);
+                return;
+              }
+
+              open("ExternalURL", { url: processedUrl.href });
               setLoading(false);
               return;
             }
@@ -475,8 +492,13 @@ const Browser: FC<ComponentProcessProps> = ({ id }) => {
           <Button
             key={name}
             onClick={({ ctrlKey }) => {
-              if (isEmbedBlockedUrl(bookmarkUrl)) {
-                open("ExternalURL", { url: bookmarkUrl });
+              const embedApp = resolveEmbedBlockedApp(bookmarkUrl);
+
+              if (embedApp && !ctrlKey) {
+                open(embedApp.processId, {
+                  initialTitle: embedBlockedAppTitle(embedApp),
+                  url: embedApp.url,
+                });
                 return;
               }
 

@@ -5,7 +5,11 @@ import { getProcessByFileExtension } from "components/system/Files/FileEntry/fun
 import { useProcesses } from "contexts/process";
 import { haltEvent, isYouTubeUrl, getExtension } from "utils/functions";
 import { resolveDocumentPath } from "utils/resolveDocumentPath";
-import { isEmbedBlockedUrl } from "utils/externalUrls";
+import {
+  embedBlockedAppTitle,
+  isEmbedBlockedUrl,
+  resolveEmbedBlockedApp,
+} from "utils/externalUrls";
 import { useSession } from "contexts/session";
 
 type LinkHandler = (
@@ -26,7 +30,18 @@ export const useLinkHandler = (): LinkHandler => {
       const url = rawUrl.replace(/^http:/i, "https:");
 
       if (isYouTubeUrl(url)) open("VideoPlayer", { url });
-      else if (isEmbedBlockedUrl(url)) open("ExternalURL", { url });
+      else if (isEmbedBlockedUrl(url)) {
+        const embedApp = resolveEmbedBlockedApp(url);
+
+        if (embedApp) {
+          open(embedApp.processId, {
+            initialTitle: embedBlockedAppTitle(embedApp),
+            url: embedApp.url,
+          });
+        } else {
+          open("ExternalURL", { url });
+        }
+      }
       else if (isCorsUrl(url)) open("Browser", { initialTitle: title, url });
       else if (
         !pathName ||
