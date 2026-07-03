@@ -58,12 +58,12 @@ const colors = {
     document: {
       accent:
         "linear-gradient(90deg, #0d9488 0%, #14b8a6 35%, #38bdf8 70%, #818cf8 100%)",
-      background: "#f8fafc",
+      background: "#f1f5f9",
       backgroundHover: "rgba(13, 148, 136, 0.1)",
       backgroundInactive: "#e2e8f0",
-      border: "#14b8a6",
+      border: "#0f766e",
       borderInactive: "#cbd5e1",
-      buttonInactive: "#94a3b8",
+      buttonInactive: "#64748b",
       text: "#0f172a",
       textInactive: "#64748b",
     },

@@ -23,6 +23,34 @@ declare global {
   }
 }
 
+const PORTFOLIO_DOC_LABELS: Record<string, string> = {
+  "Catalina Barria Otto": "Sobre mí",
+  Contact: "Contacto",
+  Education: "Educación",
+  "Empezar aquí": "Empezar aquí",
+  Experience: "Experiencia",
+  Projects: "Proyectos",
+  README: "Índice",
+  Skills: "Habilidades",
+};
+
+const getPortfolioDocLabel = (url: string): string => {
+  const fileName = basename(url, ".md");
+
+  return PORTFOLIO_DOC_LABELS[fileName] || fileName;
+};
+
+const wrapPortfolioContent = (html: string, docLabel: string): string =>
+  `<div class="portfolio-shell">
+    <aside class="portfolio-rail" aria-hidden="true">
+      <span class="portfolio-mark">@Catussi</span>
+      <span class="portfolio-role">Full Stack · ML Engineer</span>
+      <span class="portfolio-doc">${docLabel}</span>
+      <span class="portfolio-location">Valparaíso, Chile</span>
+    </aside>
+    <div class="portfolio-body">${html}</div>
+  </div>`;
+
 const useMarked = ({
   containerRef,
   id,
@@ -38,6 +66,21 @@ const useMarked = ({
       containerRef.current?.querySelector("article") as HTMLElement,
     [containerRef]
   );
+  const bindLinks = useCallback(
+    (container: HTMLElement) => {
+      container.querySelectorAll("a").forEach((link) =>
+        link.addEventListener("click", (event) =>
+          openLink(
+            event,
+            link.href || "",
+            link.pathname,
+            link.textContent || ""
+          )
+        )
+      );
+    },
+    [openLink]
+  );
   const loadFile = useCallback(async () => {
     if (!url) return;
 
@@ -48,29 +91,24 @@ const useMarked = ({
     if (container instanceof HTMLElement) {
       container.classList.remove("drop");
       container.classList.toggle("portfolio", isPortfolioDoc);
-      container.innerHTML = window.DOMPurify.sanitize(
+
+      const html = window.DOMPurify.sanitize(
         window.marked.parse(markdownFile.toString(), {
           headerIds: false,
           mangle: false,
         })
       );
-      container
-        .querySelectorAll("a")
-        .forEach((link) =>
-          link.addEventListener("click", (event) =>
-            openLink(
-              event,
-              link.href || "",
-              link.pathname,
-              link.textContent || ""
-            )
-          )
-        );
+
+      container.innerHTML = isPortfolioDoc
+        ? wrapPortfolioContent(html, getPortfolioDocLabel(url))
+        : html;
+
+      bindLinks(container);
       container.scrollTop = 0;
     }
 
     prependFileToTitle(basename(url));
-  }, [getContainer, openLink, prependFileToTitle, readFile, url]);
+  }, [bindLinks, getContainer, prependFileToTitle, readFile, url]);
 
   useEffect(() => {
     let cancelled = false;
