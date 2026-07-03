@@ -1,0 +1,6 @@
+[InternetShortcut]
+BaseURL=FileExplorer
+Comment=Muestra el contenido de la carpeta raíz.
+IconFile=/System/Icons/pc.webp
+Type=System
+URL=/

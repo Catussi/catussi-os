@@ -1,96 +1,45 @@
 import styled, { type DefaultTheme } from "styled-components";
-import { type WindowChrome } from "contexts/process/types";
 
 type StyledTitlebarProps = {
   $foreground: boolean;
-  $windowChrome?: WindowChrome;
 };
 
-const getTitleBarBorder = ({
+const styledBorder = ({
   $foreground,
-  $windowChrome = "app",
   theme,
-}: StyledTitlebarProps & { theme: DefaultTheme }): string => {
-  if ($windowChrome === "document") {
-    return `1px solid ${theme.colors.titleBar.document.borderInactive}`;
-  }
-
-  return `1px solid ${
-    $foreground
-      ? theme.colors.titleBar.border
-      : theme.colors.titleBar.borderInactive
-  }`;
-};
+}: StyledTitlebarProps & { theme: DefaultTheme }): string =>
+  $foreground
+    ? `1px solid ${theme.colors.titleBar.background}`
+    : `1px solid ${theme.colors.titleBar.backgroundInactive}`;
 
 const StyledTitlebar = styled.header<StyledTitlebarProps>`
-  background: ${({ $foreground, $windowChrome = "app", theme }) => {
-    if ($windowChrome === "document") {
-      const { background, backgroundInactive } = theme.colors.titleBar.document;
-
-      return $foreground ? background : backgroundInactive;
-    }
-
-    return $foreground
+  background-color: ${({ $foreground, theme }) =>
+    $foreground
       ? theme.colors.titleBar.background
-      : theme.colors.titleBar.backgroundInactive;
-  }};
-  border-bottom: ${getTitleBarBorder};
+      : theme.colors.titleBar.backgroundInactive};
+  border-bottom: ${styledBorder};
   display: flex;
-  height: ${({ $windowChrome = "app", theme }) =>
-    $windowChrome === "document"
-      ? theme.sizes.titleBar.documentHeight
-      : theme.sizes.titleBar.height}px;
+  height: ${({ theme }) => theme.sizes.titleBar.height}px;
   position: relative;
   top: 0;
   z-index: 2;
 
-  ${({ $windowChrome = "app" }) =>
-    $windowChrome === "app" &&
-    `
-    box-shadow: inset 0 1px 0 rgb(255 255 255 / 7%);
-  `}
-
-  ${({ $foreground, $windowChrome = "app", theme }) =>
-    $windowChrome === "document" &&
-    $foreground &&
-    `
-    &::after {
-      background: ${theme.colors.titleBar.document.accent};
-      bottom: 0;
-      content: "";
-      height: 2px;
-      left: 0;
-      position: absolute;
-      width: 100%;
-    }
-  `}
-
   > button {
     align-items: center;
-    color: ${({ $foreground, $windowChrome = "app", theme }) => {
-      if ($windowChrome === "document") {
-        const { text, textInactive } = theme.colors.titleBar.document;
-
-        return $foreground ? text : textInactive;
-      }
-
-      return $foreground
+    color: ${({ $foreground, theme }) =>
+      $foreground
         ? theme.colors.titleBar.text
-        : theme.colors.titleBar.textInactive;
-    }};
+        : theme.colors.titleBar.textInactive};
     display: flex;
     flex-grow: 1;
     font-size: ${({ theme }) => theme.sizes.titleBar.fontSize};
-    font-weight: ${({ $windowChrome = "app" }) =>
-      $windowChrome === "document" ? 500 : 400};
-    letter-spacing: ${({ $windowChrome = "app" }) =>
-      $windowChrome === "document" ? "0.01em" : "normal"};
+    font-weight: 400;
     min-width: 0;
 
     figure {
       align-items: center;
       display: flex;
-      margin-left: 10px;
+      margin-left: 8px;
       min-width: inherit;
       pointer-events: none;
       position: relative;
@@ -119,7 +68,7 @@ const StyledTitlebar = styled.header<StyledTitlebarProps>`
     display: flex;
 
     button {
-      border-left: ${getTitleBarBorder};
+      border-left: ${styledBorder};
       box-sizing: content-box;
       display: flex;
       place-content: center;
@@ -127,17 +76,10 @@ const StyledTitlebar = styled.header<StyledTitlebarProps>`
       width: ${({ theme }) => theme.sizes.titleBar.buttonWidth};
 
       svg {
-        fill: ${({ $foreground, $windowChrome = "app", theme }) => {
-          if ($windowChrome === "document") {
-            const { text, buttonInactive } = theme.colors.titleBar.document;
-
-            return $foreground ? text : buttonInactive;
-          }
-
-          return $foreground
+        fill: ${({ $foreground, theme }) =>
+          $foreground
             ? theme.colors.titleBar.text
-            : theme.colors.titleBar.buttonInactive;
-        }};
+            : theme.colors.titleBar.buttonInactive};
         margin: 0 1px 2px 0;
         width: ${({ theme }) => theme.sizes.titleBar.buttonIconWidth};
       }
@@ -150,31 +92,21 @@ const StyledTitlebar = styled.header<StyledTitlebarProps>`
       }
 
       &:hover {
-        background-color: ${({ $windowChrome = "app", theme }) =>
-          $windowChrome === "document"
-            ? theme.colors.titleBar.document.backgroundHover
-            : theme.colors.titleBar.backgroundHover};
+        background-color: ${({ theme }) =>
+          theme.colors.titleBar.backgroundHover};
 
         svg {
-          fill: ${({ $windowChrome = "app", theme }) =>
-            $windowChrome === "document"
-              ? theme.colors.titleBar.document.text
-              : theme.colors.titleBar.text};
+          fill: ${({ theme }) => theme.colors.titleBar.text};
         }
 
         &.close {
           background-color: ${({ theme }) => theme.colors.titleBar.closeHover};
           transition: background-color 0.25s ease;
-
-          svg {
-            fill: ${({ theme }) => theme.colors.titleBar.text};
-          }
         }
       }
 
       &:active {
-        background-color: ${({ $windowChrome = "app" }) =>
-          $windowChrome === "document" ? "#e2e2e0" : "rgb(51 51 51)"};
+        background-color: rgb(51 51 51);
 
         &.close {
           background-color: rgb(139 10 20);
@@ -183,13 +115,8 @@ const StyledTitlebar = styled.header<StyledTitlebarProps>`
 
       &:disabled {
         svg {
-          fill: ${({ $foreground, $windowChrome = "app" }) => {
-            if ($windowChrome === "document") {
-              return $foreground ? "#cbd5e1" : "#d1d5db";
-            }
-
-            return $foreground ? "rgb(50, 50, 50)" : "rgb(60, 60, 60)";
-          }};
+          fill: ${({ $foreground }) =>
+            $foreground ? "rgb(50, 50, 50)" : "rgb(60, 60, 60)"};
         }
 
         &:hover {

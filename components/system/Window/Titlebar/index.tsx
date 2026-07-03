@@ -1,4 +1,4 @@
-import { memo, useCallback, useMemo, useRef } from "react";
+import { memo, useCallback, useRef } from "react";
 import rndDefaults from "components/system/Window/RndWindow/rndDefaults";
 import StyledTitlebar from "components/system/Window/Titlebar/StyledTitlebar";
 import {
@@ -16,9 +16,8 @@ import { useSession } from "contexts/session";
 import useDoubleClick from "hooks/useDoubleClick";
 import Button from "styles/common/Button";
 import Icon from "styles/common/Icon";
-import { LONG_PRESS_DELAY_MS, PREVENT_SCROLL, PROCESS_DELIMITER } from "utils/constants";
+import { LONG_PRESS_DELAY_MS, PREVENT_SCROLL } from "utils/constants";
 import { haltEvent, label } from "utils/functions";
-import { resolveWindowChrome } from "utils/windowChrome";
 
 type TitlebarProps = {
   id: string;
@@ -38,15 +37,9 @@ const Titlebar: FC<TitlebarProps> = ({ id }) => {
     icon,
     title,
     maximized,
-    windowChrome,
   } = process || {};
   const { foregroundId, setForegroundId } = useSession();
   const isForeground = id === foregroundId;
-  const [processId] = useMemo(() => id.split(PROCESS_DELIMITER), [id]);
-  const resolvedWindowChrome = useMemo(
-    () => resolveWindowChrome(processId, windowChrome),
-    [processId, windowChrome]
-  );
   const { onClose, onMaximize, onMinimize } = useWindowActions(id);
   const { menu, setMenu } = useMenu();
   const resetMenu = useCallback(
@@ -108,6 +101,7 @@ const Titlebar: FC<TitlebarProps> = ({ id }) => {
   >(() => {
     if (componentWindow && componentWindow !== document.activeElement) {
       setForegroundId(id);
+      componentWindow.focus(PREVENT_SCROLL);
     }
   }, [componentWindow, id, setForegroundId]);
   const onIconClick = useCallback<React.MouseEventHandler<HTMLImageElement>>(
@@ -131,7 +125,6 @@ const Titlebar: FC<TitlebarProps> = ({ id }) => {
   return (
     <StyledTitlebar
       $foreground={isForeground}
-      $windowChrome={resolvedWindowChrome}
       className={rndDefaults.dragHandleClassName}
       onDragOver={haltEvent}
       onDrop={haltEvent}

@@ -21,6 +21,8 @@ public/Users/Public/**
 !public/Users/Public/Desktop/**
 !public/Users/Public/Documents
 !public/Users/Public/Documents/**
+!public/Users/Public/Icons
+!public/Users/Public/Icons/**
 !public/Users/Public/Music
 !public/Users/Public/Pictures
 !public/Users/Public/Pictures/prompts.json

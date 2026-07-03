@@ -4,232 +4,292 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>LinkedIn · Catalina Barria Otto</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+    />
     <style>
       :root {
-        --bg: #f3f2ef;
-        --paper: #fff;
-        --text: #191919;
-        --muted: #666;
-        --border: #e0dfdc;
-        --link: #0a66c2;
+        --ink: #1a1814;
+        --muted: #5c574f;
+        --faint: #9a948a;
+        --rule: #d8d2c8;
+        --paper: #f7f5f0;
+        --link: #2a4f6e;
+        --serif: "Libre Baskerville", Georgia, serif;
+        --sans: "DM Sans", system-ui, sans-serif;
+        --mono: "DM Mono", Consolas, monospace;
       }
       * {
         box-sizing: border-box;
       }
       body {
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--sans);
+        font-size: 13px;
+        line-height: 1.5;
         margin: 0;
-        background: var(--bg);
-        color: var(--text);
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui,
-          sans-serif;
-        font-size: 14px;
-        line-height: 1.55;
       }
-      .content {
+      .page {
         margin: 0 auto;
         max-width: 560px;
-        padding: 16px 16px 32px;
+        padding: 16px 20px 36px;
       }
-      .card {
-        background: var(--paper);
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        margin-bottom: 12px;
-        overflow: hidden;
-      }
-      .banner {
-        background: linear-gradient(135deg, #dce4ea, #b8c5d0);
-        height: 80px;
-      }
-      .profile-top {
-        margin-top: -36px;
-        padding: 0 20px 20px;
+      .mast {
+        border-bottom: 1px solid var(--ink);
+        display: grid;
+        gap: 14px;
+        grid-template-columns: 52px 1fr;
+        margin-bottom: 20px;
+        padding-bottom: 16px;
       }
       .avatar {
-        align-items: center;
-        background: #3d4f5f;
-        border: 3px solid #fff;
-        border-radius: 50%;
-        color: #fff;
-        display: flex;
-        font-size: 1.6rem;
-        font-weight: 600;
-        height: 72px;
-        justify-content: center;
-        width: 72px;
+        border-radius: 2px;
+        height: 52px;
+        object-fit: cover;
+        width: 52px;
       }
       h1 {
-        font-size: 1.35rem;
-        margin: 12px 0 4px;
+        font-family: var(--serif);
+        font-size: 1.25rem;
+        font-weight: 700;
+        line-height: 1.2;
+        margin: 0 0 3px;
       }
       .headline {
-        margin: 0 0 6px;
-      }
-      .location {
-        color: var(--muted);
-        font-size: 13px;
-        margin: 0;
-      }
-      .section {
-        padding: 16px 20px 20px;
-      }
-      .section h2 {
-        font-size: 1rem;
-        margin: 0 0 14px;
-      }
-      .role {
-        margin-bottom: 18px;
-      }
-      .role h3 {
-        font-size: 14px;
-        margin: 0 0 2px;
-      }
-      .role .company {
-        font-weight: 600;
-        margin: 0 0 2px;
-      }
-      .role .period {
-        color: var(--muted);
         font-size: 12px;
-        margin: 0 0 8px;
+        margin: 0 0 4px;
       }
-      .role ul {
+      .meta {
+        color: var(--faint);
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.03em;
         margin: 0;
-        padding-left: 18px;
       }
-      .skills {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-      .skill {
-        background: var(--bg);
-        border-radius: 16px;
-        color: #444;
-        font-size: 13px;
-        padding: 6px 12px;
-      }
-      a {
-        color: var(--link);
-        font-weight: 600;
-        text-decoration: none;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-      .project {
-        margin-bottom: 16px;
-      }
-      .project p {
-        color: #444;
-        font-size: 13px;
-        margin: 0 0 6px;
-      }
-      .links {
+      .actions {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
+        grid-column: 1 / -1;
+        margin-top: 2px;
+      }
+      .actions a {
+        color: var(--link);
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.02em;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+      section {
+        margin-bottom: 20px;
+      }
+      h2 {
+        font-family: var(--mono);
+        font-size: 9.5px;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        margin: 0 0 8px;
+        text-transform: uppercase;
+      }
+      h2::before {
+        color: var(--faint);
+        content: "— ";
+      }
+      p {
+        margin: 0 0 0.5em;
+        max-width: 52ch;
+      }
+      .role {
+        border-top: 1px solid var(--rule);
+        padding: 10px 0 2px;
+      }
+      .role h3 {
+        font-family: var(--serif);
+        font-size: 12.5px;
+        font-weight: 700;
+        margin: 0 0 2px;
+      }
+      .role .org {
+        font-size: 12px;
+        font-weight: 500;
+        margin: 0 0 2px;
+      }
+      .role .when {
+        color: var(--faint);
+        font-family: var(--mono);
+        font-size: 10px;
+        margin: 0 0 6px;
+      }
+      .role ul {
+        font-size: 12px;
+        margin: 0;
+        padding-left: 1.1em;
+      }
+      .role li {
+        margin: 0.15em 0;
+      }
+      .projects {
+        border-top: 1px solid var(--rule);
+      }
+      .project {
+        border-bottom: 1px solid var(--rule);
+        display: grid;
+        gap: 2px 12px;
+        grid-template-columns: 1fr auto;
+        padding: 8px 0;
+      }
+      .project h3 {
+        font-size: 12px;
+        font-weight: 600;
+        margin: 0;
+      }
+      .project p {
+        color: var(--muted);
+        font-size: 11.5px;
+        grid-column: 1 / -1;
+        margin: 0;
+      }
+      .project .links {
+        align-self: start;
+        display: flex;
+        gap: 8px;
+      }
+      .project .links a {
+        color: var(--link);
+        font-family: var(--mono);
+        font-size: 10px;
+        text-decoration: none;
+      }
+      .project .links a:hover {
+        text-decoration: underline;
+      }
+      .skills {
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 11px;
+        line-height: 1.7;
+      }
+      .skills span::after {
+        color: var(--faint);
+        content: " / ";
+      }
+      .skills span:last-child::after {
+        content: "";
+      }
+      a {
+        color: var(--link);
       }
     </style>
   </head>
   <body>
-    <div class="content">
-      <section class="card">
-        <div class="banner"></div>
-        <div class="profile-top">
-          <div class="avatar">CB</div>
+    <div class="page">
+      <header class="mast">
+        <img
+          class="avatar"
+          src="https://github.com/Catussi.png"
+          alt="Catalina Barria Otto"
+        />
+        <div>
           <h1>Catalina Barria Otto</h1>
           <p class="headline">Full Stack Developer · Machine Learning Engineer</p>
-          <p class="location">Valparaíso, Chile · Ingeniería Civil Informática</p>
+          <p class="meta">Valparaíso, Chile · Ing. Civil Informática</p>
         </div>
-      </section>
+        <div class="actions">
+          <a href="mailto:cata.barria@gmail.com">cata.barria@gmail.com</a>
+          <a href="/Program Files/Browser/profiles/GitHub.html#/Catussi">github.com/Catussi</a>
+          <a href="https://www.linkedin.com/in/catalinabarriaotto/" target="_blank" rel="noopener"
+            >linkedin.com/in/catalinabarriaotto</a
+          >
+        </div>
+      </header>
 
-      <section class="card section">
+      <section>
         <h2>Acerca de</h2>
         <p>
-          Desarrolladora full stack y ML engineer. Construyo plataformas web con
-          impacto en salud, empleabilidad y datos: Angular, FastAPI, PostgreSQL,
-          pipelines de datos y ML interpretable (SHAP, XAI).
+          Desarrolladora full stack y ML engineer. Plataformas web con impacto en salud,
+          empleabilidad y datos — Angular, FastAPI, PostgreSQL, pipelines y ML interpretable
+          (SHAP, XAI).
+        </p>
+        <p style="color: var(--muted); font-size: 12px">
+          Actualmente: ELVIR-Demo — simulaciones laborales con IA.
         </p>
       </section>
 
-      <section class="card section">
+      <section>
         <h2>Experiencia</h2>
         <article class="role">
           <h3>Full Stack Developer</h3>
-          <p class="company">Instituto de Tecnología para la Innovación en Salud y Bienestar</p>
-          <p class="period">Ene 2026 – Presente · Viña del Mar</p>
+          <p class="org">Instituto de Tecnología para la Innovación en Salud y Bienestar</p>
+          <p class="when">Ene 2026 – presente · Viña del Mar</p>
           <ul>
             <li>ELVIR-Demo: simulaciones laborales con IA</li>
-            <li>Angular · FastAPI · PostgreSQL · LiveAvatar · Vercel</li>
+            <li>Angular · FastAPI · PostgreSQL · LiveAvatar · JWT · Vercel</li>
           </ul>
         </article>
         <article class="role">
           <h3>Digital Assistant</h3>
-          <p class="company">Universidad Adolfo Ibáñez</p>
-          <p class="period">May 2024 – Sep 2024</p>
+          <p class="org">Universidad Adolfo Ibáñez</p>
+          <p class="when">May 2024 – Sep 2024</p>
           <ul>
             <li>Landing pages, hosting, SSL y contenido digital</li>
           </ul>
         </article>
         <article class="role">
           <h3>Web Development Intern</h3>
-          <p class="company">ACHIYA (Mujeres en IA)</p>
-          <p class="period">Abr 2022 – Ago 2022</p>
+          <p class="org">ACHIYA (Mujeres en IA)</p>
+          <p class="when">Abr 2022 – Ago 2022</p>
           <ul>
             <li>Desarrollo web y dashboards Power BI</li>
           </ul>
         </article>
       </section>
 
-      <section class="card section">
+      <section>
         <h2>Proyectos</h2>
-        <article class="project">
-          <h3>ELVIR-Demo</h3>
-          <p>Simulaciones laborales con IA.</p>
-          <div class="links">
-            <a href="https://elvir-demo.vercel.app/">Demo</a>
-            <a href="/Program Files/Browser/profiles/GitHub.html#/Catussi/ELVIR-Demo">GitHub</a>
-          </div>
-        </article>
-        <article class="project">
-          <h3>OpsPulse</h3>
-          <p>Retail data-driven · FastAPI · dbt · Airflow · AWS.</p>
-          <div class="links">
-            <a href="/Program Files/Browser/profiles/GitHub.html#/Catussi/opspulse">GitHub</a>
-          </div>
-        </article>
-        <article class="project">
-          <h3>catussi-os</h3>
-          <p>Este portafolio interactivo.</p>
-          <div class="links">
-            <a href="https://catussi-os.vercel.app/">Sitio</a>
-            <a href="/Program Files/Browser/profiles/GitHub.html#/Catussi/catussi-os">GitHub</a>
-          </div>
-        </article>
-      </section>
-
-      <section class="card section">
-        <h2>Habilidades</h2>
-        <div class="skills">
-          <span class="skill">Angular</span>
-          <span class="skill">FastAPI</span>
-          <span class="skill">PostgreSQL</span>
-          <span class="skill">Python</span>
-          <span class="skill">TypeScript</span>
-          <span class="skill">Docker</span>
-          <span class="skill">Machine Learning</span>
-          <span class="skill">dbt</span>
-          <span class="skill">Airflow</span>
-          <span class="skill">AWS</span>
+        <div class="projects">
+          <article class="project">
+            <h3>ELVIR-Demo</h3>
+            <div class="links">
+              <a href="https://elvir-demo.vercel.app/">demo</a>
+              <a href="/Program Files/Browser/profiles/GitHub.html#/Catussi/ELVIR-Demo">repo</a>
+            </div>
+            <p>Simulaciones laborales con IA · Angular · FastAPI</p>
+          </article>
+          <article class="project">
+            <h3>OpsPulse</h3>
+            <div class="links">
+              <a href="/Program Files/Browser/profiles/GitHub.html#/Catussi/opspulse">repo</a>
+            </div>
+            <p>Retail data-driven · dbt · Airflow · AWS</p>
+          </article>
+          <article class="project">
+            <h3>catussi-os</h3>
+            <div class="links">
+              <a href="https://catussi-os.vercel.app/">live</a>
+              <a href="/Program Files/Browser/profiles/GitHub.html#/Catussi/catussi-os">repo</a>
+            </div>
+            <p>Portafolio interactivo — este escritorio</p>
+          </article>
+          <article class="project">
+            <h3>eSports Analytics</h3>
+            <div class="links">
+              <a href="https://esports-analytics-platform-tau.vercel.app/">demo</a>
+              <a href="/Program Files/Browser/profiles/GitHub.html#/Catussi/esports-analytics-platform">repo</a>
+            </div>
+            <p>ML + dashboards analíticos</p>
+          </article>
         </div>
       </section>
 
-      <section class="card section">
-        <h2>Contacto</h2>
-        <p><a href="mailto:cata.barria@gmail.com">cata.barria@gmail.com</a></p>
-        <p>
-          <a href="/Program Files/Browser/profiles/GitHub.html#/Catussi">GitHub @Catussi</a>
+      <section>
+        <h2>Habilidades</h2>
+        <p class="skills">
+          <span>Angular</span><span>TypeScript</span><span>FastAPI</span><span>Python</span
+          ><span>PostgreSQL</span><span>Docker</span><span>dbt</span><span>Airflow</span
+          ><span>Machine Learning</span><span>SHAP / XAI</span><span>AWS</span><span>Vercel</span>
         </p>
       </section>
     </div>

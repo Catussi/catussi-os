@@ -1,0 +1,71 @@
+{
+  "fetchedAt": "2026-07-03T20:00:00.000Z",
+  "user": {
+    "login": "Catussi",
+    "name": "Catalina E. Barría Otto",
+    "bio": "Full Stack · ML · Data · @Catussi",
+    "avatar_url": "https://github.com/Catussi.png",
+    "location": "Viña del Mar, Chile",
+    "public_repos": 14,
+    "followers": 4,
+    "html_url": "https://github.com/Catussi"
+  },
+  "repos": [
+    {
+      "name": "catussi-os",
+      "description": "Portafolio interactivo — escritorio en el navegador por @Catussi",
+      "language": "TypeScript",
+      "stargazers_count": 0,
+      "html_url": "https://github.com/Catussi/catussi-os"
+    },
+    {
+      "name": "ELVIR-Demo",
+      "description": "Simulaciones laborales con IA · Angular · FastAPI · PostgreSQL",
+      "language": "TypeScript",
+      "stargazers_count": 0,
+      "html_url": "https://github.com/Catussi/ELVIR-Demo"
+    },
+    {
+      "name": "opspulse",
+      "description": "Plataforma retail data-driven · FastAPI · Angular · dbt · Airflow",
+      "language": "Python",
+      "stargazers_count": 0,
+      "html_url": "https://github.com/Catussi/opspulse"
+    },
+    {
+      "name": "esports-analytics-platform",
+      "description": "Analítica de rendimiento eSports con ML",
+      "language": "Python",
+      "stargazers_count": 0,
+      "html_url": "https://github.com/Catussi/esports-analytics-platform"
+    },
+    {
+      "name": "Production-Management-System-Angular-Enterprise-Application",
+      "description": "Sistema de gestión de producción · Angular 18 · SSR",
+      "language": "TypeScript",
+      "stargazers_count": 1,
+      "html_url": "https://github.com/Catussi/Production-Management-System-Angular-Enterprise-Application"
+    },
+    {
+      "name": "Laravel-Commerce",
+      "description": "E-commerce full stack con Laravel y panel admin",
+      "language": "PHP",
+      "stargazers_count": 1,
+      "html_url": "https://github.com/Catussi/Laravel-Commerce"
+    },
+    {
+      "name": "Machine-Learning-Analysis-of-Player-Performance-in-CS-GO",
+      "description": "ML aplicado a rendimiento en CS:GO · clustering · clasificación",
+      "language": "Jupyter Notebook",
+      "stargazers_count": 1,
+      "html_url": "https://github.com/Catussi/Machine-Learning-Analysis-of-Player-Performance-in-CS-GO"
+    },
+    {
+      "name": "Academic-Projects",
+      "description": "Proyectos académicos · ML · IoT · optimización",
+      "language": "Jupyter Notebook",
+      "stargazers_count": 0,
+      "html_url": "https://github.com/Catussi/Academic-Projects"
+    }
+  ]
+}

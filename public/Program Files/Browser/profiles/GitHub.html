@@ -49,60 +49,98 @@
         color: var(--muted);
       }
       main {
-        padding: 20px;
+        margin: 0 auto;
+        max-width: 720px;
+        padding: 14px 18px 24px;
       }
       .profile {
-        display: flex;
-        gap: 24px;
-        flex-wrap: wrap;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 140px 1fr;
+      }
+      @media (max-width: 520px) {
+        .profile {
+          grid-template-columns: 1fr;
+        }
       }
       .profile aside {
-        flex-shrink: 0;
-        width: 260px;
+        padding: 0;
       }
       .avatar {
         border: 1px solid var(--border);
         border-radius: 50%;
-        height: 260px;
+        height: 72px;
         object-fit: cover;
-        width: 260px;
+        width: 72px;
       }
       .repos {
-        flex: 1;
-        min-width: 280px;
+        min-width: 0;
+      }
+      .repo-grid {
+        border-top: 1px solid var(--border);
       }
       h1 {
-        font-size: 1.5rem;
-        margin: 0 0 4px;
+        font-size: 1.15rem;
+        margin: 0 0 2px;
       }
       h2 {
-        border-bottom: 1px solid var(--border);
-        font-size: 1rem;
-        margin: 0 0 16px;
-        padding-bottom: 8px;
+        border-bottom: none;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        margin: 0 0 8px;
+        padding: 0;
+        text-transform: uppercase;
       }
       .login,
       .desc,
       .meta {
         color: var(--muted);
+        font-size: 12px;
       }
       .repo-card {
-        border: 1px solid var(--border);
-        border-radius: 6px;
-        margin-bottom: 12px;
-        padding: 14px 16px;
+        border-bottom: 1px solid var(--border);
+        display: grid;
+        gap: 2px 12px;
+        grid-template-columns: 1fr auto;
+        padding: 9px 0;
       }
       .repo-card:hover {
-        border-color: #0969da;
+        background: #f6f8fa;
+        margin: 0 -8px;
+        padding-left: 8px;
+        padding-right: 8px;
       }
       .repo-card button {
         background: none;
         border: none;
         color: var(--link);
         cursor: pointer;
-        font-size: 15px;
+        font-size: 13px;
         font-weight: 600;
+        grid-column: 1;
         padding: 0;
+        text-align: left;
+      }
+      .repo-card .desc {
+        font-size: 12px;
+        grid-column: 1 / -1;
+        margin: 0;
+      }
+      .repo-card .stats {
+        align-self: start;
+        font-size: 11px;
+        grid-column: 2;
+        grid-row: 1;
+        white-space: nowrap;
+      }
+      .lang-dot {
+        border-radius: 50%;
+        display: inline-block;
+        height: 8px;
+        margin-right: 4px;
+        width: 8px;
       }
       .tabs {
         border-bottom: 1px solid var(--border);
@@ -204,8 +242,40 @@
     <script src="/Program Files/Marked/purify.min.js"></script>
     <script>
       const API = "https://api.github.com";
+      const CACHE_URL = "/Program Files/Browser/profiles/github-cache.json";
       const DEFAULT_OWNER = "Catussi";
       let tab = "readme";
+      let profileCache = null;
+
+      const loadCache = async () => {
+        if (profileCache) return profileCache;
+        try {
+          const res = await fetch(CACHE_URL);
+          if (res.ok) profileCache = await res.json();
+        } catch {}
+        return profileCache;
+      };
+
+      const fetchProfile = async (owner) => {
+        try {
+          const [user, repos] = await Promise.all([
+            api(`/users/${owner}`),
+            api(`/users/${owner}/repos?sort=pushed&per_page=100`),
+          ]);
+          return { user, repos, fromCache: false };
+        } catch {
+          const cache = await loadCache();
+          if (cache?.user?.login?.toLowerCase() === owner.toLowerCase()) {
+            return {
+              user: cache.user,
+              repos: cache.repos,
+              fromCache: true,
+              fetchedAt: cache.fetchedAt,
+            };
+          }
+          throw new Error("no profile data");
+        }
+      };
 
       const parseHash = () => {
         const parts = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean);
@@ -259,11 +329,29 @@
         });
       };
 
+      const LANG_COLORS = {
+        TypeScript: "#3178c6",
+        JavaScript: "#f1e05a",
+        Python: "#3572A5",
+        PHP: "#4F5D95",
+        "Jupyter Notebook": "#DA5B0B",
+        Java: "#b07219",
+      };
+
+      const langDot = (lang) => {
+        const color = LANG_COLORS[lang] || "#8b949e";
+        return `<span class="lang-dot" style="background:${color}"></span>${lang}`;
+      };
+
       const renderProfile = async (owner) => {
-        const [user, repos] = await Promise.all([
-          api(`/users/${owner}`),
-          api(`/users/${owner}/repos?sort=pushed&per_page=100`),
-        ]);
+        const { user, repos, fromCache, fetchedAt } = await fetchProfile(owner);
+        const cacheNote = fromCache
+          ? `<p class="desc" style="margin-top:12px">Vista en caché${
+              fetchedAt
+                ? ` · ${new Date(fetchedAt).toLocaleDateString("es-CL")}`
+                : ""
+            }. <a href="https://github.com/${user.login}" target="_blank" rel="noopener">Abrir en GitHub</a></p>`
+          : "";
         document.getElementById("root").innerHTML = `
           <div class="profile">
             <aside>
@@ -276,22 +364,23 @@
                 <span><strong>${user.public_repos}</strong> repos</span>
                 <span><strong>${user.followers}</strong> seguidores</span>
               </div>
+              ${cacheNote}
             </aside>
             <section class="repos">
-              <h2>Repositorios</h2>
-              ${repos
+              <h2>Repositorios <span class="desc" style="font-weight:400">(${repos.length})</span></h2>
+              <div class="repo-grid">${repos
                 .map(
                   (r) => `
                 <article class="repo-card">
                   <button type="button" data-repo="${r.name}">${r.name}</button>
-                  <p class="desc">${r.description || ""}</p>
                   <div class="stats">
-                    ${r.language ? `<span>${r.language}</span>` : ""}
-                    <span>★ ${r.stargazers_count}</span>
+                    ${r.language ? langDot(r.language) : ""}
+                    <span>★ ${r.stargazers_count ?? 0}</span>
                   </div>
+                  <p class="desc">${r.description || ""}</p>
                 </article>`
                 )
-                .join("")}
+                .join("")}</div>
             </section>
           </div>`;
         document.querySelectorAll("[data-repo]").forEach((btn) => {
@@ -299,8 +388,32 @@
         });
       };
 
+      const renderRepoFallback = async (loc) => {
+        const cache = await loadCache();
+        const cached = cache?.repos?.find(
+          (r) => r.name.toLowerCase() === loc.repo.toLowerCase()
+        );
+        if (!cached) throw new Error("no repo cache");
+
+        document.getElementById("root").innerHTML = `
+          <h1>${loc.owner}/${cached.name}</h1>
+          <p class="desc">${cached.description || ""}</p>
+          <div class="stats" style="margin-bottom:20px">
+            ${cached.language ? `<span>${cached.language}</span>` : ""}
+            <span>★ ${cached.stargazers_count ?? 0}</span>
+          </div>
+          <p class="desc">README y archivos no están disponibles sin la API de GitHub.</p>
+          <p><a href="${cached.html_url}" target="_blank" rel="noopener">Ver repositorio en github.com →</a></p>`;
+      };
+
       const renderRepo = async (loc) => {
-        const repo = await api(`/repos/${loc.owner}/${loc.repo}`);
+        let repo;
+        try {
+          repo = await api(`/repos/${loc.owner}/${loc.repo}`);
+        } catch {
+          await renderRepoFallback(loc);
+          return;
+        }
         const branch = loc.branch || repo.default_branch || "main";
 
         if (loc.path) {

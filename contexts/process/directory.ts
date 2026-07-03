@@ -134,10 +134,10 @@ const directory: Processes = {
   },
   Marked: {
     Component: dynamic(() => import("components/apps/Marked")),
-    backgroundColor: "#ffffff",
+    backgroundColor: "#FFF",
     defaultSize: {
-      height: 600,
-      width: 720,
+      height: 560,
+      width: 680,
     },
     icon: "/System/Icons/marked.webp",
     libs: [
@@ -145,7 +145,6 @@ const directory: Processes = {
       "/Program Files/Marked/purify.min.js",
     ],
     title: "Documento",
-    windowChrome: "document",
   },
   Messenger: {
     Component: dynamic(() => import("components/apps/Messenger")),
@@ -201,7 +200,6 @@ const directory: Processes = {
     icon: "/System/Icons/pdf.webp",
     libs: ["/Program Files/PDF.js/pdf.js"],
     title: "CV",
-    windowChrome: "document",
   },
   Paint: {
     Component: dynamic(() => import("components/apps/Paint")),

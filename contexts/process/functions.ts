@@ -7,6 +7,11 @@ import {
 } from "contexts/process/types";
 import { PREVENT_SCROLL, PROCESS_DELIMITER } from "utils/constants";
 import { preloadLibs } from "utils/functions";
+import {
+  findPortfolioMarkedProcessId,
+  isPortfolioDocument,
+  withPortfolioMarkedArgs,
+} from "utils/portfolioDocument";
 
 const setProcessSettings =
   (processId: string, settings: Partial<Process>) =>
@@ -54,7 +59,8 @@ const createPid = (
 export const openProcess =
   (processId: string, processArguments: ProcessArguments, icon?: string) =>
   (currentProcesses: Processes): Processes => {
-    const { url = "" } = processArguments;
+    const mergedArguments = withPortfolioMarkedArgs(processId, processArguments);
+    const { url = "" } = mergedArguments;
     const { dependantLibs, libs, singleton } =
       processDirectory[processId] || {};
 
@@ -70,6 +76,22 @@ export const openProcess =
 
       if (currentPid) {
         return setProcessSettings(currentPid, { url })(currentProcesses);
+      }
+    }
+
+    if (processId === "Marked") {
+      const portfolioPid = findPortfolioMarkedProcessId(currentProcesses);
+
+      if (portfolioPid && isPortfolioDocument(url)) {
+        const { componentWindow, minimized } =
+          currentProcesses[portfolioPid] || {};
+
+        componentWindow?.focus(PREVENT_SCROLL);
+
+        return setProcessSettings(portfolioPid, {
+          minimized: minimized ? false : minimized,
+          url,
+        })(currentProcesses);
       }
     }
 
@@ -89,7 +111,7 @@ export const openProcess =
           [id]: {
             ...processDirectory[processId],
             ...(typeof icon === "string" && { icon }),
-            ...processArguments,
+            ...mergedArguments,
           },
         }
       : currentProcesses;

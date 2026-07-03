@@ -25,8 +25,8 @@ const colors = {
   selectionHighlight: "hsla(207, 100%, 45%, 90%)",
   selectionHighlightBackground: "hsla(207, 100%, 45%, 30%)",
   taskbar: {
-    active: "hsla(220, 12%, 28%, 78%)",
-    activeForeground: "hsla(220, 10%, 42%, 78%)",
+    active: "hsla(0, 0%, 20%, 70%)",
+    activeForeground: "hsla(0, 0%, 40%, 70%)",
     ai: {
       balanced: ["rgb(112, 203, 255)", "rgb(40, 112, 234)", "rgb(0, 95, 184)"],
       creative: [
@@ -48,40 +48,20 @@ const colors = {
   },
   text: "rgba(255, 255, 255, 90%)",
   titleBar: {
-    background: "#232323",
-    backgroundHover: "#383838",
-    backgroundInactive: "#4d4d4d",
-    border: "#141414",
-    borderInactive: "#3a3a3a",
-    buttonInactive: "rgba(255, 255, 255, 0.48)",
+    background: "rgb(0, 0, 0)",
+    backgroundHover: "rgb(26, 26, 26)",
+    backgroundInactive: "rgb(43, 43, 43)",
+    buttonInactive: "rgb(128, 128, 128)",
     closeHover: "rgb(232, 17, 35)",
-    document: {
-      accent: "#3d4f5f",
-      background: "#fafafa",
-      backgroundHover: "#efefef",
-      backgroundInactive: "#ececea",
-      border: "#d6d6d4",
-      borderInactive: "#d0d0ce",
-      buttonInactive: "#7a7a7a",
-      text: "#1c1c1c",
-      textInactive: "#6b6b6b",
-    },
     text: "rgb(255, 255, 255)",
-    textInactive: "rgb(190, 190, 190)",
+    textInactive: "rgb(170, 170, 170)",
   },
   window: {
-    background: "#6e6e6e",
-    document: {
-      outline: "rgba(0, 0, 0, 0.14)",
-      outlineInactive: "rgba(0, 0, 0, 0.09)",
-      shadow:
-        "0 10px 32px rgba(0, 0, 0, 0.14), 0 1px 0 rgba(255, 255, 255, 0.65) inset",
-      shadowInactive: "0 4px 16px rgba(0, 0, 0, 0.1)",
-    },
-    outline: "rgba(0, 0, 0, 0.28)",
-    outlineInactive: "rgba(0, 0, 0, 0.18)",
-    shadow: "0 12px 36px rgba(0, 0, 0, 0.28)",
-    shadowInactive: "0 6px 18px rgba(0, 0, 0, 0.2)",
+    background: "#808080",
+    outline: "hsla(0, 0%, 25%, 75%)",
+    outlineInactive: "hsla(0, 0%, 30%, 100%)",
+    shadow: "0 0 14px 0 rgba(0, 0, 0, 50%)",
+    shadowInactive: "0 0 10px 0 rgba(0, 0, 0, 45%)",
   },
 };
 

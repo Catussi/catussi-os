@@ -4,9 +4,12 @@ import { type ContainerHookProps } from "components/system/Apps/AppContainer";
 import useTitle from "components/system/Window/useTitle";
 import { useFileSystem } from "contexts/fileSystem";
 import { useProcesses } from "contexts/process";
-import { loadFiles } from "utils/functions";
+import { useSession } from "contexts/session";
+import { haltEvent, loadFiles } from "utils/functions";
 import { useLinkHandler } from "hooks/useLinkHandler";
 import { resolveDocumentPath } from "utils/resolveDocumentPath";
+import { enhancePortfolioDom, ensurePortfolioFonts } from "utils/portfolioEnhance";
+import { isPortfolioDocumentLink } from "utils/portfolioDocument";
 
 export type MarkedOptions = {
   headerIds: boolean;
@@ -26,7 +29,6 @@ declare global {
 
 const wrapPortfolioContent = (html: string): string =>
   `<div class="portfolio-page">
-    <p class="portfolio-byline">Catalina Barria Otto · @Catussi</p>
     <div class="portfolio-content">${html}</div>
   </div>`;
 
@@ -38,7 +40,9 @@ const useMarked = ({
 }: ContainerHookProps): void => {
   const { readFile } = useFileSystem();
   const { prependFileToTitle } = useTitle(id);
-  const { processes: { [id]: { libs = [] } = {} } = {} } = useProcesses();
+  const { url: setProcessUrl, processes: { [id]: { libs = [] } = {} } = {} } =
+    useProcesses();
+  const { setForegroundId } = useSession();
   const openLink = useLinkHandler();
   const getContainer = useCallback(
     (): HTMLElement | null =>
@@ -54,6 +58,13 @@ const useMarked = ({
             currentUrl
           );
 
+          if (isPortfolioDocumentLink(currentUrl, resolvedPath)) {
+            haltEvent(event);
+            setProcessUrl(id, resolvedPath);
+            setForegroundId(id);
+            return;
+          }
+
           openLink(
             event,
             resolvedPath,
@@ -63,7 +74,7 @@ const useMarked = ({
         })
       );
     },
-    [openLink]
+    [id, openLink, setForegroundId, setProcessUrl]
   );
   const loadFile = useCallback(async () => {
     if (!url) return;
@@ -98,6 +109,15 @@ const useMarked = ({
       container.innerHTML = isPortfolioDoc
         ? wrapPortfolioContent(html)
         : html;
+
+      if (isPortfolioDoc) {
+        try {
+          ensurePortfolioFonts();
+          enhancePortfolioDom(container, url);
+        } catch {
+          /* Si falla el layout editorial, el markdown sigue visible */
+        }
+      }
 
       bindLinks(container, url);
       container.scrollTop = 0;

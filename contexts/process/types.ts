@@ -73,7 +73,9 @@ export type ProcessArguments = BaseProcessArguments &
   DialogProcessArguments &
   MediaPlayerProcessArguments &
   MonacoProcessArguments &
-  PdfProcessArguments;
+  PdfProcessArguments & {
+    defaultSize?: Size;
+  };
 
 export type ProcessElements = {
   componentWindow?: HTMLElement;
