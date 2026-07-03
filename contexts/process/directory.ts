@@ -134,7 +134,7 @@ const directory: Processes = {
   },
   Marked: {
     Component: dynamic(() => import("components/apps/Marked")),
-    backgroundColor: "#f4f7fa",
+    backgroundColor: "#f7f7f5",
     defaultSize: {
       height: 580,
       width: 700,

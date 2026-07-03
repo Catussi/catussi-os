@@ -86,7 +86,7 @@ const sizes = {
     iconSize: "16px",
   },
   window: {
-    borderRadius: 10,
+    borderRadius: 6,
     cascadeOffset: 26,
     outline: "1px",
     textTopPadding: 14,

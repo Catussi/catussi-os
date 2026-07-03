@@ -24,32 +24,10 @@ declare global {
   }
 }
 
-const PORTFOLIO_DOC_LABELS: Record<string, string> = {
-  "Catalina Barria Otto": "Sobre mí",
-  Contact: "Contacto",
-  Education: "Educación",
-  "Empezar aquí": "Empezar aquí",
-  Experience: "Experiencia",
-  Projects: "Proyectos",
-  README: "Índice",
-  Skills: "Habilidades",
-};
-
-const getPortfolioDocLabel = (url: string): string => {
-  const fileName = basename(url, ".md");
-
-  return PORTFOLIO_DOC_LABELS[fileName] || fileName;
-};
-
-const wrapPortfolioContent = (html: string, docLabel: string): string =>
-  `<div class="portfolio-shell">
-    <aside class="portfolio-rail" aria-hidden="true">
-      <span class="portfolio-mark">@Catussi</span>
-      <span class="portfolio-role">Full Stack · ML Engineer</span>
-      <span class="portfolio-doc">${docLabel}</span>
-      <span class="portfolio-location">Valparaíso, Chile</span>
-    </aside>
-    <div class="portfolio-body">${html}</div>
+const wrapPortfolioContent = (html: string): string =>
+  `<div class="portfolio-page">
+    <p class="portfolio-byline">Catalina Barria Otto · @Catussi</p>
+    <div class="portfolio-content">${html}</div>
   </div>`;
 
 const useMarked = ({
@@ -103,7 +81,7 @@ const useMarked = ({
           "<p><strong>No se encontró este documento.</strong> Vuelve a abrirlo desde el escritorio.</p>";
 
         container.innerHTML = isPortfolioDoc
-          ? wrapPortfolioContent(missingMessage, getPortfolioDocLabel(url))
+          ? wrapPortfolioContent(missingMessage)
           : missingMessage;
 
         prependFileToTitle(basename(url));
@@ -118,7 +96,7 @@ const useMarked = ({
       );
 
       container.innerHTML = isPortfolioDoc
-        ? wrapPortfolioContent(html, getPortfolioDocLabel(url))
+        ? wrapPortfolioContent(html)
         : html;
 
       bindLinks(container, url);

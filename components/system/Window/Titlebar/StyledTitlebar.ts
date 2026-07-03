@@ -44,21 +44,6 @@ const StyledTitlebar = styled.header<StyledTitlebarProps>`
   top: 0;
   z-index: 2;
 
-  ${({ $foreground, $windowChrome = "app", theme }) =>
-    $windowChrome === "document" &&
-    $foreground &&
-    `
-    &::after {
-      background: ${theme.colors.titleBar.document.accent};
-      bottom: 0;
-      content: "";
-      height: 2px;
-      left: 0;
-      position: absolute;
-      width: 100%;
-    }
-  `}
-
   > button {
     align-items: center;
     color: ${({ $foreground, $windowChrome = "app", theme }) => {
