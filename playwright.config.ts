@@ -18,7 +18,11 @@ const config: PlaywrightTestConfig = {
           use: {
             ...chrome,
             launchOptions: {
-              args: ["--enable-gpu", "--use-gl=angle"],
+              args: [
+                "--enable-gpu",
+                "--use-gl=angle",
+                "--enable-unsafe-swiftshader",
+              ],
             },
           },
         },
@@ -29,7 +33,11 @@ const config: PlaywrightTestConfig = {
           use: {
             ...chrome,
             launchOptions: {
-              args: ["--enable-gpu", "--use-gl=angle"],
+              args: [
+                "--enable-gpu",
+                "--use-gl=angle",
+                "--enable-unsafe-swiftshader",
+              ],
             },
           },
         },

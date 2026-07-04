@@ -26,6 +26,8 @@ export const EXCLUDED_CONSOLE_LOGS = (
     "browserContext.",
     "Web browser doesn't support Web Audio API",
     "Slow execution detected",
+    "Automatic fallback to software WebGL has been deprecated",
+    "GroupMarkerNotSet(crbug.com/242999)",
   ];
 
   if (browserName === "webkit") {
@@ -338,4 +340,4 @@ export const FILE_EXPLORER_COLUMN_HEIGHT = 25;
 
 export const WINDOW_RESIZE_HANDLE_WIDTH = 6;
 
-export const DEFAULT_SESSION = {} as SessionData;
+export const DEFAULT_SESSION = { closeEffect: "None" } as SessionData;

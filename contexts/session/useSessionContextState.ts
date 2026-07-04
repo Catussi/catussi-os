@@ -275,6 +275,10 @@ const useSessionContextState = (): SessionContextState => {
             session = DEFAULT_SESSION;
           }
 
+          if (typeof window === "object" && window.DEBUG_DEFAULT_SESSION) {
+            session = { ...session, ...window.DEBUG_DEFAULT_SESSION };
+          }
+
           const sessionWallpaperImage =
             session.wallpaperImage || DEFAULT_WALLPAPER;
 
