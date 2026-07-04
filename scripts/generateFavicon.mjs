@@ -1,7 +1,6 @@
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import sharp from "sharp";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
@@ -39,6 +38,15 @@ const buildIco = (images) => {
 const main = async () => {
   if (!existsSync(SOURCE)) {
     console.warn("  skip favicon (falta assets/cb-icon.png)");
+    return;
+  }
+
+  let sharp;
+
+  try {
+    ({ default: sharp } = await import("sharp"));
+  } catch {
+    console.warn("  skip favicon (sharp no disponible; usa npm run icons:generate en local)");
     return;
   }
 
@@ -88,4 +96,6 @@ const main = async () => {
   console.log("  favicon CB generado");
 };
 
-main();
+main().catch((error) => {
+  console.warn(`  skip favicon (${error.message})`);
+});
