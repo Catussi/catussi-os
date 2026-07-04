@@ -27,7 +27,7 @@ export const findPortfolioMarkedProcessId = (
 export const PORTFOLIO_MARKED_WINDOW = {
   allowResizing: false,
   defaultSize: {
-    height: 560,
+    height: 640,
     width: 680,
   },
   hideMaximizeButton: true,
