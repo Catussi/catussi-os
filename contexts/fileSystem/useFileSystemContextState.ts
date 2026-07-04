@@ -38,6 +38,7 @@ import {
   CLIPBOARD_FILE_EXTENSIONS,
   DEFAULT_MAPPED_NAME,
   DESKTOP_PATH,
+  MAX_UPLOAD_FILE_SIZE,
   PROCESS_DELIMITER,
   TRANSITIONS_IN_MILLISECONDS,
 } from "utils/constants";
@@ -590,6 +591,8 @@ const useFileSystemContextState = (): FileSystemContextState => {
       overwrite = false
     ): Promise<string> => {
       if (!name.trim()) return "";
+
+      if (buffer && buffer.length > MAX_UPLOAD_FILE_SIZE) return "";
 
       const isInternal = !buffer && isAbsolute(name);
       const baseName = isInternal ? basename(name) : name;

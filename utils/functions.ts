@@ -315,7 +315,14 @@ const loadScript = (
     if (asModule) script.type = "module";
     script.fetchPriority = "high";
     script.src = src;
-    script.addEventListener("error", reject, ONE_TIME_PASSIVE_EVENT);
+    script.addEventListener(
+      "error",
+      (event) => {
+        script.remove();
+        reject(event);
+      },
+      ONE_TIME_PASSIVE_EVENT
+    );
     script.addEventListener("load", resolve, ONE_TIME_PASSIVE_EVENT);
 
     contentWindow.document.head.append(script);
@@ -944,6 +951,35 @@ export const getYouTubeUrlId = (url: string): string => {
   }
 
   return "";
+};
+
+export const parseYouTubeVideoId = (url: string): string => {
+  const raw = url.trim();
+
+  if (/^[\w-]{11}$/.test(raw)) return raw;
+
+  try {
+    const parsed = new URL(raw.replace(/^http:/i, "https://"));
+    const host = parsed.hostname.replace(/^www\./, "").replace(/^m\./, "");
+
+    if (host === "youtu.be") {
+      return parsed.pathname.slice(1).split("/")[0] || "";
+    }
+
+    if (host === "youtube.com") {
+      const fromQuery = parsed.searchParams.get("v");
+
+      if (fromQuery) return fromQuery;
+
+      const [type, id] = parsed.pathname.split("/").filter(Boolean);
+
+      if (id && ["embed", "shorts", "live", "v"].includes(type)) return id;
+    }
+  } catch {
+    // URL parsing failed
+  }
+
+  return getYouTubeUrlId(url);
 };
 
 export const getMimeType = (url: string, ext?: string): string => {

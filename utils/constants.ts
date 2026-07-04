@@ -20,11 +20,11 @@ export const DEFAULT_ASCENDING = true;
 
 export const DEFAULT_CLOCK_SOURCE: ClockSource = "local";
 
-export const DEFAULT_CLOSE_EFFECT = "None";
+export const DEFAULT_CLOSE_EFFECT = "TV Effect";
 
 export const DEFAULT_THEME: ThemeName = "defaultTheme";
 
-export const DEFAULT_WALLPAPER = "COASTAL_LANDSCAPE";
+export const DEFAULT_WALLPAPER = "VANTA";
 
 export const DEFAULT_WALLPAPER_FIT: WallpaperFit = "fill";
 
@@ -54,6 +54,8 @@ export const DIV_BUTTON_PROPS = {
 export const FS_HANDLES = "FileSystemAccessHandles";
 
 export const HOME = "/Users/Public";
+
+export const AUTO_OPEN_WEBAMP_ON_START = false;
 
 export const PICTURES_FOLDER = `${HOME}/Pictures`;
 
@@ -363,6 +365,9 @@ export const SUPPORTED_ICON_SIZES = [16, 32, 48, 96, 144];
 export const MAX_ICON_SIZE = 144;
 
 export const MAX_THUMBNAIL_FILE_SIZE = 1048576; // 1 MB
+
+/** Límite al copiar archivos al sistema virtual (IndexedDB / memoria del navegador). */
+export const MAX_UPLOAD_FILE_SIZE = 512 * 1024 * 1024; // 512 MB
 
 export const DEFAULT_TEXT_FILE_SAVE_PATH = `${DESKTOP_PATH}/Untitled.txt`;
 

@@ -47,6 +47,11 @@ export const bookmarks: Bookmark[] = [
   },
   DINO_GAME,
   {
+    icon: "/System/Icons/chromium.webp",
+    name: "YouTube",
+    url: "/Program Files/Browser/profiles/YouTube.html",
+  },
+  {
     icon: "/System/Icons/Favicons/google.webp",
     name: "Google",
     url: "https://www.google.com/webhp?igu=1",

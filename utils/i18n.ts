@@ -105,4 +105,10 @@ export const ui = {
   // Sistema
   rootName: "Mi PC",
   mappedName: "Compartir",
+  fileTooLarge: (fileName: string, fileSize: string, maxSize: string) =>
+    `«${fileName}» (${fileSize}) supera el límite de ${maxSize} para copiar al escritorio virtual.`,
+  filesTooLargeTitle: (maxSize: string) =>
+    `No se pueden copiar archivos mayores de ${maxSize}:`,
+  videoUnreadable:
+    "No se pudo abrir el video. Puede estar dañado, superar el límite de 512 MB o no haberse copiado bien. Elimínalo del escritorio e inténtalo con un archivo más pequeño.",
 } as const;

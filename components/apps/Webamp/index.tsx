@@ -6,8 +6,10 @@ import {
   cleanBufferOnSkinLoad,
   DEFAULT_WEBAMP_PLAYLIST,
   DEFAULT_WEBAMP_SKIN,
+  DEFAULT_WEBAMP_PLAYLIST_VOLUME,
   focusWindow,
   parseTrack,
+  setWebampVolume,
   tracksFromPlaylist,
   unFocus,
 } from "components/apps/Webamp/functions";
@@ -70,7 +72,7 @@ const Webamp: FC<ComponentProcessProps> = ({ id }) => {
       }
     }
 
-    if (!url && !options.initialSkin) {
+    if (!options.initialSkin && getExtension(url) !== ".wsz") {
       try {
         options.initialSkin = {
           url: bufferToUrl(await readFile(DEFAULT_WEBAMP_SKIN)),
@@ -86,8 +88,10 @@ const Webamp: FC<ComponentProcessProps> = ({ id }) => {
     if (webampCI) {
       const { initialTracks, initialSkin } = await getUrlOptions();
 
-      if (initialTracks) webampCI.setTracksToPlay(initialTracks);
-      else if (initialSkin) {
+      if (initialTracks) {
+        webampCI.setTracksToPlay(initialTracks);
+        setWebampVolume(webampCI, DEFAULT_WEBAMP_PLAYLIST_VOLUME);
+      } else if (initialSkin) {
         cleanBufferOnSkinLoad(webampCI, initialSkin.url);
         webampCI.setSkinFromUrl(initialSkin.url);
       }

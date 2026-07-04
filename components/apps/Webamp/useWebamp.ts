@@ -8,14 +8,16 @@ import {
   cleanBufferOnSkinLoad,
   closeEqualizer,
   createM3uPlaylist,
-  enabledMilkdrop,
   getMetadataProvider,
   getWebampElement,
   loadButterchurnPreset,
   loadMilkdropWhenNeeded,
+  openMilkdrop,
   setSkinData,
+  setWebampVolume,
   tracksFromPlaylist,
   updateWebampPosition,
+  DEFAULT_WEBAMP_PLAYLIST_VOLUME,
 } from "components/apps/Webamp/functions";
 import { type SkinData, type WebampCI } from "components/apps/Webamp/types";
 import useFileDrop from "components/system/Files/FileManager/useFileDrop";
@@ -293,12 +295,14 @@ const useWebamp = (id: string): Webamp => {
 
       webamp.renderWhenReady(containerElement).then(() => {
         closeEqualizer(webamp);
-        enabledMilkdrop(webamp);
+        openMilkdrop(webamp);
         loadMilkdropWhenNeeded(webamp);
         updateWebampPosition(webamp, position);
         setupElements();
 
-        if (initialTracks) webamp.play();
+        if (initialTracks?.length) {
+          setWebampVolume(webamp, DEFAULT_WEBAMP_PLAYLIST_VOLUME);
+        }
       });
 
       window.WebampGlobal = webamp;

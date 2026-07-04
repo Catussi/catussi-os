@@ -1,8 +1,10 @@
 import { useEffect, useRef } from "react";
 import { getProcessByFileExtension } from "components/system/Files/FileEntry/functions";
+import { DEFAULT_WEBAMP_PLAYLIST } from "components/apps/Webamp/functions";
 import { useFileSystem } from "contexts/fileSystem";
 import { useProcesses } from "contexts/process";
 import processDirectory from "contexts/process/directory";
+import { AUTO_OPEN_WEBAMP_ON_START } from "utils/constants";
 import { getExtension, getSearchParam } from "utils/functions";
 
 const isBrowserUrl = (url: string): boolean =>
@@ -40,6 +42,15 @@ const useUrlLoader = (): void => {
 
       open(initialApp, urlExists ? { url } : undefined);
     };
+
+    const shouldAutoOpenWebamp =
+      AUTO_OPEN_WEBAMP_ON_START &&
+      typeof navigator !== "undefined" &&
+      !navigator.webdriver;
+
+    if (shouldAutoOpenWebamp) {
+      open("Webamp", { url: DEFAULT_WEBAMP_PLAYLIST });
+    }
 
     if (app) {
       const lcAppNames = Object.fromEntries(

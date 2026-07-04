@@ -11,6 +11,10 @@ import {
   PROCESS_DELIMITER,
 } from "utils/constants";
 import { isYouTubeUrl } from "utils/functions";
+import {
+  resolveEmbedBlockedBrowserUrl,
+  embedBlockedBrowserTitle,
+} from "utils/externalUrls";
 
 type UseFile = (pid: string, icon?: string) => Promise<void>;
 
@@ -33,6 +37,7 @@ const useFile = (url: string, path: string): UseFile => {
           )
         : "";
       let runUrl = url;
+      let runPid = pid;
 
       if (url.startsWith("ipfs://")) {
         const { getIpfsFileName, getIpfsResource } = await import("utils/ipfs");
@@ -50,14 +55,25 @@ const useFile = (url: string, path: string): UseFile => {
         updateFolder(DESKTOP_PATH, basename(runUrl));
       }
 
+      if (isYouTubeUrl(runUrl)) {
+        const browserUrl = resolveEmbedBlockedBrowserUrl(runUrl);
+
+        if (browserUrl) {
+          runPid = "Browser";
+          runUrl = browserUrl;
+        }
+      }
+
       if (activePid) {
         setUrl(activePid, runUrl);
         if (processesRef.current[activePid].minimized) minimize(activePid);
         setForegroundId(activePid);
       } else {
         open(
-          pid || "OpenWith",
-          { url: runUrl },
+          runPid || "OpenWith",
+          runPid === "Browser" && isYouTubeUrl(url)
+            ? { initialTitle: embedBlockedBrowserTitle(runUrl), url: runUrl }
+            : { url: runUrl },
           singleton || icon === FOLDER_BACK_ICON || preferProcessIcon
             ? processIcon
             : icon
@@ -65,10 +81,10 @@ const useFile = (url: string, path: string): UseFile => {
 
         const recentUrl = runUrl || path;
 
-        if (recentUrl && pid) {
+        if (recentUrl && runPid) {
           updateRecentFiles(
             recentUrl,
-            pid,
+            runPid,
             isYouTubeUrl(recentUrl) ? basename(path, extname(path)) : undefined
           );
         }

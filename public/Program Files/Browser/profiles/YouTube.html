@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>YouTube</title>
+    <style>
+      :root {
+        --bg: #0f0f0f;
+        --surface: #212121;
+        --text: #f1f1f1;
+        --muted: #aaaaaa;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Segoe UI", system-ui, sans-serif;
+        font-size: 13px;
+        line-height: 1.45;
+        margin: 0;
+      }
+      header {
+        align-items: center;
+        background: var(--surface);
+        border-bottom: 1px solid #303030;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 8px 12px;
+      }
+      #home-btn {
+        background: none;
+        border: none;
+        color: var(--text);
+        cursor: pointer;
+        font: inherit;
+        font-weight: 600;
+        padding: 6px 4px;
+      }
+      #home-btn:hover {
+        color: #fff;
+      }
+      form {
+        display: flex;
+        flex: 1;
+        gap: 8px;
+        min-width: 220px;
+      }
+      input[type="text"] {
+        background: #121212;
+        border: 1px solid #303030;
+        border-radius: 18px;
+        color: var(--text);
+        flex: 1;
+        font: inherit;
+        min-width: 0;
+        padding: 8px 14px;
+      }
+      input[type="text"]:focus {
+        border-color: #555;
+        outline: none;
+      }
+      button[type="submit"] {
+        background: #3f3f3f;
+        border: none;
+        border-radius: 18px;
+        color: var(--text);
+        cursor: pointer;
+        font: inherit;
+        padding: 8px 14px;
+      }
+      button[type="submit"]:hover {
+        background: #4f4f4f;
+      }
+      main {
+        margin: 0 auto;
+        max-width: 960px;
+        padding: 14px 16px 28px;
+      }
+      .player-wrap {
+        aspect-ratio: 16 / 9;
+        background: #000;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      iframe {
+        border: 0;
+        height: 100%;
+        width: 100%;
+      }
+      .home h1 {
+        font-size: 1.05rem;
+        font-weight: 600;
+        margin: 0 0 8px;
+      }
+      .home p {
+        color: var(--muted);
+        margin: 0 0 12px;
+      }
+      #video-title {
+        color: var(--muted);
+        margin: 12px 0 0;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <button type="button" id="home-btn" title="Inicio">▶ YouTube</button>
+      <form id="url-form">
+        <input
+          id="url-input"
+          type="text"
+          placeholder="Pega un enlace de YouTube (youtube.com/watch?v=…)"
+          autocomplete="off"
+        />
+        <button type="submit">Ir</button>
+      </form>
+    </header>
+    <main>
+      <div id="home" class="home">
+        <h1>Ver videos en el navegador</h1>
+        <p>
+          YouTube no deja embeber todo el sitio, pero aquí puedes reproducir
+          cualquier video pegando su enlace arriba.
+        </p>
+      </div>
+      <div id="player-section" class="hidden">
+        <div class="player-wrap">
+          <iframe
+            id="player"
+            title="Reproductor de YouTube"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            referrerpolicy="strict-origin-when-cross-origin"
+          ></iframe>
+        </div>
+        <p id="video-title"></p>
+      </div>
+    </main>
+    <script>
+      const EMBED = "https://www.youtube-nocookie.com/embed/";
+
+      const parseId = (input) => {
+        const raw = (input || "").trim();
+        if (!raw) return "";
+        if (/^[\w-]{11}$/.test(raw)) return raw;
+
+        try {
+          const url = new URL(raw.replace(/^http:/i, "https://"));
+          const host = url.hostname.replace(/^www\./, "").replace(/^m\./, "");
+
+          if (host === "youtu.be") {
+            return url.pathname.slice(1).split("/")[0] || "";
+          }
+
+          if (host === "youtube.com") {
+            const fromQuery = url.searchParams.get("v");
+            if (fromQuery) return fromQuery;
+
+            const parts = url.pathname.split("/").filter(Boolean);
+            if (
+              parts[1] &&
+              ["embed", "shorts", "live", "v"].includes(parts[0])
+            ) {
+              return parts[1];
+            }
+          }
+        } catch {
+          /* ignore */
+        }
+
+        return "";
+      };
+
+      const home = document.getElementById("home");
+      const section = document.getElementById("player-section");
+      const iframe = document.getElementById("player");
+      const titleEl = document.getElementById("video-title");
+      const urlInput = document.getElementById("url-input");
+
+      const showVideo = (id) => {
+        if (!id) {
+          home.classList.remove("hidden");
+          section.classList.add("hidden");
+          iframe.removeAttribute("src");
+          location.hash = "";
+          document.title = "YouTube";
+          titleEl.textContent = "";
+          return;
+        }
+
+        home.classList.add("hidden");
+        section.classList.remove("hidden");
+        iframe.src =
+          EMBED +
+          encodeURIComponent(id) +
+          "?rel=0&modestbranding=1&playsinline=1";
+        location.hash = "/" + id;
+        document.title = "YouTube";
+        titleEl.textContent = "";
+
+        fetch(
+          "https://www.youtube.com/oembed?format=json&url=" +
+            encodeURIComponent("https://www.youtube.com/watch?v=" + id)
+        )
+          .then((response) => (response.ok ? response.json() : null))
+          .then((data) => {
+            if (!data?.title) return;
+
+            titleEl.textContent = data.title;
+            document.title = data.title + " · YouTube";
+          })
+          .catch(() => {});
+      };
+
+      const route = () => {
+        const id = parseId(decodeURIComponent((location.hash || "").replace(/^#\/?/, "")));
+        showVideo(id);
+      };
+
+      document.getElementById("url-form").addEventListener("submit", (event) => {
+        event.preventDefault();
+        const id = parseId(urlInput.value);
+
+        if (id) showVideo(id);
+      });
+
+      document.getElementById("home-btn").addEventListener("click", () => {
+        urlInput.value = "";
+        showVideo("");
+      });
+
+      window.addEventListener("hashchange", route);
+      route();
+    </script>
+  </body>
+</html>

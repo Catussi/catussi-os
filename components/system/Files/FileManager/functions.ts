@@ -17,10 +17,12 @@ import {
 import { type SortBy } from "components/system/Files/FileManager/useSortBy";
 import {
   MILLISECONDS_IN_MINUTE,
+  MAX_UPLOAD_FILE_SIZE,
   ONE_TIME_PASSIVE_EVENT,
   ROOT_SHORTCUT,
 } from "utils/constants";
-import { getExtension, haltEvent, toSorted } from "utils/functions";
+import { getExtension, getFormattedSize, haltEvent, toSorted } from "utils/functions";
+import { ui } from "utils/i18n";
 import { get9pSize } from "contexts/fileSystem/core";
 
 export type FileStat = Stats & {
@@ -171,7 +173,13 @@ export const createFileReaders = async (
 ): Promise<FileReaders> => {
   const hasSingleFile = files.length === 1;
   const fileReaders: FileReaders = [];
+  const rejectedFiles: File[] = [];
   const addFile = (file: File, subFolder = ""): void => {
+    if (file.size > MAX_UPLOAD_FILE_SIZE) {
+      rejectedFiles.push(file);
+      return;
+    }
+
     const reader = new FileReader();
 
     reader.addEventListener(
@@ -220,6 +228,18 @@ export const createFileReaders = async (
       [...files].map(async (file) =>
         addEntry(file.webkitGetAsEntry() as FileSystemEntry)
       )
+    );
+  }
+
+  if (rejectedFiles.length > 0) {
+    const maxSize = getFormattedSize(MAX_UPLOAD_FILE_SIZE);
+
+    window.alert(
+      `${ui.filesTooLargeTitle(maxSize)}\n\n${rejectedFiles
+        .map((file) =>
+          ui.fileTooLarge(file.name, getFormattedSize(file.size), maxSize)
+        )
+        .join("\n")}`
     );
   }
 

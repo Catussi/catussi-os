@@ -27,10 +27,9 @@ export const useLinkHandler = (): LinkHandler => {
     (event, rawUrl, pathName, title) => {
       haltEvent(event);
 
-      const url = rawUrl.replace(/^http:/i, "https:");
+      const url = rawUrl.replace(/^http:/i, "https://");
 
-      if (isYouTubeUrl(url)) open("VideoPlayer", { url });
-      else if (isEmbedBlockedUrl(url)) {
+      if (isYouTubeUrl(url)) {
         const browserUrl = resolveEmbedBlockedBrowserUrl(url);
 
         if (browserUrl) {
@@ -41,8 +40,18 @@ export const useLinkHandler = (): LinkHandler => {
         } else {
           open("ExternalURL", { url });
         }
-      }
-      else if (isCorsUrl(url)) open("Browser", { initialTitle: title, url });
+      } else if (isEmbedBlockedUrl(url)) {
+        const browserUrl = resolveEmbedBlockedBrowserUrl(url);
+
+        if (browserUrl) {
+          open("Browser", {
+            initialTitle: embedBlockedBrowserTitle(browserUrl),
+            url: browserUrl,
+          });
+        } else {
+          open("ExternalURL", { url });
+        }
+      } else if (isCorsUrl(url)) open("Browser", { initialTitle: title, url });
       else if (
         !pathName ||
         relative(

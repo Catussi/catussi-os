@@ -5,10 +5,14 @@ import useTitle from "components/system/Window/useTitle";
 import { useFileSystem } from "contexts/fileSystem";
 import { useProcesses } from "contexts/process";
 import { useSession } from "contexts/session";
-import { haltEvent, loadFiles } from "utils/functions";
+import {
+  ensureMarkedLibs,
+  isMarkedReady,
+} from "components/apps/Marked/functions";
+import { haltEvent } from "utils/functions";
 import { useLinkHandler } from "hooks/useLinkHandler";
 import { resolveDocumentPath } from "utils/resolveDocumentPath";
-import { enhancePortfolioDom, ensurePortfolioFonts } from "utils/portfolioEnhance";
+import { enhancePortfolioDom } from "utils/portfolioEnhance";
 import { isPortfolioDocumentLink } from "utils/portfolioDocument";
 
 export type MarkedOptions = {
@@ -35,6 +39,7 @@ const wrapPortfolioContent = (html: string): string =>
 const useMarked = ({
   containerRef,
   id,
+  loading,
   setLoading,
   url,
 }: ContainerHookProps): void => {
@@ -60,6 +65,16 @@ const useMarked = ({
 
           if (isPortfolioDocumentLink(currentUrl, resolvedPath)) {
             haltEvent(event);
+            container
+              .querySelectorAll(".portfolio-index-link")
+              .forEach((navLink) => {
+                const href = resolveDocumentPath(
+                  navLink.getAttribute("href") || "",
+                  currentUrl
+                );
+
+                navLink.classList.toggle("is-here", href === resolvedPath);
+              });
             setProcessUrl(id, resolvedPath);
             setForegroundId(id);
             return;
@@ -112,7 +127,6 @@ const useMarked = ({
 
       if (isPortfolioDoc) {
         try {
-          ensurePortfolioFonts();
           enhancePortfolioDom(container, url);
         } catch {
           /* Si falla el layout editorial, el markdown sigue visible */
@@ -129,39 +143,53 @@ const useMarked = ({
   useEffect(() => {
     let cancelled = false;
 
-    const bootstrap = async (): Promise<void> => {
-      setLoading(true);
-      await loadFiles(libs);
+    if (loading) {
+      ensureMarkedLibs(libs).then((ready) => {
+        if (cancelled) return;
 
-      if (cancelled) return;
+        if (!ready) {
+          const container = getContainer();
 
-      if (!window.marked) {
-        const container = getContainer();
-
-        if (container instanceof HTMLElement) {
-          container.innerHTML =
-            "<p><strong>No se pudo cargar el visor de documentos.</strong> Recarga la página e inténtalo de nuevo.</p>";
+          if (container instanceof HTMLElement) {
+            container.innerHTML =
+              "<p><strong>No se pudo cargar el visor de documentos.</strong> Recarga la página e inténtalo de nuevo.</p>";
+          }
         }
 
         setLoading(false);
-        return;
-      }
-
-      if (url) {
-        await loadFile();
-      } else {
-        getContainer()?.classList.add("drop");
-      }
-
-      if (!cancelled) setLoading(false);
-    };
-
-    bootstrap();
+      });
+    }
 
     return () => {
       cancelled = true;
     };
-  }, [getContainer, libs, loadFile, setLoading, url]);
+  }, [getContainer, libs, loading, setLoading]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    if (!loading) {
+      const renderDocument = async (): Promise<void> => {
+        if (!isMarkedReady()) {
+          const ready = await ensureMarkedLibs(libs);
+
+          if (!ready || cancelled) return;
+        }
+
+        if (url) {
+          await loadFile();
+        } else {
+          getContainer()?.classList.add("drop");
+        }
+      };
+
+      renderDocument();
+    }
+
+    return () => {
+      cancelled = true;
+    };
+  }, [getContainer, libs, loadFile, loading, url]);
 };
 
 export default useMarked;

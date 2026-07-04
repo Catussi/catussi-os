@@ -7,7 +7,6 @@ import {
   type WebampApiResponse,
   type WebampCI,
 } from "components/apps/Webamp/types";
-import { centerPosition } from "components/system/Window/functions";
 import { HOME, MP3_MIME_TYPE, PACKAGE_DATA } from "utils/constants";
 import { bufferToBlob, cleanUpBufferUrl, loadFiles } from "utils/functions";
 
@@ -19,7 +18,8 @@ const BROKEN_PRESETS = new Set([
 const WEBAMP_SKINS_PATH = `${HOME}/Documents/Winamp Skins`;
 
 export const DEFAULT_WEBAMP_PLAYLIST = `${HOME}/Music/Catussi.m3u`;
-export const DEFAULT_WEBAMP_SKIN = `${WEBAMP_SKINS_PATH}/Aqua_X.wsz`;
+export const DEFAULT_WEBAMP_SKIN = `${WEBAMP_SKINS_PATH}/Sheik.wsz`;
+export const DEFAULT_WEBAMP_PLAYLIST_VOLUME = 1;
 
 const ALLOWS_CORS_IN_WINAMP_SKIN_MUSEUM =
   typeof window !== "undefined" &&
@@ -40,7 +40,11 @@ const createWebampSkinMuseumQuery = (offset: number): string => `
 export const BASE_WEBAMP_OPTIONS = {
   availableSkins: [
     {
-      name: "Aqua X · favorita",
+      name: "Sheik · favorita",
+      url: `${WEBAMP_SKINS_PATH}/Sheik.wsz`,
+    },
+    {
+      name: "Aqua X",
       url: `${WEBAMP_SKINS_PATH}/Aqua_X.wsz`,
     },
     {
@@ -125,6 +129,20 @@ export const enabledMilkdrop = (webamp: WebampCI): void => {
   webamp.store.dispatch({
     open: false,
     type: "ENABLE_MILKDROP",
+  });
+};
+
+export const openMilkdrop = (webamp: WebampCI): void => {
+  webamp.store.dispatch({
+    open: true,
+    type: "ENABLE_MILKDROP",
+  });
+};
+
+export const setWebampVolume = (webamp: WebampCI, volume: number): void => {
+  webamp.store.dispatch({
+    type: "SET_VOLUME",
+    volume,
   });
 };
 
@@ -254,18 +272,34 @@ export const loadMilkdropWhenNeeded = (webamp: WebampCI): void => {
 export const getWebampElement = (): HTMLDivElement | null =>
   document.querySelector<HTMLDivElement>(CONTAINER_WINDOW);
 
+export const getPortfolioWebampPosition = (): Position => {
+  const { height, width } = BASE_WINDOW_SIZE;
+  const margin = 24;
+  const taskbar = 48;
+  const stackHeight = height * 3;
+
+  return {
+    x: Math.max(margin, window.innerWidth - width - margin),
+    y: Math.max(
+      margin,
+      Math.floor((window.innerHeight - taskbar - stackHeight) / 2)
+    ),
+  };
+};
+
 export const updateWebampPosition = (
   webamp: WebampCI,
   position?: Position
 ): void => {
-  const { height, width } = BASE_WINDOW_SIZE;
-  const { x, y } = position || centerPosition({ height: height * 2, width });
+  const { height } = BASE_WINDOW_SIZE;
+  const { x, y } =
+    position || getPortfolioWebampPosition();
 
   webamp.store.dispatch({
     positions: {
       main: { x, y },
-      milkdrop: { x: 0 - width, y: 0 - height },
-      playlist: { x, y: height + y },
+      milkdrop: { x, y: y + height * 2 },
+      playlist: { x, y: y + height },
     },
     type: "UPDATE_WINDOW_POSITIONS",
   });
@@ -400,9 +434,18 @@ const streamingMetadataProviders: Record<string, MetadataProvider> = {
   },
 };
 
-export const getMetadataProvider = (url: string): MetadataGetter | void => {
-  const { host } = new URL(url);
-  const [, domain, tld] = host.split(".");
+export const getMetadataProvider = (url: string): MetadataGetter | undefined => {
+  try {
+    const { host, protocol } = new URL(url);
 
-  return streamingMetadataProviders[`${domain}.${tld}`]?.(url);
+    if (protocol !== "http:" && protocol !== "https:") return undefined;
+
+    const [, domain, tld] = host.split(".");
+
+    if (!domain || !tld) return undefined;
+
+    return streamingMetadataProviders[`${domain}.${tld}`]?.(url);
+  } catch {
+    return undefined;
+  }
 };

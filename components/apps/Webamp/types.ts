@@ -51,6 +51,11 @@ type SetMilkdropDesktop = {
   type: "SET_MILKDROP_DESKTOP";
 };
 
+type SetVolume = {
+  type: "SET_VOLUME";
+  volume: number;
+};
+
 type SetSkinData = {
   data: SkinData;
   type: "SET_SKIN_DATA";
@@ -94,6 +99,7 @@ export type WebampCI = Webamp & {
         | SetFocusedWindow
         | SetMilkdropDesktop
         | SetSkinData
+        | SetVolume
         | UpdateTrackInfo
         | UpdateWindowPositions
     ) => void;

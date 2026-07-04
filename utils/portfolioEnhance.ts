@@ -103,6 +103,15 @@ const classifyTables = (content: HTMLElement): void => {
 
     if (isKeyValueTable(table)) {
       table.classList.add("portfolio-facts");
+
+      const thead = table.querySelector("thead");
+
+      if (
+        thead &&
+        [...thead.querySelectorAll("th")].every((cell) => !cell.textContent?.trim())
+      ) {
+        thead.remove();
+      }
     }
   });
 };
@@ -124,21 +133,12 @@ const enhanceLists = (content: HTMLElement): void => {
   });
 };
 
-export const ensurePortfolioFonts = (): void => {
-  if (document.getElementById("portfolio-fonts")) return;
-
-  const link = document.createElement("link");
-  link.id = "portfolio-fonts";
-  link.rel = "stylesheet";
-  link.href =
-    "https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap";
-  document.head.appendChild(link);
-};
-
 export const enhancePortfolioDom = (
   container: HTMLElement,
   currentUrl: string
 ): void => {
+  document.getElementById("portfolio-fonts")?.remove();
+
   const page = container.querySelector(".portfolio-page");
   const content = container.querySelector(".portfolio-content");
 

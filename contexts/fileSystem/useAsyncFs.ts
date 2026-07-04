@@ -111,20 +111,32 @@ const useAsyncFs = (): AsyncFSModule => {
         }),
       readFile: (path) =>
         new Promise((resolve, reject) => {
-          fs?.readFile(path, (error, data = Buffer.from("")) => {
-            if (!error || UNKNOWN_STATE_CODES.has(error.code)) {
-              return resolve(data);
-            }
+          try {
+            fs?.readFile(path, (error, data = Buffer.from("")) => {
+              try {
+                if (!error || UNKNOWN_STATE_CODES.has(error.code)) {
+                  resolve(data);
+                  return;
+                }
 
-            if (error.code === "EISDIR" && rootFs?.mntMap[path]) {
-              const mountData =
-                rootFs.mntMap[path]._data || rootFs.mntMap[path].data;
+                if (error.code === "EISDIR" && rootFs?.mntMap[path]) {
+                  const mountData =
+                    rootFs.mntMap[path]._data || rootFs.mntMap[path].data;
 
-              if (mountData) return resolve(mountData);
-            }
+                  if (mountData) {
+                    resolve(mountData);
+                    return;
+                  }
+                }
 
-            return reject(error);
-          });
+                reject(error);
+              } catch {
+                resolve(Buffer.from(""));
+              }
+            });
+          } catch {
+            resolve(Buffer.from(""));
+          }
         }),
       readdir: (path) =>
         new Promise((resolve, reject) => {

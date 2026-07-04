@@ -1,14 +1,22 @@
+import { parseYouTubeVideoId } from "utils/functions";
+
 const EMBED_BLOCKED_HOSTS = new Set([
   "github.com",
   "www.github.com",
   "linkedin.com",
   "www.linkedin.com",
+  "youtube.com",
+  "www.youtube.com",
+  "m.youtube.com",
+  "youtu.be",
 ]);
 
 export const GITHUB_BROWSER_PAGE =
   "/Program Files/Browser/profiles/GitHub.html";
 export const LINKEDIN_BROWSER_PAGE =
   "/Program Files/Browser/profiles/LinkedIn.html";
+export const YOUTUBE_BROWSER_PAGE =
+  "/Program Files/Browser/profiles/YouTube.html";
 
 export const isEmbedBlockedUrl = (url?: string): boolean => {
   if (!url) return false;
@@ -22,6 +30,14 @@ export const isEmbedBlockedUrl = (url?: string): boolean => {
   }
 };
 
+export const resolveYouTubeBrowserUrl = (url: string): string => {
+  const videoId = parseYouTubeVideoId(url);
+
+  return videoId
+    ? `${YOUTUBE_BROWSER_PAGE}#/${videoId}`
+    : YOUTUBE_BROWSER_PAGE;
+};
+
 export const resolveEmbedBlockedBrowserUrl = (
   url?: string
 ): string | undefined => {
@@ -29,7 +45,15 @@ export const resolveEmbedBlockedBrowserUrl = (
 
   try {
     const parsed = new URL(url.replace(/^http:/i, "https://"));
-    const host = parsed.hostname.replace(/^www\./, "");
+    const host = parsed.hostname.replace(/^www\./, "").replace(/^m\./, "");
+
+    if (
+      host === "youtube.com" ||
+      host === "youtu.be" ||
+      host === "m.youtube.com"
+    ) {
+      return resolveYouTubeBrowserUrl(parsed.href);
+    }
 
     if (host === "linkedin.com") {
       return LINKEDIN_BROWSER_PAGE;
@@ -58,6 +82,8 @@ export const resolveEmbedBlockedBrowserUrl = (
 };
 
 export const embedBlockedBrowserTitle = (browserUrl: string): string => {
+  if (browserUrl.includes("YouTube")) return "YouTube";
+
   if (browserUrl.includes("LinkedIn")) return "LinkedIn";
 
   if (browserUrl.includes("GitHub")) {
@@ -83,7 +109,9 @@ export const isBrowserEmbedPage = (url?: string): boolean => {
   return (
     base === GITHUB_BROWSER_PAGE ||
     base === LINKEDIN_BROWSER_PAGE ||
+    base === YOUTUBE_BROWSER_PAGE ||
     base.endsWith("/Browser/profiles/GitHub.html") ||
-    base.endsWith("/Browser/profiles/LinkedIn.html")
+    base.endsWith("/Browser/profiles/LinkedIn.html") ||
+    base.endsWith("/Browser/profiles/YouTube.html")
   );
 };

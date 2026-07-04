@@ -77,6 +77,11 @@ const useVideoPlayer = ({
     if (type.startsWith("audio")) type = VIDEO_FALLBACK_MIME_TYPE;
 
     const buffer = isYT ? undefined : await readFile(url);
+
+    if (!isYT && (!buffer || buffer.length === 0)) {
+      throw new Error("unreadable");
+    }
+
     const src = isYT
       ? url
       : bufferToUrl(buffer as Buffer, isSafari() ? type : undefined);
@@ -406,7 +411,7 @@ const useVideoPlayer = ({
           }
         }
       } catch {
-        // Ignore player errors
+        player?.error(4);
       }
     }
   }, [

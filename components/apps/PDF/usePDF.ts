@@ -15,8 +15,12 @@ import { type MetadataInfo } from "components/apps/PDF/types";
 import useTitle from "components/system/Window/useTitle";
 import { useFileSystem } from "contexts/fileSystem";
 import { useProcesses } from "contexts/process";
+import {
+  ensurePdfLibs,
+  getPdfDocumentLoader,
+  isPdfReady,
+} from "components/apps/PDF/functions";
 import { BASE_2D_CONTEXT_OPTIONS } from "utils/constants";
-import { loadFiles } from "utils/functions";
 
 export const scales = [
   0.25, 0.33, 0.5, 0.67, 0.75, 0.8, 0.9, 1, 1.1, 1.25, 1.5, 1.75, 2, 2.5, 3, 4,
@@ -44,7 +48,6 @@ const usePDF = (
   const {
     argument,
     processes: { [id]: process } = {},
-    url: setUrl,
   } = useProcesses();
   const { libs = [], scale, url: processUrl } = process || {};
   const [pages, setPages] = useState<HTMLCanvasElement[]>([]);
@@ -120,7 +123,7 @@ const usePDF = (
 
             if (fileData.length === 0) throw new Error("File is empty");
 
-            const loader = window.pdfjsLib.getDocument(fileData);
+            const loader = getPdfDocumentLoader(fileData);
             const doc = await loader.promise;
             const { info } = await doc.getMetadata();
 
@@ -172,23 +175,27 @@ const usePDF = (
   );
 
   useEffect(() => {
-    loadFiles(libs).then(() => {
-      if (window.pdfjsLib) {
-        window.pdfjsLib.GlobalWorkerOptions.workerSrc =
-          "/Program Files/PDF.js/pdf.worker.js";
+    let cancelled = false;
 
-        if (processUrl) {
-          renderPages(processUrl).catch(() => {
-            setUrl(id, "");
-            argument(id, "rendering", false);
-            renderingRef.current = false;
-          });
-        }
+    ensurePdfLibs(libs).then((ready) => {
+      if (cancelled || !ready || !isPdfReady()) return;
+
+      if (processUrl) {
+        renderPages(processUrl).catch(() => {
+          if (cancelled) return;
+          prependFileToTitle(basename(processUrl));
+          argument(id, "rendering", false);
+          renderingRef.current = false;
+        });
       }
     });
-  }, [argument, id, libs, processUrl, renderPages, setUrl]);
 
-  useEffect(() => resetApp, [resetApp]);
+    return () => {
+      cancelled = true;
+    };
+  }, [argument, id, libs, prependFileToTitle, processUrl, renderPages]);
+
+  useEffect(() => () => resetApp(), [resetApp]);
 
   useEffect(() => {
     if (processUrl && currentUrlRef.current !== processUrl) {
