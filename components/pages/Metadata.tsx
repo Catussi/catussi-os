@@ -132,7 +132,8 @@ const Metadata: FC = () => {
       <meta content={alias} property="og:title" />
       <meta content="website" property="og:type" />
       <meta content={author.url} property="og:url" />
-      <meta content={`${author.url}/favicon.ico`} property="og:image" />
+      <meta content={`${author.url}/apple-touch-icon.png`} property="og:image" />
+      <link href="/apple-touch-icon.png" rel="apple-touch-icon" />
       <meta content={description} property="og:description" />
       <link
         href={`${author.url}/rss.xml`}
