@@ -33,9 +33,22 @@ export const isEmbedBlockedUrl = (url?: string): boolean => {
 export const resolveYouTubeBrowserUrl = (url: string): string => {
   const videoId = parseYouTubeVideoId(url);
 
-  return videoId
-    ? `${YOUTUBE_BROWSER_PAGE}#/${videoId}`
-    : YOUTUBE_BROWSER_PAGE;
+  if (videoId) {
+    return `${YOUTUBE_BROWSER_PAGE}#/${videoId}`;
+  }
+
+  try {
+    const parsed = new URL(url.replace(/^http:/i, "https://"));
+    const host = parsed.hostname.replace(/^www\./, "").replace(/^m\./, "");
+
+    if (host === "youtube.com" || host === "youtu.be") {
+      return `${YOUTUBE_BROWSER_PAGE}#${encodeURIComponent(parsed.href)}`;
+    }
+  } catch {
+    return YOUTUBE_BROWSER_PAGE;
+  }
+
+  return YOUTUBE_BROWSER_PAGE;
 };
 
 export const resolveEmbedBlockedBrowserUrl = (
