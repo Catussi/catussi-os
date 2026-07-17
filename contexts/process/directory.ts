@@ -24,7 +24,6 @@ const directory: Processes = {
   },
   Browser: {
     Component: dynamic(() => import("components/apps/Browser")),
-    backgroundColor: "#FFF",
     defaultSize: {
       height: 500,
       width: 600,
@@ -96,7 +95,6 @@ const directory: Processes = {
   },
   FileExplorer: {
     Component: dynamic(() => import("components/apps/FileExplorer")),
-    backgroundColor: "#202020",
     defaultSize: {
       height: 325,
       width: 447,
@@ -134,7 +132,6 @@ const directory: Processes = {
   },
   Marked: {
     Component: dynamic(() => import("components/apps/Marked")),
-    backgroundColor: "#FFF",
     defaultSize: {
       height: 640,
       width: 680,

@@ -4,7 +4,9 @@ const StyledAddressBar = styled.div`
   background-position: 2px 5px;
   background-repeat: no-repeat;
   background-size: 16px;
-  border: 1px solid rgb(83 83 83);
+  border: 1px solid
+    ${({ theme }) =>
+      theme.name === "Dark" ? "rgb(83 83 83)" : "rgb(190 190 190)"};
   display: flex;
   height: ${({ theme }) => theme.sizes.fileExplorer.navInputHeight}px;
   margin: 6px 12px 5px 5px;
@@ -14,9 +16,12 @@ const StyledAddressBar = styled.div`
   width: 100%;
 
   input {
-    background-color: rgb(25 25 25);
-    border-right: 1px solid rgb(21 21 21);
-    color: #fff;
+    background-color: ${({ theme }) =>
+      theme.name === "Dark" ? "rgb(25 25 25)" : "#fff"};
+    border-right: 1px solid
+      ${({ theme }) =>
+        theme.name === "Dark" ? "rgb(21 21 21)" : "rgb(220 220 220)"};
+    color: ${({ theme }) => (theme.name === "Dark" ? "#fff" : "#202020")};
     font-family: ${({ theme }) => theme.formats.systemFont};
     font-size: 12px;
     font-weight: 400;
@@ -39,7 +44,8 @@ const StyledAddressBar = styled.div`
   }
 
   .action {
-    background-color: rgb(25 25 25);
+    background-color: ${({ theme }) =>
+      theme.name === "Dark" ? "rgb(25 25 25)" : "#fff"};
     display: flex;
     height: ${({ theme }) => theme.sizes.fileExplorer.navInputHeight - 2}px;
     margin: 0;

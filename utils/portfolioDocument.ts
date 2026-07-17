@@ -23,12 +23,12 @@ export const findPortfolioMarkedProcessId = (
       isPortfolioDocument(processUrl)
   )?.[0];
 
-/** Ancho pensado para lectura; sin maximizar no queda “hoja flotante”. */
+/** Ventana amplia tipo hoja; el sistema la limita automáticamente en pantallas pequeñas. */
 export const PORTFOLIO_MARKED_WINDOW = {
   allowResizing: false,
   defaultSize: {
-    height: 640,
-    width: 680,
+    height: 760,
+    width: 900,
   },
   hideMaximizeButton: true,
 } as const satisfies ProcessArguments;

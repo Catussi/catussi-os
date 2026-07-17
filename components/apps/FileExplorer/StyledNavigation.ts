@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 const StyledNavigation = styled.nav`
-  background-color: rgb(25 25 25);
+  background-color: ${({ theme }) =>
+    theme.name === "Dark" ? "rgb(25 25 25)" : "rgb(245 245 245)"};
   display: flex;
   height: ${({ theme }) => theme.sizes.fileExplorer.navBarHeight};
 
   svg {
-    color: #fff;
+    color: ${({ theme }) => (theme.name === "Dark" ? "#fff" : "#202020")};
     fill: currentColor;
     height: 16px;
     transition: color 0.35s ease;

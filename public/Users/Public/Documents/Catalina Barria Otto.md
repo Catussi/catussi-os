@@ -1,97 +1,58 @@
-# Catalina Barria Otto
+# ![Desarrolladora](/Users/Public/Pictures/Portfolio/emoji/technologist.png) Catalina Barría Otto
 
-**Full Stack Developer · Machine Learning Engineer**  
-Valparaíso, Chile · @Catussi · Ingeniería Civil Informática
+**Ingeniera Civil Informática · desarrollo full stack · datos e inteligencia artificial**  
+Viña del Mar, Chile · disponibilidad inmediata
 
-> **Para reclutadores:** perfil full stack + ML con producto en producción (ELVIR-Demo). CV en PDF → icono **CV ICI**. Contacto directo → [cata.barria@gmail.com](mailto:cata.barria@gmail.com).
+[CV en PDF](/Users/Public/Documents/CV_ICI.pdf) · [GitHub](https://github.com/Catussi) · [LinkedIn](https://www.linkedin.com/in/catalinabarriaotto/) · [Email](mailto:cata.barria@gmail.com)
 
 | | |
-| --- | --- |
-| **Portfolio** | [catussi-os.vercel.app](https://catussi-os.vercel.app/) |
-| **GitHub** | [github.com/Catussi](https://github.com/Catussi) |
-| **LinkedIn** | [catalinabarriaotto](https://www.linkedin.com/in/catalinabarriaotto/) |
-| **Email** | [cata.barria@gmail.com](mailto:cata.barria@gmail.com) |
-| **CV (PDF)** | Icono **CV ICI** en el escritorio |
-| **Disponibilidad** | Abierta a oportunidades full stack y ML aplicado |
-
----
+|---|---|
+| Experiencia reciente | ITISB · proyecto ELVIR |
+| Stack principal | Angular · FastAPI · PostgreSQL |
+| Intereses | Software · datos · ML Engineering |
+| Modalidad | Presencial · híbrida · remota |
 
 ## Sobre mí
 
-> No solo escribo código — **convierto ideas en sistemas que funcionan**: APIs, arquitectura, datos y producto en un mismo flujo.
+Soy Ingeniera Civil Informática titulada en la Universidad Andrés Bello. Mi experiencia más reciente fue en ITISB, donde trabajé durante seis meses en ELVIR, una plataforma de preparación para entrevistas laborales destinada a jóvenes de Teletón.
 
-Soy **desarrolladora full stack** y **ML engineer** desde Valparaíso. Me mueve construir plataformas web modernas donde la tecnología tenga impacto real: **salud, empleabilidad, educación, accesibilidad y datos**.
+Entré al proyecto cuando todavía había que aterrizar la idea: hice mockups, definí flujos, propuse el modelo de datos y ayudé a decidir cómo separar frontend, API y sesiones de simulación. Después continué como desarrolladora full stack junior y llevé esas decisiones a una aplicación funcional con Angular, FastAPI y PostgreSQL.
 
-Trabajo con **Angular, FastAPI y PostgreSQL** en sistemas multirol (JWT, RBAC, sesiones). En paralelo aplico **machine learning, SHAP/XAI y analítica** en investigación y producto.
+Me interesa seguir creciendo en desarrollo de software, datos y machine learning. No busco presentarme como especialista en todo: tengo una base amplia, experiencia construyendo un producto real y muchas ganas de profundizar en ingeniería de datos, ML Engineering o IA aplicada a producto.
 
----
+## Cómo trabajo
 
-## Mi sello profesional
+Suelo investigar bastante antes de implementar. Me gusta entender el problema, revisar las restricciones y dejar registro de las decisiones para que otra persona pueda continuar el trabajo. En ELVIR esto significó mantener documentación de arquitectura, contratos de API, modelo entidad-relación, despliegue y manuales de uso, además del código.
 
-| Pilar | Qué significa en la práctica |
-| --- | --- |
-| **Producto end-to-end** | De la idea al deploy: diseño, implementación, documentación y entrega |
-| **Backend y arquitectura** | APIs REST mantenibles, modelado relacional, permisos y trazabilidad |
-| **ML interpretable** | Modelos que se pueden explicar — SHAP, XAI, equidad algorítmica |
-| **Datos con propósito** | ETL, pipelines, dashboards y decisiones basadas en evidencia |
+Uso herramientas de IA para acelerar tareas concretas, pero verifico lo que producen y mantengo criterio sobre la solución. Cuando no conozco una tecnología, prefiero decirlo, estudiarla y construir una prueba pequeña antes de comprometerla en el proyecto.
 
----
+También estoy trabajando conscientemente en comunicar con más claridad y rendir mejor bajo presión. Soy constante, aprendo rápido cuando tengo un objetivo concreto y me acomoda colaborar con personas técnicas y no técnicas.
 
-## Dónde estoy hoy · 2026
+## Experiencia que más me marcó
 
-**Instituto de Tecnología para la Innovación en Salud y Bienestar**  
-Full Stack Developer · Práctica profesional · Viña del Mar
+### ELVIR · ITISB / Teletón
 
-Construyendo **[ELVIR-Demo](https://github.com/Catussi/ELVIR-Demo)** — simulaciones laborales con IA para entrenamiento en entrevistas, accesibilidad y empleabilidad.
+ELVIR es un entrenador laboral virtual con avatar e inteligencia artificial. La plataforma permite preparar una entrevista, realizar una simulación y revisar el proceso desde perfiles distintos: joven, tutor y administrador.
 
-- **Stack:** Angular · FastAPI · PostgreSQL · Docker · LiveAvatar · JWT · RBAC
-- **Demo:** [elvir-demo.vercel.app](https://elvir-demo.vercel.app/)
+Mi trabajo abarcó frontend, backend, base de datos, autenticación, permisos, integración con LiveAvatar/LiveKit, voz en español con ElevenLabs, pruebas, documentación y despliegue. También participé en la resolución de problemas propios de una prueba real: permisos de audio, compatibilidad móvil, estados de espera y soporte durante el piloto.
 
----
+> El resultado fue una demo sin instalación utilizada en un piloto con Teletón. Haber pasado de practicante a desarrolladora junior dentro del mismo proyecto es uno de los hitos que más valoro.
 
-## Proyectos que me representan
+[Ver demo](https://elvir-demo.vercel.app/) · [Ver repositorio](https://github.com/Catussi/ELVIR-Demo)
 
-| Proyecto | Rol | Live / Repo |
-| --- | --- | --- |
-| **ELVIR-Demo** | Full stack + IA · proyecto actual | [Demo](https://elvir-demo.vercel.app/) · [GitHub](https://github.com/Catussi/ELVIR-Demo) |
-| **OpsPulse** | Plataforma retail data-driven | [GitHub](https://github.com/Catussi/opspulse) |
-| **catussi-os** | Este portafolio interactivo | [Live](https://catussi-os.vercel.app/) · [GitHub](https://github.com/Catussi/catussi-os) |
-| **eSports Analytics** | ML + plataforma analítica | [Demo](https://esports-analytics-platform-tau.vercel.app/) · [GitHub](https://github.com/Catussi/esports-analytics-platform) |
+## Otros trabajos
 
----
+- **Memoria de título:** modelos supervisados sobre trayectorias académicas, interpretabilidad con SHAP y análisis de sesgo. Nota final: 6,6.
+- **OpsPulse:** proyecto personal para practicar una arquitectura de datos completa con FastAPI, PostgreSQL, Celery, dbt, Airflow y MLflow.
+- **catussi-os:** este portafolio. Lo adapté como un escritorio web para que los proyectos, documentos y demos se puedan explorar en lugar de quedar reducidos a una landing.
+- **UAI y MIA Chile:** experiencias en sitios web, hosting, SSL, contenido digital y dashboards Power BI.
 
-## Formación resumida
+Puedes leer el detalle en [Experiencia](/Users/Public/Documents/Experience.md) y [Proyectos](/Users/Public/Documents/Projects.md).
 
-| Título | Institución | Periodo |
-| --- | --- | --- |
-| **Ingeniería Civil Informática** | Universidad Andrés Bello | 2020 – 2025 |
-| **IBM Data Science Professional Certificate** | IBM / Coursera | 2025 |
+## Fuera del código
 
-Tesis: **Academic Pathways** — ML aplicado a trayectorias académicas con **SHAP** y enfoque **XAI**.
+Escucho música casi siempre mientras trabajo. Me gustan los videojuegos, el deporte y los proyectos tecnológicos que tienen una aplicación concreta. Mi recorrido universitario no partió desde la seguridad: llegué con dudas en matemáticas, física y programación, y fui construyendo la base paso a paso. Por eso valoro especialmente la constancia y el aprendizaje honesto.
 
-Detalle en [Educación](/Users/Public/Documents/Education.md).
+## Qué estoy buscando
 
----
-
-## Este escritorio · catussi-os
-
-No es una landing estática: es un **sistema operativo en el navegador** con apps, archivos, CV en PDF y documentación integrada.
-
-| Acceso directo | Contenido |
-| --- | --- |
-| **Empezar aquí** | Guía rápida (~3 min) para reclutadores |
-| **Sobre mí** | Este documento |
-| **Experiencia** | Historial laboral completo |
-| **Proyectos** | Repos, demos y contexto técnico |
-| **Educación** | Formación, tesis e idiomas |
-| **Habilidades** | Stack por área |
-| **Contacto** | Enlaces y cómo escribirme |
-| **CV ICI** | Currículum en PDF |
-| **GitHub / LinkedIn** | Perfiles profesionales |
-| **ELVIR / eSports / OpsPulse** | Demos y repos destacados |
-
----
-
-## Disponibilidad
-
-Abierta a oportunidades y colaboraciones en **producto web**, **backend**, **ML aplicado** y proyectos con impacto en salud, educación, empleabilidad o retail.
+Estoy disponible para roles junior presenciales, híbridos o remotos en desarrollo de software, análisis de datos, data science, ingeniería de datos, machine learning o IA aplicada. Me interesan especialmente los equipos donde pueda seguir aprendiendo y contribuir en proyectos de salud, educación, investigación o impacto social.

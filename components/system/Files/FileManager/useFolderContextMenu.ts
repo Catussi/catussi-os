@@ -91,9 +91,11 @@ const useFolderContextMenu = (
     iconPositions,
     setCloseEffect,
     setForegroundId,
+    setThemeName,
     setWallpaper: setSessionWallpaper,
     setIconPositions,
     sortOrders,
+    themeName,
     updateRecentFiles,
     wallpaperImage,
   } = useSession();
@@ -488,6 +490,21 @@ const useFolderContextMenu = (
                     toggle: closeEffect === effectName,
                   })),
                 },
+                {
+                  label: ui.theme,
+                  menu: [
+                    {
+                      action: () => setThemeName("defaultTheme"),
+                      label: ui.darkTheme,
+                      toggle: themeName === "defaultTheme",
+                    },
+                    {
+                      action: () => setThemeName("lightTheme"),
+                      label: ui.lightTheme,
+                      toggle: themeName === "lightTheme",
+                    },
+                  ],
+                },
                 ...(canCapture
                   ? [
                       {
@@ -615,7 +632,9 @@ const useFolderContextMenu = (
       setCloseEffect,
       setForegroundId,
       setSessionWallpaper,
+      setThemeName,
       sortBy,
+      themeName,
       updateDesktopIconPositions,
       updateFolder,
       updateRecentFiles,

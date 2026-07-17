@@ -1,44 +1,46 @@
 {
+  "layoutVersion": 3,
   "wallpaperImage": "VANTA",
   "wallpaperFit": "fill",
   "closeEffect": "TV Effect",
   "iconPositions": {
     "/Users/Public/Desktop/Empezar aquí.url": { "gridColumnStart": 1, "gridRowStart": 1 },
-    "/Users/Public/Desktop/Sobre mí.url": { "gridColumnStart": 1, "gridRowStart": 2 },
-    "/Users/Public/Desktop/Experiencia.url": { "gridColumnStart": 1, "gridRowStart": 3 },
-    "/Users/Public/Desktop/Proyectos.url": { "gridColumnStart": 1, "gridRowStart": 4 },
-    "/Users/Public/Desktop/Educación.url": { "gridColumnStart": 1, "gridRowStart": 5 },
-    "/Users/Public/Desktop/Habilidades.url": { "gridColumnStart": 1, "gridRowStart": 6 },
-    "/Users/Public/Desktop/Contacto.url": { "gridColumnStart": 1, "gridRowStart": 7 },
-    "/Users/Public/Desktop/CV ICI.url": { "gridColumnStart": 2, "gridRowStart": 1 },
-    "/Users/Public/Desktop/GitHub.url": { "gridColumnStart": 2, "gridRowStart": 2 },
-    "/Users/Public/Desktop/LinkedIn.url": { "gridColumnStart": 2, "gridRowStart": 3 },
-    "/Users/Public/Desktop/Webamp.url": { "gridColumnStart": 2, "gridRowStart": 4 },
-    "/Users/Public/Desktop/Mi PC.url": { "gridColumnStart": 2, "gridRowStart": 5 },
-    "/Users/Public/Desktop/Public.url": { "gridColumnStart": 2, "gridRowStart": 6 },
-    "/Users/Public/Desktop/ELVIR Demo.url": { "gridColumnStart": 3, "gridRowStart": 1 },
-    "/Users/Public/Desktop/eSports Analytics.url": { "gridColumnStart": 3, "gridRowStart": 2 },
-    "/Users/Public/Desktop/OpsPulse.url": { "gridColumnStart": 3, "gridRowStart": 3 }
+    "/Users/Public/Desktop/CV ICI.url": { "gridColumnStart": 1, "gridRowStart": 2 },
+    "/Users/Public/Desktop/ELVIR Demo.url": { "gridColumnStart": 1, "gridRowStart": 3 },
+    "/Users/Public/Desktop/Webamp.url": { "gridColumnStart": 1, "gridRowStart": 4 },
+    "/Users/Public/Desktop/GitHub.url": { "gridColumnStart": 2, "gridRowStart": 1 },
+    "/Users/Public/Desktop/LinkedIn.url": { "gridColumnStart": 2, "gridRowStart": 2 },
+    "/Users/Public/Desktop/YouTube.url": { "gridColumnStart": 2, "gridRowStart": 3 },
+    "/Users/Public/Desktop/Mi PC.url": { "gridColumnStart": 2, "gridRowStart": 4 }
   },
   "sortOrders": {
     "/Users/Public/Desktop": [
       [
         "Empezar aquí.url",
-        "Sobre mí.url",
-        "Experiencia.url",
-        "Proyectos.url",
-        "Educación.url",
-        "Habilidades.url",
-        "Contacto.url",
         "CV ICI.url",
+        "ELVIR Demo.url",
+        "Webamp.url",
         "GitHub.url",
         "LinkedIn.url",
-        "Webamp.url",
-        "Mi PC.url",
-        "Public.url",
-        "ELVIR Demo.url",
+        "YouTube.url",
+        "Mi PC.url"
+      ],
+      "name",
+      true
+    ],
+    "/Users/Public/Documents": [
+      [
+        "Empezar aquí.md",
+        "Catalina Barria Otto.md",
+        "Experience.md",
+        "Projects.md",
+        "Education.md",
+        "Skills.md",
+        "Contact.md",
+        "CV_ICI.pdf",
+        "OpsPulse.url",
         "eSports Analytics.url",
-        "OpsPulse.url"
+        "README.md"
       ],
       "name",
       true

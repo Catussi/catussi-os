@@ -1,158 +1,61 @@
-# Experiencia profesional
+# ![Maletín](/Users/Public/Pictures/Portfolio/emoji/briefcase.png) Experiencia
 
-Historial profesional de **Catalina Barria Otto** — full stack, datos y machine learning con foco en producto.
+Mi recorrido combina desarrollo web, datos y soporte técnico. La experiencia principal es ELVIR: comencé con una práctica de ingeniería y continué en el mismo equipo como desarrolladora full stack junior.
 
-> **Lectura rápida:** tabla resumen abajo → detalle por rol. CV en PDF: icono **CV ICI** en el escritorio.
+[Descargar CV](/Users/Public/Documents/CV_ICI.pdf) · [LinkedIn](https://www.linkedin.com/in/catalinabarriaotto/)
 
----
+## ITISB · proyecto ELVIR
 
-## Resumen ejecutivo
+**Instituto de Tecnología para la Innovación en Salud y Bienestar, Viña del Mar**  
+Enero a junio de 2026 · modalidad híbrida
 
-| Periodo | Rol | Organización | Enfoque |
-| --- | --- | --- | --- |
-| **2026 – hoy** | Full Stack Developer | Instituto de Tecnología para la Innovación en Salud y Bienestar | Producto con IA · salud y empleabilidad |
-| **2024** | Digital Assistant | Universidad Adolfo Ibáñez | Comunicación digital · IA institucional |
-| **2022** | Web Development Intern | ACHIYA (Mujeres en IA) | Desarrollo web · Power BI · comunidad |
-| **2022 – 2023** | Soporte técnico | — | Hardware · software · usuarios finales |
+### Desarrolladora Full Stack Junior
 
----
+**Marzo a junio de 2026**
 
-## Instituto de Tecnología para la Innovación en Salud y Bienestar
+ELVIR es una plataforma para practicar entrevistas laborales mediante un avatar conversacional. Fue desarrollada para un piloto con jóvenes de Teletón y debía funcionar desde el navegador, sin instalación y tanto en computador como en móvil.
 
-**Full Stack Developer** · Práctica profesional  
-**Enero 2026 – Presente** · Viña del Mar, Chile
+Trabajé en las tres capas del producto. En Angular implementé los flujos para joven, tutor y administrador, la preparación de la sesión, la sala de espera y el panel de seguimiento. En FastAPI desarrollé endpoints, validaciones, autenticación JWT y permisos RBAC. En PostgreSQL mantuve el modelo relacional y sus migraciones con Alembic.
 
-### Proyecto principal: ELVIR-Demo
+La integración de IA no consistió en entrenar un modelo propio. Mi responsabilidad fue conectar y orquestar servicios externos —LiveAvatar, LiveKit y ElevenLabs— dentro de la experiencia del producto: creación de sesiones, contexto dinámico, prompts provenientes de la investigación y voz en español.
 
-Plataforma full stack de **simulaciones laborales con IA** para entrenamiento en entrevistas, accesibilidad y seguimiento multirol en salud y bienestar.
+También preparé pruebas, healthchecks, documentación técnica y despliegues con Docker, Vercel, Supabase y Northflank. Durante el piloto atendí incidencias reales de audio, permisos del navegador y compatibilidad móvil.
 
-| | |
-| --- | --- |
-| **Repositorio** | [github.com/Catussi/ELVIR-Demo](https://github.com/Catussi/ELVIR-Demo) |
-| **Demo en vivo** | [elvir-demo.vercel.app](https://elvir-demo.vercel.app/) |
+**Resultado:** la plataforma se utilizó en un piloto real con Teletón. El supervisor de ITISB destacó el avance tanto en frontend como en backend.
 
-**Stack:** Angular 18 · FastAPI · PostgreSQL · Docker · Docker Compose · SQLAlchemy · Alembic · JWT · RBAC · LiveAvatar
+[Demo pública](https://elvir-demo.vercel.app/) · [Código y documentación](https://github.com/Catussi/ELVIR-Demo)
 
-### Responsabilidades
+### Practicante de Ingeniería Informática
 
-- Diseño e implementación **end-to-end**: frontend, API REST y base de datos
-- Autenticación **JWT** y control de acceso por **roles** (multirol)
-- Gestión de sesiones de simulación y flujos de usuario
-- Integración con **LiveAvatar** para simulaciones conversacionales con avatar e IA
-- Modelado relacional, migraciones con Alembic y entornos reproducibles con Docker
-- Documentación de arquitectura y decisiones técnicas
+**Enero a febrero de 2026**
 
-### Logros
+La práctica comenzó con un encargo todavía abierto. Preparé mockups y recorridos de usuario, propuse una arquitectura frontend/backend y diseñé el primer modelo de datos. Una decisión importante fue separar la sesión técnica del avatar de la simulación laboral, porque tenían ciclos de vida y datos distintos.
 
-- Plataforma desplegada en **Vercel** con demo pública funcional
-- Arquitectura modular preparada para escalar roles y tipos de simulación
-- Código versionado y mantenible con separación clara de capas
+Elegí FastAPI para la API, definí los contratos REST iniciales e implementé un primer flujo conectado con LiveAvatar. La entrega incluyó scripts de demostración, documentación y un repositorio que sirvió como base para continuar el proyecto.
 
----
-
-## Proyectos personales en paralelo
-
-### OpsPulse · Retail data-driven
-
-Plataforma de operaciones retail de punta a punta: ingesta, ETL, transformaciones, orquestación, KPIs y ML.
-
-| Componente | Tecnología |
-| --- | --- |
-| Backend / API | FastAPI · Celery · Redis · PostgreSQL |
-| Frontend | Angular 19 |
-| Datos | dbt · Airflow · ingesta CSV/API |
-| Infra | Terraform · AWS (ECS, RDS, S3) |
-| MLOps / observabilidad | MLflow · Prometheus · Grafana |
-
-- [github.com/Catussi/opspulse](https://github.com/Catussi/opspulse)
-
-### catussi-os · Portafolio interactivo
-
-Escritorio web completo en el navegador — este sitio.
-
-- [catussi-os.vercel.app](https://catussi-os.vercel.app/) · [GitHub](https://github.com/Catussi/catussi-os)
-- Next.js · TypeScript · BrowserFS · apps integradas
-
----
+**Resultado:** después de validar el prototipo, seguí en el equipo como desarrolladora full stack junior.
 
 ## Universidad Adolfo Ibáñez
 
-**Digital Assistant**  
-**Mayo 2024 – Septiembre 2024** · Remoto
+**Ayudante Digital · Trusted AI 2024**  
+Mayo a septiembre de 2024 · remoto
 
-Apoyo en **comunicación digital** para iniciativas de IA y tecnología institucional.
+Apoyé la presencia digital del workshop Trusted AI 2024. Trabajé con WordPress, DreamHost, hosting, dominio y certificados SSL, y preparé más de veinte piezas de contenido para la difusión del evento.
 
-**Stack:** HTML · CSS · JavaScript · hosting · dominios · SSL
+Fue una experiencia breve, pero me enseñó a mantener un sitio operativo mientras coordinaba contenido con personas de un entorno académico. La plataforma permaneció activa durante los cinco meses del proyecto.
 
-### Responsabilidades
+## MIA Chile · Mujeres en Inteligencia Artificial
 
-- Desarrollo de **landing pages** para programas académicos y eventos
-- Configuración de **hosting**, dominios y certificados SSL
-- Creación de **contenido digital** para redes sociales y LinkedIn institucional
-- Coordinación de piezas visuales y mensajes para audiencias no técnicas
+**Práctica universitaria**  
+Abril a agosto de 2022 · modalidad híbrida
 
-### Aprendizajes
+Participé en el rediseño del sitio institucional, la administración del hosting y la creación de dashboards en Power BI. El objetivo era mejorar la visibilidad de la asociación y facilitar el seguimiento de sus actividades.
 
-- Comunicar ciencia e IA de forma clara para públicos diversos
-- Entregar en plazos cortos con calidad visual y técnica
-- Trabajo remoto con stakeholders académicos
+Esta fue mi primera experiencia trabajando en un proyecto digital para una organización. Aprendí a traducir solicitudes poco técnicas en cambios concretos y a mantener servicios que otras personas utilizaban.
 
----
+## Lo que aprendí de estas experiencias
 
-## Asociación Chilena de Mujeres en IA (ACHIYA)
-
-**Web Development Internship**  
-**Abril 2022 – Agosto 2022** · Híbrido
-
-Primera experiencia profesional en desarrollo web y visualización de datos en comunidad tech.
-
-**Stack:** HTML · CSS · JavaScript · Power BI
-
-### Responsabilidades
-
-- Desarrollo y mantenimiento del **sitio web** de la asociación
-- Creación de **dashboards** y visualizaciones en Power BI
-- Administración de servicios web y soporte a usuarias de la comunidad
-- Apoyo en eventos y contenido para visibilizar mujeres en IA
-
-*Proyecto institucional — sin repositorio público.*
-
----
-
-## Soporte técnico
-
-**Enero 2022 – Abril 2023** · Viña del Mar, Chile
-
-Base práctica en diagnóstico, hardware y atención a usuarios.
-
-### Responsabilidades
-
-- Diagnóstico y resolución de problemas de **hardware y software**
-- Armado y configuración de equipos de cómputo
-- Mantenimiento preventivo y correctivo en distintos entornos
-- Atención directa a usuarios finales — comunicación clara de soluciones
-
-### Competencias desarrolladas
-
-- Resolución de problemas bajo presión
-- Documentación de incidencias y procedimientos
-- Base sólida para entender entornos de usuario final en producto software
-
----
-
-## Competencias transversales
-
-| Área | Evidencia |
-| --- | --- |
-| **Comunicación técnica** | README, documentación de arquitectura, contenido digital UAI |
-| **Trabajo en equipo** | Práctica profesional ELVIR, comunidad ACHIYA |
-| **Autonomía** | OpsPulse, catussi-os y proyectos ML personales |
-| **Impacto social** | Salud, empleabilidad, educación, equidad algorítmica |
-
----
-
-## Enlaces
-
-- **GitHub:** [github.com/Catussi](https://github.com/Catussi)
-- **LinkedIn:** [catalinabarriaotto](https://www.linkedin.com/in/catalinabarriaotto/)
-- **Portfolio:** [catussi-os.vercel.app](https://catussi-os.vercel.app/)
+- Un producto no termina cuando el código funciona: también necesita documentación, despliegue, soporte y una experiencia entendible.
+- Las integraciones externas requieren manejar errores y estados intermedios, no solo consumir una API.
+- Trabajar con usuarios reales cambia las prioridades; compatibilidad, permisos y mensajes claros pueden ser tan importantes como una nueva función.
+- Prefiero reconocer lo que todavía no sé y estudiarlo antes que presentar una herramienta como dominio consolidado.

@@ -56,7 +56,7 @@ const useTerminal = ({
   const [prompted, setPrompted] = useState(false);
   const processCommand = useCommandInterpreter(id, cd, terminal, localEcho);
   const autoFit = useCallback(() => fitAddon?.fit(), [fitAddon]);
-  const { foregroundId } = useSession();
+  const { foregroundId, themeName } = useSession();
 
   useEffect(() => {
     if (url) {
@@ -82,6 +82,25 @@ const useTerminal = ({
       if (window.Terminal) setTerminal(new window.Terminal(config));
     });
   }, [libs]);
+
+  useEffect(() => {
+    if (terminal) {
+      terminal.options.theme =
+        themeName === "lightTheme"
+          ? {
+              background: "#f5f5f5",
+              cursor: "#202020",
+              foreground: "#202020",
+              selectionBackground: "rgba(0, 120, 215, 0.3)",
+            }
+          : {
+              background: "#0c0c0c",
+              cursor: "#cccccc",
+              foreground: "#cccccc",
+              selectionBackground: "rgba(255, 255, 255, 0.25)",
+            };
+    }
+  }, [terminal, themeName]);
 
   useEffect(() => {
     if (

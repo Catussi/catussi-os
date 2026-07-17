@@ -1,44 +1,15 @@
-# Educación y formación
+# ![Graduación](/Users/Public/Pictures/Portfolio/emoji/graduation.png) Educación
 
-Formación académica y certificaciones de **Catalina Barria Otto**.
-
-> **Dato clave:** Ingeniería Civil Informática (UNAB) + IBM Data Science Certificate. Tesis en ML con enfoque XAI (SHAP).
-
----
-
-## Resumen
-
-| Título / certificación | Institución | Año | Estado |
-| --- | --- | --- | --- |
-| **Ingeniería Civil Informática** | Universidad Andrés Bello | 2020 – 2025 | Titulada |
-| **IBM Data Science Professional Certificate** | IBM / Coursera | 2025 | Completado |
-| **Idioma inglés** | — | — | Nivel profesional |
-
----
+Soy Ingeniera Civil Informática titulada en diciembre de 2025. Durante la carrera fui orientando mi formación hacia desarrollo de software, datos y machine learning.
 
 ## Ingeniería Civil Informática
 
 **Universidad Andrés Bello** · Valparaíso, Chile  
 **2020 – 2025**
 
-Formación integral en ingeniería de software, con énfasis en desarrollo de sistemas, bases de datos, redes, ingeniería de requisitos y proyectos integradores.
+La carrera me dio una base amplia en desarrollo de software, bases de datos, redes, sistemas operativos, requisitos y gestión de proyectos. No llegué con una base fuerte en matemáticas o física; completar el programa y terminar una memoria en machine learning fue un proceso gradual que valoro especialmente.
 
-### Áreas de formación
-
-| Área | Contenido |
-| --- | --- |
-| **Software** | Estructuras de datos, POO, ingeniería de software, patrones |
-| **Sistemas** | Redes, sistemas operativos, arquitectura de computadores |
-| **Datos** | Bases de datos, modelado relacional, SQL, consultas avanzadas |
-| **IA / ML** | Aprendizaje supervisado, evaluación, proyectos aplicados |
-| **Gestión** | Requisitos, documentación, trabajo en equipo, comunicación técnica |
-
-### Proyectos integradores destacados
-
-- Desarrollo de aplicaciones web y APIs con stack moderno
-- Proyectos de machine learning con evaluación rigurosa de modelos
-- Optimización combinatoria y simulación (ver [Academic-Projects](https://github.com/Catussi/Academic-Projects))
-- IoT y sistemas embebidos con sensores y MQTT
+Además de los ramos de ingeniería, trabajé en proyectos de aplicaciones web, optimización combinatoria, IoT y machine learning. Parte de esos trabajos está reunida en [Academic Projects](https://github.com/Catussi/Academic-Projects).
 
 ---
 
@@ -46,23 +17,11 @@ Formación integral en ingeniería de software, con énfasis en desarrollo de si
 
 **Machine Learning aplicado a trayectorias académicas**
 
-> Investigación sobre equidad algorítmica y modelos que se pueden **explicar**, no solo predecir.
+La memoria analizó registros longitudinales de estudiantes mediante modelos supervisados. Preparé los datos, comparé algoritmos y usé SHAP para estudiar cómo cada variable contribuía a las predicciones.
 
-| Aspecto | Detalle |
-| --- | --- |
-| **Objetivo** | Analizar trayectorias escolares longitudinales con ML supervisado |
-| **Datos** | Registros de rendimiento académico a lo largo del tiempo |
-| **Modelos** | Algoritmos supervisados con validación y comparación |
-| **Interpretabilidad** | **SHAP** y enfoque **XAI** (Explainable AI) |
-| **Equidad** | Análisis de sesgos y equidad algorítmica en contexto educativo |
-| **Repositorio** | *No público* — trabajo de investigación universitaria |
+El foco no estuvo solamente en obtener una buena métrica. También revisé interpretabilidad y posibles sesgos, porque en educación una predicción puede influir en decisiones que afectan a una persona. La defensa recibió una nota de **6,6 sobre 7,0**.
 
-### Competencias demostradas en la tesis
-
-- Pipeline completo de ML: limpieza, feature engineering, entrenamiento y evaluación
-- Comunicación de resultados técnicos a audiencias académicas
-- Criterio ético en el uso de algoritmos en educación
-- Documentación reproducible del proceso de investigación
+Los datos y el repositorio no son públicos por tratarse de investigación académica.
 
 ---
 
@@ -70,31 +29,17 @@ Formación integral en ingeniería de software, con énfasis en desarrollo de si
 
 **IBM / Coursera** · **2025**
 
-Programa profesional en ciencia de datos con enfoque práctico y proyecto capstone.
+El programa reforzó Python, SQL, análisis exploratorio, visualización y fundamentos de machine learning. Cada módulo incluyó ejercicios prácticos y terminó con un proyecto capstone.
 
-### Módulos cubiertos
-
-| Módulo | Habilidades |
-| --- | --- |
-| **Python para data science** | NumPy, Pandas, limpieza y transformación |
-| **Análisis exploratorio** | Visualización, estadística descriptiva, hipótesis |
-| **Machine learning** | Clasificación, regresión, clustering, evaluación |
-| **Bases de datos y SQL** | Consultas, joins, agregaciones |
-| **Capstone** | Proyecto integrador end-to-end |
-
-- Proyecto capstone: [DataScience-Capstone](https://github.com/Catussi/DataScience-Capstone)
+[Ver proyecto capstone](https://github.com/Catussi/DataScience-Capstone)
 
 ---
 
-## Cursos y aprendizaje continuo
+## Aprendizaje actual
 
-| Tema | Cómo lo aplico |
-| --- | --- |
-| **FastAPI + PostgreSQL** | ELVIR-Demo, OpsPulse |
-| **Angular enterprise** | ELVIR, Production Management System |
-| **Data engineering** | OpsPulse: dbt, Airflow, Celery |
-| **Cloud / Terraform** | Infraestructura AWS en OpsPulse |
-| **XAI / SHAP** | Tesis Academic Pathways |
+Después de titularme he seguido estudiando por proyecto. ELVIR me llevó a profundizar Angular, FastAPI, PostgreSQL, autenticación y despliegue. OpsPulse es el espacio donde practico ingeniería de datos con dbt, Airflow y Celery.
+
+Actualmente estoy preparando certificaciones de AWS para ordenar y validar mi base de cloud. Todavía lo considero un área en formación.
 
 ---
 
@@ -103,12 +48,4 @@ Programa profesional en ciencia de datos con enfoque práctico y proyecto capsto
 | Idioma | Nivel | Uso |
 | --- | --- | --- |
 | **Español** | Nativo | Comunicación profesional y técnica |
-| **Inglés** | Profesional | Documentación técnica, lectura de papers, colaboración remota, código y APIs en inglés |
-
----
-
-## Enlaces relacionados
-
-- **Proyectos académicos:** [Academic-Projects](https://github.com/Catussi/Academic-Projects)
-- **Capstone IBM:** [DataScience-Capstone](https://github.com/Catussi/DataScience-Capstone)
-- **Tesis (contexto):** ver [Projects.md](/Users/Public/Documents/Projects.md) → Academic Pathways
+| **Inglés** | Intermedio oral y escrito | Documentación, papers, código y APIs |

@@ -6,10 +6,21 @@
     <title>GitHub</title>
     <style>
       :root {
+        color-scheme: dark;
+        --bg: #0d1117;
+        --muted: #8b949e;
+        --border: #30363d;
+        --link: #58a6ff;
+        --surface: #161b22;
+        --text: #e6edf3;
+      }
+      :root[data-theme="light"] {
+        color-scheme: light;
         --bg: #fff;
         --muted: #656d76;
         --border: #d0d7de;
         --link: #0969da;
+        --surface: #f6f8fa;
         --text: #1f2328;
       }
       * {
@@ -26,13 +37,21 @@
       }
       header {
         align-items: center;
-        background: #f6f8fa;
+        background: var(--surface);
         border-bottom: 1px solid var(--border);
         display: flex;
         flex-wrap: wrap;
-        gap: 6px;
+        gap: 8px 12px;
+        justify-content: space-between;
         min-height: 44px;
         padding: 8px 14px;
+      }
+      #crumbs {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        min-width: 0;
       }
       header button {
         background: none;
@@ -47,6 +66,23 @@
       }
       header .sep {
         color: var(--muted);
+      }
+      .open-real {
+        background: #238636;
+        border: 1px solid rgba(205, 217, 229, 0.1);
+        border-radius: 6px;
+        color: #fff;
+        cursor: pointer;
+        flex-shrink: 0;
+        font: inherit;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 6px 12px;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+      .open-real:hover {
+        background: #2ea043;
       }
       main {
         margin: 0 auto;
@@ -107,7 +143,7 @@
         padding: 9px 0;
       }
       .repo-card:hover {
-        background: #f6f8fa;
+        background: var(--surface);
         margin: 0 -8px;
         padding-left: 8px;
         padding-right: 8px;
@@ -169,7 +205,7 @@
         padding: 24px 32px;
       }
       .readme pre {
-        background: #f6f8fa;
+        background: var(--surface);
         border-radius: 6px;
         overflow-x: auto;
         padding: 12px;
@@ -181,7 +217,7 @@
       }
       .file-row {
         align-items: center;
-        background: #fff;
+        background: var(--bg);
         border: none;
         border-top: 1px solid var(--border);
         color: var(--link);
@@ -197,7 +233,7 @@
         border-top: none;
       }
       .file-row:hover {
-        background: #f6f8fa;
+        background: var(--surface);
       }
       .file-row .size {
         color: var(--muted);
@@ -205,7 +241,7 @@
         margin-left: auto;
       }
       .file-view pre {
-        background: #f6f8fa;
+        background: var(--surface);
         border: 1px solid var(--border);
         border-radius: 6px;
         font-family: ui-monospace, monospace;
@@ -236,11 +272,40 @@
     </style>
   </head>
   <body>
-    <header id="crumbs"></header>
+    <header>
+      <nav id="crumbs" aria-label="Ruta"></nav>
+      <a
+        class="open-real"
+        id="open-real"
+        href="https://github.com/Catussi"
+        target="_blank"
+        rel="noopener noreferrer"
+        onclick="window.open(this.href,'_blank','noopener,noreferrer'); return false;"
+        >Abrir en navegador</a
+      >
+    </header>
     <main id="root"><div class="loading">Cargando…</div></main>
     <script src="/Program Files/Marked/marked.min.js"></script>
     <script src="/Program Files/Marked/purify.min.js"></script>
     <script>
+      const syncOsTheme = () => {
+        try {
+          document.documentElement.dataset.theme =
+            parent.document.documentElement.dataset.theme || "dark";
+        } catch {
+          document.documentElement.dataset.theme = "dark";
+        }
+      };
+      syncOsTheme();
+      try {
+        new MutationObserver(syncOsTheme).observe(
+          parent.document.documentElement,
+          { attributeFilter: ["data-theme"] }
+        );
+      } catch {
+        // The local profile remains dark when parent access is unavailable.
+      }
+
       const API = "https://api.github.com";
       const CACHE_URL = "/Program Files/Browser/profiles/github-cache.json";
       const DEFAULT_OWNER = "Catussi";
@@ -292,6 +357,20 @@
         if (repo) hash += `/${repo}`;
         if (path) hash += `/${branch || "main"}/${path}`;
         location.hash = hash;
+      };
+
+      const syncExternalLink = (loc) => {
+        const openReal = document.getElementById("open-real");
+        if (!openReal) return;
+
+        let href = `https://github.com/${loc.owner || DEFAULT_OWNER}`;
+        if (loc.repo) {
+          href += `/${loc.repo}`;
+          if (loc.path) {
+            href += `/tree/${loc.branch || "main"}/${loc.path}`;
+          }
+        }
+        openReal.href = href;
       };
 
       const api = async (path, init) => {
@@ -526,6 +605,7 @@
       const render = async () => {
         const loc = parseHash();
         renderCrumbs(loc);
+        syncExternalLink(loc);
         document.getElementById("root").innerHTML = '<div class="loading">Cargando…</div>';
         try {
           if (!loc.repo) await renderProfile(loc.owner);

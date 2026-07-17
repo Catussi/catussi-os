@@ -6,14 +6,20 @@ type StyledBrowserProps = {
 
 const StyledBrowser = styled.div<StyledBrowserProps>`
   iframe {
-    background-color: ${({ $hasSrcDoc }) => ($hasSrcDoc ? "#fff" : "initial")};
+    background-color: ${({ $hasSrcDoc, theme }) =>
+      $hasSrcDoc
+        ? theme.name === "Dark"
+          ? "#181818"
+          : "#fff"
+        : "initial"};
     border: 0;
     height: calc(100% - 42px - 37px);
     width: 100%;
   }
 
   nav {
-    background-color: rgb(87 87 87);
+    background-color: ${({ theme }) =>
+      theme.name === "Dark" ? "rgb(50 50 50)" : "rgb(238 238 238)"};
     display: flex;
     padding: 4px 0;
     place-content: center;
@@ -38,7 +44,8 @@ const StyledBrowser = styled.div<StyledBrowserProps>`
       width: 28px;
 
       svg {
-        fill: rgb(240 240 240);
+        fill: ${({ theme }) =>
+          theme.name === "Dark" ? "rgb(240 240 240)" : "rgb(45 45 45)"};
         height: 20px;
         width: 20px;
       }
@@ -54,11 +61,13 @@ const StyledBrowser = styled.div<StyledBrowserProps>`
       }
 
       &:hover {
-        background-color: rgb(103 103 103);
+        background-color: ${({ theme }) =>
+          theme.name === "Dark" ? "rgb(70 70 70)" : "rgb(218 218 218)"};
       }
 
       &:active {
-        background-color: rgb(110 110 110);
+        background-color: ${({ theme }) =>
+          theme.name === "Dark" ? "rgb(82 82 82)" : "rgb(205 205 205)"};
       }
 
       &:disabled {
@@ -71,7 +80,9 @@ const StyledBrowser = styled.div<StyledBrowserProps>`
     }
 
     &:not(:first-child) {
-      border-bottom: 1px solid rgb(118 115 118);
+      border-bottom: 1px solid
+        ${({ theme }) =>
+          theme.name === "Dark" ? "rgb(85 85 85)" : "rgb(205 205 205)"};
       height: 37px;
       justify-content: left;
       padding: 0 8px;
@@ -83,9 +94,11 @@ const StyledBrowser = styled.div<StyledBrowserProps>`
     }
 
     input {
-      background-color: rgb(64 62 65);
+      background-color: ${({ theme }) =>
+        theme.name === "Dark" ? "rgb(31 31 31)" : "rgb(255 255 255)"};
       border-radius: 18px;
-      color: rgb(255 255 255);
+      color: ${({ theme }) =>
+        theme.name === "Dark" ? "rgb(255 255 255)" : "rgb(25 25 25)"};
       font-family: ${({ theme }) => theme.formats.systemFont};
       font-size: 13px;
       height: 34px;

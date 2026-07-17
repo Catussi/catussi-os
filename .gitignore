@@ -28,6 +28,9 @@ public/Users/Public/**
 !public/Users/Public/Pictures
 !public/Users/Public/Pictures/prompts.json
 !public/Users/Public/Pictures/slideshow.json
+!public/Users/Public/Pictures/Portfolio
+!public/Users/Public/Pictures/Portfolio/emoji
+!public/Users/Public/Pictures/Portfolio/emoji/*.png
 !public/Users/Public/Start Menu
 !public/Users/Public/Start Menu/*.url
 !public/Users/Public/Start Menu/Emulators

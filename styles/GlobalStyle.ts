@@ -19,6 +19,7 @@ const GlobalStyle = styled.createGlobalStyle`
 
   body,
   html {
+    color-scheme: ${({ theme }) => (theme.name === "Dark" ? "dark" : "light")};
     font-family: ${({ theme }) => theme.formats.systemFont};
   }
 

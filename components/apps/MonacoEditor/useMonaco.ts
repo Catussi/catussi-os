@@ -5,7 +5,6 @@ import type * as Monaco from "monaco-editor/esm/vs/editor/editor.api";
 import {
   URL_DELIMITER,
   config,
-  theme,
 } from "components/apps/MonacoEditor/config";
 import {
   detectLanguage,
@@ -17,6 +16,7 @@ import { type ContainerHookProps } from "components/system/Apps/AppContainer";
 import useTitle from "components/system/Window/useTitle";
 import { useFileSystem } from "contexts/fileSystem";
 import { useProcesses } from "contexts/process";
+import { useSession } from "contexts/session";
 import {
   DEFAULT_TEXT_FILE_SAVE_PATH,
   MILLISECONDS_IN_SECOND,
@@ -32,6 +32,7 @@ const useMonaco = ({
 }: ContainerHookProps): void => {
   const { readFile, updateFolder, writeFile } = useFileSystem();
   const { argument: setArgument } = useProcesses();
+  const { themeName } = useSession();
   const { prependFileToTitle } = useTitle(id);
   const [editor, setEditor] = useState<Monaco.editor.IStandaloneCodeEditor>();
   const [monaco, setMonaco] = useState<typeof Monaco>();
@@ -98,7 +99,7 @@ const useMonaco = ({
     if (monaco && !editor && containerRef.current) {
       const currentEditor = monaco.editor.create(containerRef.current, {
         automaticLayout: true,
-        theme,
+        theme: "vs-dark",
       });
 
       containerRef.current
@@ -124,6 +125,10 @@ const useMonaco = ({
       }
     };
   }, [containerRef, editor, id, monaco, setArgument, setLoading]);
+
+  useEffect(() => {
+    monaco?.editor.setTheme(themeName === "lightTheme" ? "vs" : "vs-dark");
+  }, [monaco?.editor, themeName]);
 
   useEffect(() => {
     if (monaco && editor && url) {

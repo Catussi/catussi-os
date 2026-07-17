@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Documento PDF">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#eef1f5"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-15%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#111827" flood-opacity=".28"/>
+    </filter>
+  </defs>
+  <path d="M20 7h37l19 19v60H20z" fill="url(#paper)" stroke="#aeb6c2" stroke-width="2.5" stroke-linejoin="round" filter="url(#shadow)"/>
+  <path d="M57 7v19h19" fill="#dfe4ea" stroke="#aeb6c2" stroke-width="2.5" stroke-linejoin="round"/>
+  <rect x="12" y="48" width="67" height="28" rx="5" fill="#e3262e"/>
+  <path d="M19 53h53" stroke="#ff7378" stroke-width="1.5" opacity=".75"/>
+  <text x="45.5" y="68.5" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" letter-spacing="1.5" text-anchor="middle">PDF</text>
+</svg>

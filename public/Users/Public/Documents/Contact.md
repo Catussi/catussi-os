@@ -1,95 +1,30 @@
-# Contacto · @Catussi
+# ![Correo](/Users/Public/Pictures/Portfolio/emoji/email.png) Contacto
 
-**Catalina Barria Otto**  
-Full Stack Developer · Machine Learning Engineer  
-Valparaíso, Chile
+La forma más directa de contactarme es por correo:
 
-> **La forma más directa:** [cata.barria@gmail.com](mailto:cata.barria@gmail.com) — o [LinkedIn](https://www.linkedin.com/in/catalinabarriaotto/). CV en PDF: icono **CV ICI** en el escritorio.
+**[cata.barria@gmail.com](mailto:cata.barria@gmail.com)**
 
----
-
-## Enlaces directos
-
-| Canal | Enlace |
-| --- | --- |
-| **Portfolio** | [catussi-os.vercel.app](https://catussi-os.vercel.app/) |
-| **GitHub** | [github.com/Catussi](https://github.com/Catussi) |
-| **LinkedIn** | [linkedin.com/in/catalinabarriaotto](https://www.linkedin.com/in/catalinabarriaotto/) |
-| **Email** | [cata.barria@gmail.com](mailto:cata.barria@gmail.com) |
-
-En el escritorio: accesos directos **GitHub** y **LinkedIn**.
-
----
-
-## Demos en vivo
-
-| Proyecto | URL |
-| --- | --- |
-| **ELVIR-Demo** | [elvir-demo.vercel.app](https://elvir-demo.vercel.app/) |
-| **catussi-os** | [catussi-os.vercel.app](https://catussi-os.vercel.app/) |
-| **eSports Analytics** | [esports-analytics-platform-tau.vercel.app](https://esports-analytics-platform-tau.vercel.app/) |
-
----
-
-## Proyectos principales
-
-### ELVIR-Demo · Simulaciones laborales con IA
-
-Plataforma full stack para entrenamiento en entrevistas — proyecto actual en práctica profesional.
-
-- [Repositorio](https://github.com/Catussi/ELVIR-Demo) · [Demo](https://elvir-demo.vercel.app/)
-
-### OpsPulse · Retail data-driven
-
-FastAPI · Celery · dbt · Airflow · Angular · Terraform AWS · MLflow
-
-- [Repositorio](https://github.com/Catussi/opspulse)
-
-### catussi-os · Este portafolio
-
-Escritorio interactivo en el navegador — apps, archivos y documentación.
-
-- [Repositorio](https://github.com/Catussi/catussi-os) · [Live](https://catussi-os.vercel.app/)
-
----
-
-## CV
-
-| Formato | Dónde |
-| --- | --- |
-| **PDF (ICI · Full Stack · ML)** | Acceso directo **CV ICI** en el escritorio |
-| **Documentos** | Sobre mí · Experiencia · Proyectos · Educación · Habilidades |
-
----
-
-## Documentación en este escritorio
-
-| Carpeta / archivo | Contenido |
-| --- | --- |
-| `/Users/Public/Documents/` | Todos los `.md` del portafolio |
-| **Sobre mí** | Perfil y resumen |
-| **Experiencia** | Historial laboral detallado |
-| **Proyectos** | Repos, demos y arquitectura |
-| **Educación** | Formación, tesis, certificaciones |
-| **Habilidades** | Stack completo por área |
-
----
+También respondo mensajes por [LinkedIn](https://www.linkedin.com/in/catalinabarriaotto/). Mi código y proyectos públicos están en [GitHub](https://github.com/Catussi).
 
 ## Disponibilidad
 
-Abierta a:
+Tengo disponibilidad inmediata y puedo trabajar de forma presencial en Viña del Mar o Valparaíso, híbrida o remota.
 
-- Oportunidades **full stack** (Angular, FastAPI, PostgreSQL)
-- Roles con **ML aplicado** o pipelines de datos
-- Colaboraciones en **salud, educación, empleabilidad o retail**
-- Proyectos con impacto social y producto bien documentado
+Estoy buscando una primera oportunidad después de titularme. Me interesan roles junior de:
 
-**Idiomas:** español nativo · inglés profesional (técnico)
+- desarrollo de software, especialmente frontend, backend o full stack;
+- análisis de datos y data science;
+- ingeniería de datos;
+- machine learning o IA aplicada a producto.
 
----
+No necesito que el cargo combine todas esas áreas. Me interesa incorporarme a un equipo donde pueda aportar mi experiencia construyendo ELVIR y seguir profundizando una especialidad.
 
-## Cómo contactarme
+## Enlaces
 
-1. **Email** — [cata.barria@gmail.com](mailto:cata.barria@gmail.com) con asunto claro y contexto del proyecto
-2. **LinkedIn** — [catalinabarriaotto](https://www.linkedin.com/in/catalinabarriaotto/)
-3. **GitHub** — issues o discusiones en repos relevantes
+- [Descargar CV en PDF](/Users/Public/Documents/CV_ICI.pdf)
+- [LinkedIn](https://www.linkedin.com/in/catalinabarriaotto/)
+- [GitHub](https://github.com/Catussi)
+- [Demo de ELVIR](https://elvir-demo.vercel.app/)
+- [Repositorio de ELVIR](https://github.com/Catussi/ELVIR-Demo)
+
+Si escribes por una oportunidad laboral, agradezco que incluyas el nombre del cargo, modalidad y una breve descripción del equipo o proyecto.

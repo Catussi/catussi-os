@@ -10,15 +10,25 @@
     />
     <style>
       :root {
-        --ink: #1a1814;
-        --muted: #5c574f;
-        --faint: #9a948a;
-        --rule: #d8d2c8;
-        --paper: #f7f5f0;
-        --link: #2a4f6e;
+        color-scheme: dark;
+        --ink: #e8e8e8;
+        --muted: #b4b4b4;
+        --faint: #858585;
+        --rule: #383838;
+        --paper: #181818;
+        --link: #70b7f0;
         --serif: "Libre Baskerville", Georgia, serif;
         --sans: "DM Sans", system-ui, sans-serif;
         --mono: "DM Mono", Consolas, monospace;
+      }
+      :root[data-theme="light"] {
+        color-scheme: light;
+        --ink: #202124;
+        --muted: #5f6368;
+        --faint: #8a8d91;
+        --rule: #dedede;
+        --paper: #fafafa;
+        --link: #245b8a;
       }
       * {
         box-sizing: border-box;
@@ -82,6 +92,22 @@
         letter-spacing: 0.02em;
         text-decoration: underline;
         text-underline-offset: 2px;
+      }
+      .open-real {
+        background: #0a66c2;
+        border-radius: 16px;
+        color: #fff !important;
+        display: inline-flex;
+        font-family: var(--sans) !important;
+        font-size: 12px !important;
+        font-weight: 600;
+        letter-spacing: 0 !important;
+        padding: 8px 14px;
+        text-decoration: none !important;
+      }
+      .open-real:hover {
+        background: #004182;
+        text-decoration: none !important;
       }
       section {
         margin-bottom: 20px;
@@ -198,11 +224,16 @@
           <p class="meta">Valparaíso, Chile · Ing. Civil Informática</p>
         </div>
         <div class="actions">
+          <a
+            class="open-real"
+            href="https://www.linkedin.com/in/catalinabarriaotto/"
+            target="_blank"
+            rel="noopener noreferrer"
+            onclick="window.open(this.href,'_blank','noopener,noreferrer'); return false;"
+            >Abrir en navegador</a
+          >
           <a href="mailto:cata.barria@gmail.com">cata.barria@gmail.com</a>
           <a href="/Program Files/Browser/profiles/GitHub.html#/Catussi">github.com/Catussi</a>
-          <a href="https://www.linkedin.com/in/catalinabarriaotto/" target="_blank" rel="noopener"
-            >linkedin.com/in/catalinabarriaotto</a
-          >
         </div>
       </header>
 
@@ -293,5 +324,24 @@
         </p>
       </section>
     </div>
+    <script>
+      const syncOsTheme = () => {
+        try {
+          document.documentElement.dataset.theme =
+            parent.document.documentElement.dataset.theme || "dark";
+        } catch {
+          document.documentElement.dataset.theme = "dark";
+        }
+      };
+      syncOsTheme();
+      try {
+        new MutationObserver(syncOsTheme).observe(
+          parent.document.documentElement,
+          { attributeFilter: ["data-theme"] }
+        );
+      } catch {
+        // The local profile remains dark when parent access is unavailable.
+      }
+    </script>
   </body>
 </html>

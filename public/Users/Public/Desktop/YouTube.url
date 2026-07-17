@@ -1,6 +1,6 @@
 [InternetShortcut]
 BaseURL=Browser
 Comment=Ver videos de YouTube en el navegador
-IconFile=/System/Icons/chromium.webp
+IconFile=/System/Icons/youtube_app.webp
 Type=System
 URL=/Program Files/Browser/profiles/YouTube.html

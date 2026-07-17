@@ -1,196 +1,102 @@
-# Proyectos
+# ![Cohete](/Users/Public/Pictures/Portfolio/emoji/rocket.png) Proyectos
 
-Portafolio completo de **Catalina Barria Otto** — full stack, machine learning, datos e investigación.
-
-> **Lectura rápida:** índice con demos en vivo → detalle técnico por proyecto. ¿Solo quieres ver algo funcionando? Abre **ELVIR Demo** en el escritorio.
-
----
-
-## Índice rápido
-
-| # | Proyecto | Tipo | Live |
-| --- | --- | --- | --- |
-| 1 | [ELVIR-Demo](#elvir-demo--simulación-laboral-con-ia) | Full stack + IA | [Demo](https://elvir-demo.vercel.app/) |
-| 2 | [OpsPulse](#opspulse--retail-data-driven) | Data platform | Repo |
-| 3 | [catussi-os](#catussi-os--portafolio-interactivo) | Portfolio OS | [Live](https://catussi-os.vercel.app/) |
-| 4 | [eSports Analytics](#esports-performance-analytics) | ML + platform | [Demo](https://esports-analytics-platform-tau.vercel.app/) |
-| 5 | [Academic Pathways](#academic-pathways--tesis-ml--xai) | Investigación | — |
-| 6 | [Production Management](#production-management-system) | Angular enterprise | Repo |
-| 7 | [Laravel Commerce](#laravel-commerce) | E-commerce | Repo |
-| 8 | [Proyectos académicos](#proyectos-académicos) | ML · IoT · Optimización | Repo |
-
----
-
-## Demos en vivo
-
-| Proyecto | URL | Repositorio |
-| --- | --- | --- |
-| **ELVIR-Demo** | [elvir-demo.vercel.app](https://elvir-demo.vercel.app/) | [GitHub](https://github.com/Catussi/ELVIR-Demo) |
-| **catussi-os** | [catussi-os.vercel.app](https://catussi-os.vercel.app/) | [GitHub](https://github.com/Catussi/catussi-os) |
-| **eSports Analytics** | [esports-analytics-platform-tau.vercel.app](https://esports-analytics-platform-tau.vercel.app/) | [GitHub](https://github.com/Catussi/esports-analytics-platform) |
-
-*Accesos directos en el escritorio: ELVIR Demo, eSports Analytics, OpsPulse.*
-
----
-
-## ELVIR-Demo · Simulación laboral con IA
-
-**Estado:** proyecto actual · práctica profesional  
-**Rol:** Full Stack Developer
+Esta selección muestra proyectos terminados, trabajos en curso y ejercicios de aprendizaje. Intento explicar qué hice realmente en cada uno y no solo enumerar tecnologías.
 
 | | |
-| --- | --- |
-| **Qué es** | Plataforma para entrenamiento en entrevistas y simulaciones laborales con IA |
-| **Impacto** | Empleabilidad, accesibilidad, salud y bienestar |
-| **Stack** | Angular 18 · FastAPI · PostgreSQL · Docker · LiveAvatar · JWT · RBAC |
-| **Enlaces** | [GitHub](https://github.com/Catussi/ELVIR-Demo) · [Demo](https://elvir-demo.vercel.app/) |
+|---|---|
+| Proyecto profesional | ELVIR |
+| Investigación | Memoria de título · XAI |
+| Laboratorio personal | OpsPulse |
+| Portafolio | catussi-os |
 
-### Funcionalidades
+## ELVIR
 
-- Simulaciones conversacionales con **avatar e IA** (LiveAvatar)
-- Sistema **multirol** con autenticación JWT
-- Gestión de sesiones y seguimiento de progreso
-- API REST documentada · migraciones Alembic
-- Deploy en Vercel con entorno Docker para desarrollo
+**Entrenador laboral virtual con IA · ITISB / Teletón · 2026**
 
----
+ELVIR nació como una herramienta para que jóvenes de Teletón pudieran practicar entrevistas laborales en un entorno controlado. El usuario prepara una sesión, conversa con un avatar y el profesional puede revisar la actividad desde su propio panel.
 
-## OpsPulse · Retail data-driven
+Me incorporé cuando el producto todavía estaba en definición. Diseñé flujos y mockups, propuse el modelo de datos y luego implementé frontend, API y persistencia. La aplicación usa Angular, FastAPI y PostgreSQL; la autenticación se maneja con JWT y los permisos con RBAC para distinguir jóvenes, tutores y administradores.
 
-**Estado:** proyecto personal · arquitectura completa  
-**Rol:** Arquitectura e implementación full stack + datos
+La conversación se apoya en LiveAvatar y LiveKit. Mi aporte estuvo en la integración: crear y cerrar sesiones, entregar contexto dinámico, manejar estados de espera, incorporar los prompts definidos por el equipo de investigación y agregar una voz en español mediante ElevenLabs.
 
-| | |
-| --- | --- |
-| **Qué es** | Plataforma retail de operaciones basada en datos |
-| **Stack** | FastAPI · Celery · PostgreSQL · Angular · dbt · Airflow · Terraform · MLflow |
-| **Enlaces** | [GitHub](https://github.com/Catussi/opspulse) |
+> También trabajé en pruebas, migraciones, healthchecks, documentación y despliegue. La demo se preparó para funcionar sin instalación y se probó con usuarios reales, lo que obligó a resolver permisos de micrófono, audio y comportamiento móvil.
 
-### Arquitectura
+**Tecnologías:** Angular · Angular Material · FastAPI · PostgreSQL · SQLAlchemy · Alembic · Docker · LiveKit · LiveAvatar · ElevenLabs
 
-| Capa | Detalle |
-| --- | --- |
-| **Ingesta** | CSV y APIs con procesamiento asíncrono (Celery) |
-| **Transformación** | Modelos dbt, pipelines ETL |
-| **Orquestación** | Apache Airflow |
-| **Frontend** | Dashboard Angular con KPIs operativos |
-| **Automatización** | Reglas de negocio y alertas |
-| **ML** | MLflow para experimentos y modelos |
-| **Observabilidad** | Prometheus + Grafana |
-| **Infra** | Terraform en AWS (ECS, RDS, S3) |
+[Abrir demo](https://elvir-demo.vercel.app/) · [Revisar repositorio](https://github.com/Catussi/ELVIR-Demo)
 
----
+## Memoria de título · trayectorias académicas
 
-## catussi-os · Portafolio interactivo
+**Machine learning e interpretabilidad · UNAB · nota 6,6/7,0**
 
-**Estado:** en producción · este sitio  
-**Rol:** Creadora y mantenedora
+Mi memoria estudió registros longitudinales de rendimiento escolar. El objetivo no era únicamente predecir resultados, sino entender qué variables estaban influyendo y revisar si el comportamiento de los modelos podía introducir diferencias injustas.
 
-| | |
-| --- | --- |
-| **Qué es** | Escritorio web completo en el navegador |
-| **Stack** | Next.js · TypeScript · styled-components · BrowserFS |
-| **Enlaces** | [Live](https://catussi-os.vercel.app/) · [GitHub](https://github.com/Catussi/catussi-os) |
+Construí el proceso de preparación de datos, entrené y comparé modelos supervisados y utilicé SHAP para interpretar las predicciones. Una parte importante del trabajo fue traducir resultados estadísticos y visualizaciones a conclusiones que tuvieran sentido en un contexto educativo.
 
-### Características
+Este proyecto consolidó mi interés por ML Engineering y XAI. También me dejó claro que una métrica alta no basta cuando un modelo puede influir en decisiones sobre personas.
 
-- Apps integradas: explorador, terminal, navegador, visor PDF, markdown
-- Documentación y CV accesibles como archivos del sistema
-- Accesos directos a demos y perfiles profesionales
-- Deploy estático en Vercel · CI con Playwright
+**Tecnologías:** Python · pandas · scikit-learn · SHAP · Jupyter
 
----
+*Los datos y el repositorio no son públicos por tratarse de investigación académica.*
+
+## OpsPulse
+
+**Laboratorio personal de ingeniería de datos y operaciones retail**
+
+OpsPulse es un proyecto que construí para estudiar cómo se conectan las piezas de una plataforma de datos más allá de un notebook. El dominio elegido es retail: ventas, inventario, sucursales, alertas y métricas operativas.
+
+La API se desarrolla con FastAPI y PostgreSQL. Las tareas que no deberían bloquear una petición se ejecutan con Celery y Redis. Para la capa analítica uso dbt y Airflow, mientras que MLflow registra experimentos. El frontend en Angular permite consultar KPIs y revisar el estado de los procesos.
+
+> No lo presento como un sistema empresarial terminado. Es un entorno de práctica donde pruebo decisiones de arquitectura, observabilidad y despliegue, y documento qué partes están implementadas y cuáles siguen en desarrollo.
+
+**Tecnologías:** FastAPI · Celery · Redis · PostgreSQL · Angular · dbt · Airflow · MLflow · Prometheus · Grafana
+
+[Revisar repositorio](https://github.com/Catussi/opspulse)
+
+## catussi-os
+
+**Portafolio interactivo · este sitio**
+
+Quería evitar otra landing con tarjetas idénticas, así que adapté un escritorio web como portafolio. Los documentos viven en un sistema de archivos virtual y se abren con aplicaciones: el CV en un visor PDF, los textos en un lector Markdown y los proyectos en el navegador.
+
+Mi trabajo ha consistido en personalizar el proyecto base, rehacer contenidos, integrar accesos a GitHub, LinkedIn y YouTube, corregir visores, ajustar el manejo de archivos y mantener los tests end-to-end. También tuve que resolver problemas poco visibles, como recursos cross-origin, PDFs cargados desde BrowserFS y límites para archivos demasiado grandes.
+
+El proyecto sigue evolucionando; esta misma página forma parte del proceso de hacerlo más personal y menos parecido a una plantilla.
+
+**Tecnologías:** Next.js · React · TypeScript · styled-components · BrowserFS · Playwright
+
+[Abrir sitio](https://catussi-os.vercel.app/) · [Revisar repositorio](https://github.com/Catussi/catussi-os)
 
 ## eSports Performance Analytics
 
-**Estado:** demo pública + repos ML  
-**Rol:** ML + desarrollo de plataforma
+Este proyecto explora más de 79.000 partidas de CS:GO. Preparé los datos y probé tareas de clasificación, regresión y clustering para estudiar patrones de rendimiento de jugadores.
 
-| | |
-| --- | --- |
-| **Datos** | 79,000+ partidas CS:GO |
-| **Modelos** | Clasificación, regresión, clustering |
-| **Métricas** | Random Forest · F1 ~0.99 |
-| **Enlaces** | [Plataforma](https://github.com/Catussi/esports-analytics-platform) · [Demo](https://esports-analytics-platform-tau.vercel.app/) · [Análisis ML](https://github.com/Catussi/Machine-Learning-Analysis-of-Player-Performance-in-CS-GO) |
+El resultado incluyó un análisis de machine learning y una plataforma web para presentar métricas. El Random Forest alcanzó un F1 cercano a 0,99 en una de las tareas; esa cifra debe leerse dentro del conjunto y la partición utilizados, no como una garantía fuera del experimento.
 
----
+[Abrir demo](https://esports-analytics-platform-tau.vercel.app/) · [Plataforma](https://github.com/Catussi/esports-analytics-platform) · [Análisis ML](https://github.com/Catussi/Machine-Learning-Analysis-of-Player-Performance-in-CS-GO)
 
-## Academic Pathways · Tesis ML + XAI
+## Otros proyectos
 
-**Estado:** investigación universitaria (sin repo público)  
-**Rol:** Investigadora · autora de tesis
+### Concrete Strength Prediction
 
-| | |
-| --- | --- |
-| **Tema** | Trayectorias académicas y equidad algorítmica |
-| **Stack** | Python · scikit-learn · SHAP · XAI |
-| **Enfoque** | ML interpretable en contexto educativo |
+Comparación de modelos para predecir resistencia del hormigón. Incluye preparación de datos, regresión, redes neuronales y búsqueda de hiperparámetros con Keras Tuner. El mejor resultado obtuvo un R² aproximado de 0,91 en el experimento.
 
-- Modelos supervisados sobre registros longitudinales
-- Análisis de equidad y sesgos algorítmicos
-- Interpretabilidad con SHAP y visualización de importancia de features
+[Ver código](https://github.com/Catussi/Concrete-Strength-Prediction-with-Machine-Learning)
 
----
+### Production Management System
 
-## Concrete Strength Prediction
+Aplicación Angular para practicar una interfaz empresarial de gestión de producción: inventario, turnos y dashboards. La utilicé para profundizar en Angular Material, estructura por módulos y renderizado del lado del servidor.
 
-**Stack:** Python · scikit-learn · TensorFlow · Keras Tuner
+[Ver código](https://github.com/Catussi/Production-Management-System-Angular-Enterprise-Application)
 
-Predicción de resistencia del hormigón con comparación de modelos y hyperparameter tuning.
+### Laravel Commerce
 
-- **R² ~0.91**
-- [GitHub](https://github.com/Catussi/Concrete-Strength-Prediction-with-Machine-Learning)
+E-commerce desarrollado con Laravel, PHP y MySQL. Incluye catálogo, checkout, administración y procesamiento de imágenes. Fue útil para trabajar con un framework backend monolítico y comparar ese enfoque con APIs separadas.
 
----
+[Ver código](https://github.com/Catussi/Laravel-Commerce)
 
-## Production Management System
+### Proyectos universitarios
 
-**Stack:** Angular 18 · TypeScript · Angular Material · SSR
+El repositorio [Academic Projects](https://github.com/Catussi/Academic-Projects) reúne ejercicios de machine learning, optimización e IoT: detección de grietas con CNN y MLP, resolución de VRPTW con Gurobi/CPLEX y monitoreo de gas con sensores y MQTT.
 
-Sistema enterprise de gestión de producción: inventario, turnos y dashboards operativos.
-
-- [GitHub](https://github.com/Catussi/Production-Management-System-Angular-Enterprise-Application)
-
----
-
-## Laravel Commerce
-
-**Stack:** Laravel · PHP · MySQL
-
-E-commerce full stack: catálogo, checkout, panel admin y procesamiento automático de imágenes.
-
-- [GitHub](https://github.com/Catussi/Laravel-Commerce)
-
----
-
-## Proyectos académicos
-
-Repositorio unificado de trabajos universitarios:
-
-| Área | Proyecto | Enlace |
-| --- | --- | --- |
-| **ML / Visión** | Crack Detection (CNN vs MLP) | [Machine Learning](https://github.com/Catussi/Academic-Projects/tree/main/Machine%20Learning) |
-| **Optimización** | VRPTW con Gurobi/CPLEX | [Optimization](https://github.com/Catussi/Academic-Projects/tree/main/Optimization) |
-| **IoT** | Monitoreo de gas en tiempo real | [Internet Of Things](https://github.com/Catussi/Academic-Projects/tree/main/Internet%20Of%20Things) |
-
-- [Academic-Projects](https://github.com/Catussi/Academic-Projects)
-
----
-
-## IBM Data Science Capstone
-
-Proyecto integrador del certificado IBM — pipeline completo de ciencia de datos.
-
-- [DataScience-Capstone](https://github.com/Catussi/DataScience-Capstone)
-
----
-
-## Más en GitHub
-
-**15+ repositorios públicos:** [github.com/Catussi](https://github.com/Catussi)
-
-| Categoría | Ejemplos |
-| --- | --- |
-| Full stack | ELVIR, catussi-os, Laravel Commerce, Production Management |
-| Datos / ML | OpsPulse, eSports, Concrete, Academic Pathways |
-| Académico | Academic-Projects, Optimization, IoT |
+Todos mis repositorios públicos están en [github.com/Catussi](https://github.com/Catussi).

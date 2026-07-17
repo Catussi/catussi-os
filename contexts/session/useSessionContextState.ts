@@ -64,6 +64,9 @@ const useSessionContextState = (): SessionContextState => {
   const [aiEnabled, setAiEnabled] = useState(false);
   const [closeEffect, setCloseEffect] = useState(DEFAULT_CLOSE_EFFECT);
   const [lazySheep, setLazySheep] = useState(false);
+  const [layoutVersion, setLayoutVersion] = useState(
+    DEFAULT_SESSION.layoutVersion ?? 0
+  );
   const [windowStates, setWindowStates] = useState(
     Object.create(null) as WindowStates
   );
@@ -222,6 +225,7 @@ const useSessionContextState = (): SessionContextState => {
             closeEffect,
             cursor,
             iconPositions,
+            layoutVersion,
             lazySheep,
             recentFiles,
             runHistory,
@@ -243,6 +247,7 @@ const useSessionContextState = (): SessionContextState => {
     cursor,
     haltSession,
     iconPositions,
+    layoutVersion,
     lazySheep,
     recentFiles,
     runHistory,
@@ -278,6 +283,33 @@ const useSessionContextState = (): SessionContextState => {
           if (typeof window === "object" && window.DEBUG_DEFAULT_SESSION) {
             session = { ...session, ...window.DEBUG_DEFAULT_SESSION };
           }
+
+          const defaultLayoutVersion = DEFAULT_SESSION.layoutVersion ?? 0;
+          const sessionLayoutVersion = session.layoutVersion ?? 0;
+
+          if (sessionLayoutVersion !== defaultLayoutVersion) {
+            const desktopPrefix = "/Users/Public/Desktop/";
+            const keptIconPositions = Object.fromEntries(
+              Object.entries(session.iconPositions || {}).filter(
+                ([iconPath]) => !iconPath.startsWith(desktopPrefix)
+              )
+            );
+
+            session = {
+              ...session,
+              iconPositions: {
+                ...keptIconPositions,
+                ...DEFAULT_SESSION.iconPositions,
+              },
+              layoutVersion: defaultLayoutVersion,
+              sortOrders: {
+                ...session.sortOrders,
+                ...DEFAULT_SESSION.sortOrders,
+              },
+            };
+          }
+
+          setLayoutVersion(session.layoutVersion ?? defaultLayoutVersion);
 
           const sessionWallpaperImage =
             session.wallpaperImage || DEFAULT_WALLPAPER;

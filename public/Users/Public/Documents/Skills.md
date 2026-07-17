@@ -1,136 +1,72 @@
-# Habilidades técnicas
+# ![Caja de herramientas](/Users/Public/Pictures/Portfolio/emoji/toolbox.png) Habilidades
 
-Stack técnico de **Catalina Barria Otto** — alineado con proyectos en [github.com/Catussi](https://github.com/Catussi).
+No uso una barra de porcentaje ni me califico como “experta”. Esta página separa las herramientas que utilicé en un producto real de aquellas que conozco por proyectos personales o académicos.
 
-> **Lectura rápida:** panorama por área y nivel → detalle por tecnología. Evidencia en repos y demos del escritorio.
+## Experiencia práctica reciente
 
----
+### Angular y TypeScript
 
-## Panorama por área
+Los utilicé durante ELVIR para construir los flujos de joven, tutor y administrador. Trabajé con Angular Material, formularios, consumo de APIs, manejo de sesión, diseño responsive y estados de carga o error.
 
-| Área | Nivel | Proyectos donde lo aplico |
-| --- | --- | --- |
-| **Full stack web** | Avanzado | ELVIR-Demo, catussi-os, Laravel Commerce |
-| **Backend / APIs** | Avanzado | FastAPI, Celery, JWT, RBAC |
-| **Machine learning** | Avanzado | Tesis XAI, eSports, Concrete Strength |
-| **Data engineering** | Intermedio–avanzado | OpsPulse: dbt, Airflow, ETL |
-| **Cloud / DevOps** | Intermedio | Docker, Vercel, Terraform AWS |
-| **Visualización** | Intermedio | Power BI, Matplotlib, dashboards Angular |
+### FastAPI y Python
 
----
+Desarrollé endpoints REST, esquemas de validación, autenticación JWT, permisos por rol e integración con servicios externos. Python también es mi lenguaje principal para análisis de datos y machine learning.
 
-## Lenguajes de programación
+### PostgreSQL y SQLAlchemy
 
-| Alto dominio | Uso frecuente | Conocimiento sólido |
-| --- | --- | --- |
-| **Python** | **TypeScript** | Java |
-| **JavaScript** | **SQL** | C++ |
-| | **PHP** | HTML / CSS |
+Diseñé y mantuve el modelo relacional de ELVIR, incluyendo usuarios, sesiones y simulaciones. Gestioné cambios de esquema mediante Alembic y utilicé Supabase como servicio administrado.
 
----
+### Git, Docker y despliegue
 
-## Full stack · desarrollo web
+Uso Git y GitHub para versionar, documentar y revisar cambios. He preparado entornos con Docker y Docker Compose, frontend en Vercel y servicios backend o de datos en Northflank, Render y Supabase.
 
-| Capa | Tecnologías y herramientas |
-| --- | --- |
-| **Frontend** | Angular 18/19, Angular Material, Next.js, React patterns, responsive UI |
-| **Backend** | FastAPI, Node.js, Laravel, REST APIs, Celery, workers asíncronos |
-| **Autenticación** | JWT, RBAC, sesiones, control de acceso por roles |
-| **Bases de datos** | PostgreSQL, MySQL, SQLAlchemy, Alembic, modelado relacional |
-| **ORM / datos** | Supabase, migraciones, consultas optimizadas |
-| **DevOps** | Docker, Docker Compose, Git, Linux, CI, Vercel |
+### Integraciones de IA
 
-**Evidencia:** [ELVIR-Demo](https://github.com/Catussi/ELVIR-Demo) · [catussi-os](https://github.com/Catussi/catussi-os) · [Laravel-Commerce](https://github.com/Catussi/Laravel-Commerce)
+En ELVIR conecté LiveAvatar, LiveKit y ElevenLabs. Mi experiencia está en integrar estos servicios en un producto, entregarles contexto y manejar sus sesiones; no en desarrollar los modelos propietarios que existen detrás de esas plataformas.
 
----
+## Machine learning y análisis de datos
 
-## Data engineering & MLOps
+Mi formación incluye el IBM Data Science Professional Certificate y una memoria de título en machine learning interpretable.
 
-| Capa | Tecnologías |
-| --- | --- |
-| **Ingesta** | CSV, APIs REST, colas con Celery + Redis |
-| **Transformación** | dbt, pipelines ETL asíncronos |
-| **Orquestación** | Apache Airflow |
-| **ML ops** | MLflow, tracking de experimentos, versionado de modelos |
-| **Observabilidad** | Prometheus, Grafana, métricas de negocio |
-| **Cloud** | Terraform, AWS ECS, RDS, S3 |
+He trabajado con:
 
-**Evidencia:** [OpsPulse](https://github.com/Catussi/opspulse)
+- pandas y NumPy para preparación y exploración de datos;
+- scikit-learn para clasificación, regresión, clustering y pipelines;
+- SHAP para interpretar predicciones y analizar la contribución de variables;
+- TensorFlow y Keras en proyectos académicos de redes neuronales;
+- Matplotlib, Seaborn y Power BI para visualización;
+- validación cruzada, selección de métricas y comparación de modelos.
 
----
+Mis proyectos más representativos son la memoria sobre trayectorias académicas, el análisis de 79.000 partidas de CS:GO y la predicción de resistencia del hormigón.
 
-## Machine learning & IA
+## Herramientas que estoy profundizando
 
-| Área | Stack |
-| --- | --- |
-| **Core ML** | scikit-learn, TensorFlow, Keras, Pandas, NumPy |
-| **Interpretabilidad** | SHAP, XAI, feature importance, análisis de equidad |
-| **Deep learning** | CNNs, redes neuronales, Keras Tuner |
-| **Workflow** | Jupyter, validación cruzada, pipelines reproducibles |
-| **Aplicaciones** | Clasificación, regresión, clustering, educational analytics, visión |
-| **IA aplicada** | Integración LiveAvatar, simulaciones conversacionales |
+### Ingeniería de datos
 
-### Resultados destacados
+En OpsPulse practico ingesta desde CSV y APIs, procesamiento asíncrono con Celery y Redis, transformaciones con dbt y orquestación con Airflow. Es un proyecto de aprendizaje activo, no experiencia laboral en producción.
 
-| Proyecto | Métrica |
-| --- | --- |
-| CS:GO ML (79k+ partidas) | Random Forest · F1 ~0.99 |
-| Concrete Strength | Regresión · R² ~0.91 |
-| Academic Pathways (tesis) | SHAP + equidad algorítmica |
+### MLOps y observabilidad
 
----
+Estoy incorporando MLflow para seguimiento de experimentos y Prometheus/Grafana para métricas. Mi objetivo es aprender a llevar un modelo desde el experimento hasta un servicio observable y mantenible.
 
-## Data & visualización
+### Cloud
 
-| Herramienta | Uso |
-| --- | --- |
-| **Power BI** | Dashboards operativos · experiencia ACHIYA |
-| **Matplotlib / Seaborn** | EDA y reportes en proyectos ML |
-| **Dashboards web** | KPIs en Angular (OpsPulse, Production Management) |
-| **Analítica educativa** | Trayectorias longitudinales en tesis |
+Conozco los conceptos y servicios principales de AWS y estoy preparando certificaciones. He usado Terraform en proyectos personales, pero todavía estoy construyendo experiencia práctica más profunda en infraestructura cloud.
 
----
+## Otras tecnologías
 
-## Herramientas y metodología
+- **Web:** JavaScript, HTML, CSS, Next.js, React, Laravel y PHP.
+- **Bases de datos:** PostgreSQL, MySQL y Redis.
+- **Testing:** Playwright, pruebas de API y validación manual de flujos.
+- **Documentación:** Markdown, OpenAPI/Swagger, diagramas ER y manuales de usuario.
+- **Experiencia académica:** Java, C++, Gurobi, CPLEX, MQTT, ESP8266 y ThingsBoard.
 
-| Categoría | Herramientas |
-| --- | --- |
-| **Control de versiones** | Git, GitHub, branching, PRs |
-| **Contenedores** | Docker, Docker Compose, imágenes multi-stage |
-| **Testing** | Jest, Playwright (e2e), validación manual de APIs |
-| **Documentación** | Markdown, README de arquitectura, OpenAPI/Swagger |
-| **Optimización** | Gurobi, CPLEX, AMPL (proyectos académicos) |
-| **IoT** | ESP8266, MQTT, ThingsBoard |
+## Lo que aporto a un equipo
 
----
+- Puedo seguir una funcionalidad desde la interfaz hasta la base de datos.
+- Documento lo necesario para que el trabajo no dependa solo de mi memoria.
+- Tengo paciencia para investigar errores de integración y reproducirlos.
+- Me interesa entender el contexto de uso, no únicamente cumplir una tarea técnica.
+- Aprendo herramientas nuevas cuando el proyecto lo requiere y soy clara respecto de mi nivel real.
 
-## Fortalezas de ingeniería
-
-1. **Producto end-to-end** — diseño, implementación, deploy y mantenimiento
-2. **APIs mantenibles** — contratos claros, autenticación, permisos y versionado
-3. **Sistemas multirol** — usuarios, sesiones, trazabilidad y auditoría
-4. **ML aplicado** — modelos explicables, no cajas negras
-5. **Datos a escala** — ETL, orquestación, observabilidad y KPIs
-6. **Comunicación** — documentación útil para equipos y stakeholders
-
----
-
-## Certificación
-
-**IBM Data Science Professional Certificate** (2025)
-
-Python · EDA · visualización · machine learning · capstone
-
-- [DataScience-Capstone](https://github.com/Catussi/DataScience-Capstone)
-
----
-
-## Stack visual rápido
-
-```
-Frontend     Angular · Next.js · TypeScript · Material
-Backend      FastAPI · Celery · Laravel · Node.js
-Datos        PostgreSQL · dbt · Airflow · Redis
-ML           scikit-learn · TensorFlow · SHAP · Jupyter
-Infra        Docker · Vercel · Terraform · AWS
-```
+La evidencia está en [ELVIR](https://github.com/Catussi/ELVIR-Demo), [OpsPulse](https://github.com/Catussi/opspulse), [catussi-os](https://github.com/Catussi/catussi-os) y el resto de mis [repositorios públicos](https://github.com/Catussi).

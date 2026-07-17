@@ -36,18 +36,18 @@ export const bookmarks: Bookmark[] = [
     url: "https://esports-analytics-platform-tau.vercel.app/",
   },
   {
-    icon: "/System/Icons/documents.webp",
+    icon: "/System/Icons/github_app.webp",
     name: "GitHub @Catussi",
     url: "/Program Files/Browser/profiles/GitHub.html",
   },
   {
-    icon: "/System/Icons/messenger.webp",
+    icon: "/System/Icons/linkedin_app.webp",
     name: "LinkedIn",
     url: "/Program Files/Browser/profiles/LinkedIn.html",
   },
   DINO_GAME,
   {
-    icon: "/System/Icons/chromium.webp",
+    icon: "/System/Icons/youtube_app.webp",
     name: "YouTube",
     url: "/Program Files/Browser/profiles/YouTube.html",
   },
