@@ -223,6 +223,7 @@ export const DESKTOP_MENU_ITEMS: MenuItems = {
     !MEDIA_RECORDER_HEADLESS_NOT_SUPPORTED_BROWSERS.has(browserName),
   Inspeccionar: true,
   Propiedades: false,
+  Tema: true,
   "Ver código fuente de la página": true,
   "Efecto al cerrar ventana": true,
 };
