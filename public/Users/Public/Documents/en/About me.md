@@ -3,7 +3,7 @@
 **Computer Science Engineer · full-stack development · data and artificial intelligence**  
 Viña del Mar, Chile · available immediately
 
-[CV PDF](/Users/Public/Documents/CV_ICI.pdf) · [GitHub](https://github.com/Catussi) · [LinkedIn](https://www.linkedin.com/in/catalinabarriaotto/) · [Email](mailto:cata.barria@gmail.com)
+[CV PDF](/Users/Public/Documents/CV_ICI_EN.pdf) · [GitHub](https://github.com/Catussi) · [LinkedIn](https://www.linkedin.com/in/catalinabarriaotto/) · [Email](mailto:cata.barria@gmail.com)
 
 | | |
 |---|---|

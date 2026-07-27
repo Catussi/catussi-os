@@ -190,7 +190,7 @@ const FileEntry: FC<FileEntryProps> = ({
   const displayName = useMemo(() => {
     if (!isDesktop) return name;
 
-    const baseLabel = name.replace(/\.(url|lnk)$/i, "");
+    const baseLabel = name.replace(/\.(?:url|lnk)$/i, "");
     return getLocalizedDesktopLabel(baseLabel, locale) ?? name;
   }, [isDesktop, locale, name]);
   const urlExt = useMemo(

@@ -64,7 +64,7 @@ const Sidebar: FC<SidebarProps> = ({ height }) => {
         ...(collapsed && { tooltip: ui.allApps }),
       },
     ],
-    [collapsed]
+    [collapsed, ui]
   );
   const { sizes } = useTheme();
   const vh = viewHeight();
@@ -127,7 +127,7 @@ const Sidebar: FC<SidebarProps> = ({ height }) => {
           tooltip: ui.powerTooltip,
         },
       ].filter(Boolean) as SidebarButtons,
-    [buttonAreaCount, collapsed, open, rootFs, setHaltSession]
+    [buttonAreaCount, collapsed, open, rootFs, setHaltSession, ui]
   );
 
   useEffect(() => clearTimer, []);

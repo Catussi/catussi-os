@@ -21,7 +21,7 @@ I don't need the role to combine all of those areas. I want to join a team where
 
 ## Links
 
-- [Download CV PDF](/Users/Public/Documents/CV_ICI.pdf)
+- [Download CV PDF](/Users/Public/Documents/CV_ICI_EN.pdf)
 - [LinkedIn](https://www.linkedin.com/in/catalinabarriaotto/)
 - [GitHub](https://github.com/Catussi)
 - [ELVIR demo](https://elvir-demo.vercel.app/)

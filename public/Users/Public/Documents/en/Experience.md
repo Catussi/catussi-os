@@ -2,7 +2,7 @@
 
 My path combines web development, data, and technical support. The main experience is ELVIR: I started with an engineering internship and continued on the same team as a junior full-stack developer.
 
-[Download CV](/Users/Public/Documents/CV_ICI.pdf) · [LinkedIn](https://www.linkedin.com/in/catalinabarriaotto/)
+[Download CV](/Users/Public/Documents/CV_ICI_EN.pdf) · [LinkedIn](https://www.linkedin.com/in/catalinabarriaotto/)
 
 ## ITISB · ELVIR project
 

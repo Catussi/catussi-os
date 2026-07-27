@@ -83,6 +83,11 @@ const DESKTOP_LABELS: Record<string, Record<Locale, string>> = {
   "CV ICI": { es: "CV ICI", en: "Resume" },
 };
 
+export const CV_PDF_PATHS: Record<Locale, string> = {
+  es: `${PORTFOLIO_DOCUMENTS_PATH}CV_ICI.pdf`,
+  en: `${PORTFOLIO_DOCUMENTS_PATH}CV_ICI_EN.pdf`,
+};
+
 const normalizePath = (path: string): string =>
   decodeURIComponent(path.split("#")[0].split("?")[0]);
 
@@ -104,6 +109,13 @@ export const localizePortfolioDocumentUrl = (
   url: string,
   locale: Locale
 ): string => {
+  const normalized = normalizePath(url);
+  const isCv = Object.values(CV_PDF_PATHS).some(
+    (path) => normalized === path || normalized.endsWith(path)
+  );
+
+  if (isCv) return CV_PDF_PATHS[locale];
+
   const doc = findPortfolioDoc(url);
 
   return doc ? doc.paths[locale] : url;

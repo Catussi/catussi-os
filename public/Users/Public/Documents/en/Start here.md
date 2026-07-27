@@ -15,7 +15,7 @@ I'm currently looking for a junior role in software development, data, machine l
 
 ## Where to start
 
-For a short version, open **CV ICI** on the desktop or [download the PDF here](/Users/Public/Documents/CV_ICI.pdf).
+For a short version, open **Resume** on the desktop or [download the PDF here](/Users/Public/Documents/CV_ICI_EN.pdf).
 
 For more context on the work:
 
