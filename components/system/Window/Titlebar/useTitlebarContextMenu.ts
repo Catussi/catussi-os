@@ -17,7 +17,7 @@ import {
 import { useProcesses } from "contexts/process";
 import { useSession } from "contexts/session";
 import { MENU_SEPERATOR } from "utils/constants";
-import { ui } from "utils/i18n";
+import useUi from "hooks/useUi";
 
 const useTitlebarContextMenu = (id: string): ContextMenuCapture => {
   const { contextMenu } = useMenu();
@@ -26,6 +26,7 @@ const useTitlebarContextMenu = (id: string): ContextMenuCapture => {
     processes: { [id]: process },
   } = useProcesses();
   const { setForegroundId } = useSession();
+  const ui = useUi();
   const focusWindow = useCallback(
     () => setForegroundId(id),
     [id, setForegroundId]
@@ -107,6 +108,7 @@ const useTitlebarContextMenu = (id: string): ContextMenuCapture => {
       onMaximize,
       onMinimize,
       unmute,
+      ui,
     ]
   );
 };

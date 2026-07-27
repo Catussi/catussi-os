@@ -1,6 +1,6 @@
 import { memo } from "react";
 import StyledButton from "components/system/Dialogs/StyledButton";
-import { ui } from "utils/i18n";
+import useUi from "hooks/useUi";
 import { useProcesses } from "contexts/process";
 
 type ButtonsProps = {
@@ -10,6 +10,7 @@ type ButtonsProps = {
 
 const Buttons: FC<ButtonsProps> = ({ id, onClick }) => {
   const { closeWithTransition } = useProcesses();
+  const ui = useUi();
   const close = (): void => closeWithTransition(id);
 
   return (

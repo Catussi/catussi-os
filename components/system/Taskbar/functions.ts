@@ -1,8 +1,13 @@
 import { PREVENT_SCROLL } from "utils/constants";
-import { ui } from "utils/i18n";
+import { getUi } from "utils/i18n";
 
-export const START_BUTTON_TITLE = ui.start;
-export const SEARCH_BUTTON_TITLE = ui.searchPlaceholder;
+export const getStartButtonTitle = (): string => getUi().start;
+export const getSearchButtonTitle = (): string => getUi().searchPlaceholder;
+
+/** @deprecated Prefer getStartButtonTitle() so the label follows the active locale. */
+export const START_BUTTON_TITLE = getUi().start;
+/** @deprecated Prefer getSearchButtonTitle() so the label follows the active locale. */
+export const SEARCH_BUTTON_TITLE = getUi().searchPlaceholder;
 
 /* eslint-disable @typescript-eslint/explicit-function-return-type, @typescript-eslint/explicit-module-boundary-types */
 export const importAIButton = () =>

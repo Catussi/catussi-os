@@ -16,7 +16,7 @@ import { useFileSystem } from "contexts/fileSystem";
 import { useProcesses } from "contexts/process";
 import { useSession } from "contexts/session";
 import { HOME, TASKBAR_HEIGHT } from "utils/constants";
-import { ui } from "utils/i18n";
+import useUi from "hooks/useUi";
 import { haltEvent, viewHeight } from "utils/functions";
 
 type SidebarGroupProps = {
@@ -39,6 +39,7 @@ const Sidebar: FC<SidebarProps> = ({ height }) => {
   const { rootFs } = useFileSystem();
   const { open } = useProcesses();
   const { setHaltSession } = useSession();
+  const ui = useUi();
   const [collapsed, setCollapsed] = useState(true);
   const expandTimer = useRef(0);
   const sidebarRef = useRef<HTMLElement>(null);

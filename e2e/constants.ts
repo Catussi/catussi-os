@@ -224,6 +224,7 @@ export const DESKTOP_MENU_ITEMS: MenuItems = {
   Inspeccionar: true,
   Propiedades: false,
   Tema: true,
+  Idioma: true,
   "Ver código fuente de la página": true,
   "Efecto al cerrar ventana": true,
 };

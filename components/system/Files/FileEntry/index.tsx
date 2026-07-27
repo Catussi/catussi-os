@@ -71,6 +71,8 @@ import {
 import { spotlightEffect } from "utils/spotlightEffect";
 import { useIsVisible } from "hooks/useIsVisible";
 import { UNKNOWN_SIZE } from "contexts/fileSystem/core";
+import { useSession } from "contexts/session";
+import { getLocalizedDesktopLabel } from "utils/portfolioLocale";
 
 const ColumnRow = dynamic(
   () => import("components/system/Files/FileEntry/ColumnRow")
@@ -158,6 +160,7 @@ const FileEntry: FC<FileEntryProps> = ({
 }) => {
   const { blurEntry, focusEntry } = focusFunctions;
   const { url: changeUrl } = useProcesses();
+  const { locale } = useSession();
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const isVisible = useIsVisible(buttonRef, fileManagerRef, isDesktop);
   const isDirectory = useMemo(() => stats.isDirectory(), [stats]);
@@ -184,6 +187,12 @@ const FileEntry: FC<FileEntryProps> = ({
   const listView = useMemo(() => view === "list", [view]);
   const detailsView = useMemo(() => view === "details", [view]);
   const fileName = useMemo(() => basename(path), [path]);
+  const displayName = useMemo(() => {
+    if (!isDesktop) return name;
+
+    const baseLabel = name.replace(/\.(url|lnk)$/i, "");
+    return getLocalizedDesktopLabel(baseLabel, locale) ?? name;
+  }, [isDesktop, locale, name]);
   const urlExt = useMemo(
     () => (isDirectory ? "" : getExtension(url)),
     [isDirectory, url]
@@ -226,14 +235,14 @@ const FileEntry: FC<FileEntryProps> = ({
   const truncatedName = useMemo(
     () =>
       truncateName(
-        name,
+        displayName,
         sizes.fileEntry.fontSize,
         formats.systemFont,
         sizes.fileEntry[
           listView ? "maxListTextDisplayWidth" : "maxIconTextDisplayWidth"
         ]
       ),
-    [formats.systemFont, listView, name, sizes.fileEntry]
+    [displayName, formats.systemFont, listView, sizes.fileEntry]
   );
   const iconRef = useRef<HTMLImageElement | null>(null);
   const isIconCached = useRef(false);
@@ -585,7 +594,7 @@ const FileEntry: FC<FileEntryProps> = ({
     <>
       <Button
         ref={buttonRef}
-        aria-label={name}
+        aria-label={displayName}
         onMouseOverCapture={onMouseOverButton}
         title={tooltip}
         {...(listView && { ...LIST_VIEW_ANIMATION, as: motion.button })}
@@ -646,9 +655,10 @@ const FileEntry: FC<FileEntryProps> = ({
           ) : (
             <figcaption>
               {!showColumn &&
-              (!isOnlyFocusedEntry || name.length === truncatedName.length)
+              (!isOnlyFocusedEntry ||
+                displayName.length === truncatedName.length)
                 ? truncatedName
-                : name}
+                : displayName}
             </figcaption>
           )}
           {listView && openInFileExplorer && <Down flip={showInFileManager} />}

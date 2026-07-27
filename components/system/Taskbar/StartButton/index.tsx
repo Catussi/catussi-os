@@ -2,8 +2,8 @@ import { memo, useCallback } from "react";
 import StartButtonIcon from "components/system/Taskbar/StartButton/StartButtonIcon";
 import StyledTaskbarButton from "components/system/Taskbar/StyledTaskbarButton";
 import {
+  getStartButtonTitle,
   importStartMenu,
-  START_BUTTON_TITLE,
 } from "components/system/Taskbar/functions";
 import useTaskbarContextMenu from "components/system/Taskbar/useTaskbarContextMenu";
 import { DIV_BUTTON_PROPS } from "utils/constants";
@@ -48,7 +48,7 @@ const StartButton: FC<StartButtonProps> = ({
       onClick={onClick}
       $highlight
       {...DIV_BUTTON_PROPS}
-      {...label(START_BUTTON_TITLE)}
+      {...label(getStartButtonTitle())}
       {...useTaskbarContextMenu(true)}
       {...useMenuPreload(preloadStartMenu)}
     >

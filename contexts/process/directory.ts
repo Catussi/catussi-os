@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import { type Processes } from "contexts/process/types";
 import { FOLDER_ICON, TASKBAR_HEIGHT } from "utils/constants";
+import { getUi } from "utils/i18n";
 
 const directory: Processes = {
   BoxedWine: {
@@ -29,7 +30,9 @@ const directory: Processes = {
       width: 600,
     },
     icon: "/System/Icons/chromium.webp",
-    title: "Navegador",
+    get title() {
+      return getUi().browser;
+    },
   },
   Chess: {
     Component: dynamic(() => import("components/apps/Chess")),
@@ -100,7 +103,9 @@ const directory: Processes = {
       width: 447,
     },
     icon: FOLDER_ICON,
-    title: "Explorador de archivos",
+    get title() {
+      return getUi().fileExplorer;
+    },
   },
   IRC: {
     Component: dynamic(() => import("components/apps/IRC")),
@@ -141,7 +146,9 @@ const directory: Processes = {
       "/Program Files/Marked/marked.min.js",
       "/Program Files/Marked/purify.min.js",
     ],
-    title: "Documento",
+    get title() {
+      return getUi().documentViewer;
+    },
   },
   Messenger: {
     Component: dynamic(() => import("components/apps/Messenger")),
@@ -189,7 +196,9 @@ const directory: Processes = {
     hideTaskbarEntry: true,
     hideTitlebar: true,
     icon: "/System/Icons/unknown.webp",
-    title: "Abrir con",
+    get title() {
+      return getUi().openWithDialog;
+    },
   },
   PDF: {
     Component: dynamic(() => import("components/apps/PDF")),
@@ -228,7 +237,9 @@ const directory: Processes = {
     hideMaximizeButton: true,
     hideMinimizeButton: true,
     icon: "",
-    title: "Propiedades",
+    get title() {
+      return getUi().propertiesDialog;
+    },
   },
   Quake3: {
     Component: dynamic(() => import("components/apps/Quake3")),
@@ -270,7 +281,9 @@ const directory: Processes = {
       left: 15,
     },
     singleton: true,
-    title: "Ejecutar",
+    get title() {
+      return getUi().runDialog;
+    },
   },
   ScreenSaver: {
     Component: dynamic(() => import("components/system/Dialogs/ScreenSaver")),
@@ -391,7 +404,9 @@ const directory: Processes = {
       "/Program Files/Video.js/video.min.js",
       "/Program Files/Video.js/Youtube.min.js",
     ],
-    title: "Reproductor de video",
+    get title() {
+      return getUi().videoPlayer;
+    },
   },
   Vim: {
     Component: dynamic(() => import("components/apps/Vim")),

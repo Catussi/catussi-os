@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import {
-  SEARCH_BUTTON_TITLE,
-  START_BUTTON_TITLE,
+  getSearchButtonTitle,
+  getStartButtonTitle,
 } from "components/system/Taskbar/functions";
 import { useProcesses } from "contexts/process";
 import { useSession } from "contexts/session";
@@ -68,14 +68,14 @@ const useGlobalKeyboardShortcuts = (): void => {
   const altBindingsRef = useRef<Record<string, () => void>>({});
   const shiftBindingsRef = useRef<Record<string, () => void>>({
     E: () => open("FileExplorer"),
-    ESCAPE: () => getNavButtonByTitle(START_BUTTON_TITLE)?.click(),
+    ESCAPE: () => getNavButtonByTitle(getStartButtonTitle())?.click(),
     F10: () => open("Terminal"),
     F12: () => open("DevTools"),
     F5: () => window.location.reload(),
     R: () => open("Run"),
-    S: () => getNavButtonByTitle(SEARCH_BUTTON_TITLE)?.click(),
+    S: () => getNavButtonByTitle(getSearchButtonTitle())?.click(),
     X: () =>
-      getNavButtonByTitle(START_BUTTON_TITLE)?.dispatchEvent(
+      getNavButtonByTitle(getStartButtonTitle())?.dispatchEvent(
         new MouseEvent("contextmenu", {
           clientX: 1,
           clientY: viewHeight() - 1,
@@ -143,7 +143,7 @@ const useGlobalKeyboardShortcuts = (): void => {
       ) {
         metaDown = false;
         if (metaComboUsed) metaComboUsed = false;
-        else getNavButtonByTitle(START_BUTTON_TITLE)?.click();
+        else getNavButtonByTitle(getStartButtonTitle())?.click();
       }
     };
 

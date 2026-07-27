@@ -2,13 +2,14 @@ import { useMemo } from "react";
 import { useMenu } from "contexts/menu";
 import { type ContextMenuCapture } from "contexts/menu/useMenuContextState";
 import { useSession } from "contexts/session";
-import { ui } from "utils/i18n";
+import useUi from "hooks/useUi";
 
 const useClockContextMenu = (
   toggleCalendar: (showCalendar?: boolean) => void
 ): ContextMenuCapture => {
   const { contextMenu } = useMenu();
   const { clockSource, setClockSource } = useSession();
+  const ui = useUi();
 
   return useMemo(
     () =>
@@ -30,7 +31,7 @@ const useClockContextMenu = (
           },
         ];
       }),
-    [clockSource, contextMenu, setClockSource, toggleCalendar]
+    [clockSource, contextMenu, setClockSource, toggleCalendar, ui]
   );
 };
 

@@ -19,7 +19,7 @@ import { useSession } from "contexts/session";
 import { useProcessesRef } from "hooks/useProcessesRef";
 import { useWebGPUCheck } from "hooks/useWebGPUCheck";
 import { CLOSE_EFFECT_NAMES } from "utils/closeEffect";
-import { ui } from "utils/i18n";
+import useUi from "hooks/useUi";
 import {
   DESKTOP_PATH,
   FOLDER_ICON,
@@ -89,8 +89,10 @@ const useFolderContextMenu = (
   const {
     closeEffect,
     iconPositions,
+    locale,
     setCloseEffect,
     setForegroundId,
+    setLocale,
     setThemeName,
     setWallpaper: setSessionWallpaper,
     setIconPositions,
@@ -99,6 +101,7 @@ const useFolderContextMenu = (
     updateRecentFiles,
     wallpaperImage,
   } = useSession();
+  const ui = useUi();
   const { minimize, open } = useProcesses();
   const updateSorting = useCallback(
     (value: SortBy | "", defaultIsAscending: boolean): void => {
@@ -505,6 +508,21 @@ const useFolderContextMenu = (
                     },
                   ],
                 },
+                {
+                  label: ui.language,
+                  menu: [
+                    {
+                      action: () => setLocale("es"),
+                      label: ui.spanish,
+                      toggle: locale === "es",
+                    },
+                    {
+                      action: () => setLocale("en"),
+                      label: ui.english,
+                      toggle: locale === "en",
+                    },
+                  ],
+                },
                 ...(canCapture
                   ? [
                       {
@@ -621,6 +639,7 @@ const useFolderContextMenu = (
       isAscending,
       isDesktop,
       isStartMenu,
+      locale,
       mapFs,
       minimize,
       newEntry,
@@ -631,10 +650,12 @@ const useFolderContextMenu = (
       rootFs?.mntMap,
       setCloseEffect,
       setForegroundId,
+      setLocale,
       setSessionWallpaper,
       setThemeName,
       sortBy,
       themeName,
+      ui,
       updateDesktopIconPositions,
       updateFolder,
       updateRecentFiles,

@@ -15,11 +15,12 @@ import {
   resolveEmbedBlockedBrowserUrl,
   embedBlockedBrowserTitle,
 } from "utils/externalUrls";
+import { localizePortfolioDocumentUrl } from "utils/portfolioLocale";
 
 type UseFile = (pid: string, icon?: string) => Promise<void>;
 
 const useFile = (url: string, path: string): UseFile => {
-  const { setForegroundId, updateRecentFiles } = useSession();
+  const { locale, setForegroundId, updateRecentFiles } = useSession();
   const { createPath, updateFolder } = useFileSystem();
   const { minimize, open, url: setUrl } = useProcesses();
   const processesRef = useProcessesRef();
@@ -36,7 +37,7 @@ const useFile = (url: string, path: string): UseFile => {
             (id) => id === pid || id.startsWith(`${pid}${PROCESS_DELIMITER}`)
           )
         : "";
-      let runUrl = url;
+      let runUrl = localizePortfolioDocumentUrl(url, locale);
       let runPid = pid;
 
       if (url.startsWith("ipfs://")) {
@@ -92,6 +93,7 @@ const useFile = (url: string, path: string): UseFile => {
     },
     [
       createPath,
+      locale,
       minimize,
       open,
       path,

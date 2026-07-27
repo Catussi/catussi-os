@@ -3,6 +3,7 @@ import { type SortBy } from "components/system/Files/FileManager/useSortBy";
 import { type Size } from "components/system/Window/RndWindow/useResizable";
 import { type ThemeName } from "styles/themes";
 import { type FileManagerViewNames } from "components/system/Files/Views";
+import { type Locale } from "utils/i18n";
 
 declare global {
   interface Window {
@@ -46,6 +47,7 @@ export type SessionData = {
   iconPositions: IconPositions;
   layoutVersion?: number;
   lazySheep?: boolean;
+  locale: Locale;
   recentFiles: RecentFiles;
   runHistory: string[];
   sortOrders: SortOrders;
@@ -68,6 +70,7 @@ export type SessionContextState = SessionData & {
   setForegroundId: React.Dispatch<React.SetStateAction<string>>;
   setHaltSession: React.Dispatch<React.SetStateAction<boolean>>;
   setIconPositions: React.Dispatch<React.SetStateAction<IconPositions>>;
+  setLocale: React.Dispatch<React.SetStateAction<Locale>>;
   setRunHistory: React.Dispatch<React.SetStateAction<string[]>>;
   setSortOrder: (
     directory: string,

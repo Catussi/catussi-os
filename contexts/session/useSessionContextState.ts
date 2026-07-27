@@ -1,5 +1,6 @@
 import { basename, dirname } from "path";
 import {
+  type Dispatch,
   type SetStateAction,
   useCallback,
   useEffect,
@@ -25,6 +26,7 @@ import {
   DEFAULT_ASCENDING,
   DEFAULT_CLOCK_SOURCE,
   DEFAULT_CLOSE_EFFECT,
+  DEFAULT_LOCALE,
   DEFAULT_THEME,
   DEFAULT_WALLPAPER,
   DEFAULT_WALLPAPER_FIT,
@@ -43,6 +45,7 @@ import {
 } from "utils/functions";
 import { getShortcutInfo } from "components/system/Files/FileEntry/functions";
 import { WALLPAPER_PATHS } from "components/system/Desktop/Wallpapers/constants";
+import { isLocale, setActiveLocale, type Locale } from "utils/i18n";
 
 const DEFAULT_SESSION = (
   typeof window === "object" && "DEBUG_DEFAULT_SESSION" in window
@@ -59,6 +62,19 @@ const useSessionContextState = (): SessionContextState => {
   const [foregroundId, setForegroundId] = useState("");
   const [stackOrder, setStackOrder] = useState<string[]>([]);
   const [themeName, setThemeName] = useState(DEFAULT_THEME);
+  const [locale, setLocaleState] = useState<Locale>(
+    isLocale(DEFAULT_LOCALE) ? DEFAULT_LOCALE : "es"
+  );
+  const setLocale = useCallback<Dispatch<SetStateAction<Locale>>>(
+    (value) => {
+      setLocaleState((current) => {
+        const next = typeof value === "function" ? value(current) : value;
+        setActiveLocale(next);
+        return next;
+      });
+    },
+    []
+  );
   const [clockSource, setClockSource] = useState(DEFAULT_CLOCK_SOURCE);
   const [cursor, setCursor] = useState<string | undefined>();
   const [aiEnabled, setAiEnabled] = useState(false);
@@ -227,6 +243,7 @@ const useSessionContextState = (): SessionContextState => {
             iconPositions,
             layoutVersion,
             lazySheep,
+            locale,
             recentFiles,
             runHistory,
             sortOrders,
@@ -249,6 +266,7 @@ const useSessionContextState = (): SessionContextState => {
     iconPositions,
     layoutVersion,
     lazySheep,
+    locale,
     recentFiles,
     runHistory,
     sessionLoaded,
@@ -325,6 +343,7 @@ const useSessionContextState = (): SessionContextState => {
           if (session.cursor) setCursor(session.cursor);
           if (session.aiEnabled) setAiEnabled(session.aiEnabled);
           if (session.themeName) setThemeName(session.themeName);
+          setLocale(isLocale(session.locale) ? session.locale : "es");
           if (session.wallpaperImage) {
             setWallpaper(session.wallpaperImage, session.wallpaperFit);
           }
@@ -426,7 +445,7 @@ const useSessionContextState = (): SessionContextState => {
 
       initSession();
     }
-  }, [deletePath, lstat, readFile, rootFs, setWallpaper]);
+  }, [deletePath, lstat, readFile, rootFs, setLocale, setWallpaper]);
 
   useEffect(() => setCurrentCloseEffect(closeEffect), [closeEffect]);
 
@@ -437,6 +456,7 @@ const useSessionContextState = (): SessionContextState => {
     cursor,
     foregroundId,
     iconPositions,
+    locale,
     prependToStack,
     recentFiles,
     removeFromStack,
@@ -449,6 +469,7 @@ const useSessionContextState = (): SessionContextState => {
     setForegroundId,
     setHaltSession,
     setIconPositions: setAndUpdateIconPositions,
+    setLocale,
     setRunHistory,
     setSortOrder,
     setThemeName,

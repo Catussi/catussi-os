@@ -6,8 +6,8 @@ import Sidebar from "components/system/StartMenu/Sidebar";
 import StyledStartMenu from "components/system/StartMenu/StyledStartMenu";
 import { updateInputValueOnReactElement } from "components/system/Taskbar/Search/functions";
 import {
-  SEARCH_BUTTON_TITLE,
-  START_BUTTON_TITLE,
+  getSearchButtonTitle,
+  getStartButtonTitle,
   maybeCloseTaskbarMenu,
 } from "components/system/Taskbar/functions";
 import useTaskbarItemTransition from "components/system/Taskbar/useTaskbarItemTransition";
@@ -69,7 +69,7 @@ const StartMenu: FC<StartMenuProps> = ({ toggleStartMenu }) => {
           menuRef.current,
           toggleStartMenu,
           undefined,
-          START_BUTTON_TITLE
+          getStartButtonTitle()
         )
       }
       onKeyDown={({ key }) => {
@@ -77,7 +77,7 @@ const StartMenu: FC<StartMenuProps> = ({ toggleStartMenu }) => {
         else if (key.length === 1) {
           toggleStartMenu(false);
 
-          const searchButton = getNavButtonByTitle(SEARCH_BUTTON_TITLE);
+          const searchButton = getNavButtonByTitle(getSearchButtonTitle());
 
           if (searchButton) {
             searchButton.click();

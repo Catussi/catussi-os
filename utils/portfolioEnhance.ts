@@ -1,12 +1,5 @@
-const PORTFOLIO_DOCS = [
-  { label: "Inicio", path: "/Users/Public/Documents/Empezar aquí.md" },
-  { label: "Sobre mí", path: "/Users/Public/Documents/Catalina Barria Otto.md" },
-  { label: "Experiencia", path: "/Users/Public/Documents/Experience.md" },
-  { label: "Proyectos", path: "/Users/Public/Documents/Projects.md" },
-  { label: "Habilidades", path: "/Users/Public/Documents/Skills.md" },
-  { label: "Educación", path: "/Users/Public/Documents/Education.md" },
-  { label: "Contacto", path: "/Users/Public/Documents/Contact.md" },
-] as const;
+import { getPortfolioNav } from "utils/portfolioLocale";
+import { getUi, type Locale } from "utils/i18n";
 
 const isKeyValueTable = (table: HTMLTableElement): boolean => {
   const rows = [...table.querySelectorAll("tr")];
@@ -19,7 +12,9 @@ const isKeyValueTable = (table: HTMLTableElement): boolean => {
   if (colCount !== 2) return false;
 
   if (hasHeaderRow) {
-    const headers = [...(rows[0]?.cells ?? [])].map((c) => c.textContent?.trim() ?? "");
+    const headers = [...(rows[0]?.cells ?? [])].map(
+      (c) => c.textContent?.trim() ?? ""
+    );
     return headers.every((h) => h === "" || h === "|");
   }
 
@@ -27,11 +22,20 @@ const isKeyValueTable = (table: HTMLTableElement): boolean => {
 };
 
 const isPillarTable = (table: HTMLTableElement): boolean =>
-  (table.querySelector("th")?.textContent ?? "").toLowerCase().includes("pilar");
+  (table.querySelector("th")?.textContent ?? "")
+    .toLowerCase()
+    .includes("pilar") ||
+  (table.querySelector("th")?.textContent ?? "")
+    .toLowerCase()
+    .includes("pillar");
 
 const isIndexTable = (table: HTMLTableElement): boolean => {
   const header = table.querySelector("th")?.textContent?.toLowerCase() ?? "";
-  return header === "#" || (header.includes("proyecto") && header.includes("tipo"));
+  return (
+    header === "#" ||
+    (header.includes("proyecto") && header.includes("tipo")) ||
+    (header.includes("project") && header.includes("type"))
+  );
 };
 
 const wrapSections = (content: HTMLElement): void => {
@@ -72,17 +76,28 @@ const buildMasthead = (content: HTMLElement): void => {
   }
 };
 
-const buildNav = (page: HTMLElement, currentUrl: string): void => {
+const buildNav = (
+  page: HTMLElement,
+  currentUrl: string,
+  locale: Locale
+): void => {
   const nav = document.createElement("nav");
   nav.className = "portfolio-index";
-  nav.setAttribute("aria-label", "Documentación del portafolio");
+  nav.setAttribute("aria-label", getUi(locale).portfolioDocsNav);
 
-  nav.innerHTML = PORTFOLIO_DOCS.map(({ label, path }, i) => {
-    const active =
-      currentUrl.includes(encodeURI(path)) || currentUrl.endsWith(path);
-    const sep = i > 0 ? '<span class="portfolio-index-sep" aria-hidden="true">·</span>' : "";
-    return `${sep}<a class="portfolio-index-link${active ? " is-here" : ""}" href="${path}">${label}</a>`;
-  }).join("");
+  nav.innerHTML = getPortfolioNav(locale)
+    .map(({ label, path }, i) => {
+      const active =
+        currentUrl.includes(encodeURI(path)) || currentUrl.endsWith(path);
+      const sep =
+        i > 0
+          ? '<span class="portfolio-index-sep" aria-hidden="true">·</span>'
+          : "";
+      return `${sep}<a class="portfolio-index-link${
+        active ? " is-here" : ""
+      }" href="${path}">${label}</a>`;
+    })
+    .join("");
 
   page.insertBefore(nav, page.firstChild);
 };
@@ -108,7 +123,9 @@ const classifyTables = (content: HTMLElement): void => {
 
       if (
         thead &&
-        [...thead.querySelectorAll("th")].every((cell) => !cell.textContent?.trim())
+        [...thead.querySelectorAll("th")].every(
+          (cell) => !cell.textContent?.trim()
+        )
       ) {
         thead.remove();
       }
@@ -119,7 +136,10 @@ const classifyTables = (content: HTMLElement): void => {
 const enhanceLists = (content: HTMLElement): void => {
   content.querySelectorAll("ol").forEach((ol) => {
     const prev = ol.previousElementSibling;
-    if (prev?.tagName === "H2" && /ruta|recomendad/i.test(prev.textContent ?? "")) {
+    if (
+      prev?.tagName === "H2" &&
+      /ruta|recomendad|where to start|path/i.test(prev.textContent ?? "")
+    ) {
       ol.classList.add("portfolio-route");
     }
   });
@@ -127,7 +147,11 @@ const enhanceLists = (content: HTMLElement): void => {
   content.querySelectorAll("ul").forEach((ul) => {
     const inBlock = ul.closest(".portfolio-block");
     const heading = inBlock?.querySelector("h2")?.textContent ?? "";
-    if (/competencia|fortaleza|disponibilidad|idioma/i.test(heading)) {
+    if (
+      /competencia|fortaleza|disponibilidad|idioma|skill|strength|availability|language/i.test(
+        heading
+      )
+    ) {
       ul.classList.add("portfolio-inline-tags");
     }
   });
@@ -135,16 +159,18 @@ const enhanceLists = (content: HTMLElement): void => {
 
 export const enhancePortfolioDom = (
   container: HTMLElement,
-  currentUrl: string
+  currentUrl: string,
+  locale: Locale = "es"
 ): void => {
   document.getElementById("portfolio-fonts")?.remove();
 
   const page = container.querySelector(".portfolio-page");
   const content = container.querySelector(".portfolio-content");
 
-  if (!(page instanceof HTMLElement) || !(content instanceof HTMLElement)) return;
+  if (!(page instanceof HTMLElement) || !(content instanceof HTMLElement))
+    return;
 
-  buildNav(page, currentUrl);
+  buildNav(page, currentUrl, locale);
   buildMasthead(content);
   wrapSections(content);
   classifyTables(content);

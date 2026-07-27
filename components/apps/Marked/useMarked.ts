@@ -14,6 +14,11 @@ import { useLinkHandler } from "hooks/useLinkHandler";
 import { resolveDocumentPath } from "utils/resolveDocumentPath";
 import { enhancePortfolioDom } from "utils/portfolioEnhance";
 import { isPortfolioDocumentLink } from "utils/portfolioDocument";
+import {
+  findPortfolioDoc,
+  localizePortfolioDocumentUrl,
+} from "utils/portfolioLocale";
+import useUi from "hooks/useUi";
 
 export type MarkedOptions = {
   headerIds: boolean;
@@ -47,7 +52,8 @@ const useMarked = ({
   const { prependFileToTitle } = useTitle(id);
   const { url: setProcessUrl, processes: { [id]: { libs = [] } = {} } = {} } =
     useProcesses();
-  const { setForegroundId } = useSession();
+  const { locale, setForegroundId } = useSession();
+  const ui = useUi();
   const openLink = useLinkHandler();
   const getContainer = useCallback(
     (): HTMLElement | null =>
@@ -103,8 +109,7 @@ const useMarked = ({
       container.classList.toggle("portfolio", isPortfolioDoc);
 
       if (markdownFile.length === 0) {
-        const missingMessage =
-          "<p><strong>No se encontró este documento.</strong> Vuelve a abrirlo desde el escritorio.</p>";
+        const missingMessage = `<p><strong>${ui.documentMissing}</strong></p>`;
 
         container.innerHTML = isPortfolioDoc
           ? wrapPortfolioContent(missingMessage)
@@ -127,7 +132,7 @@ const useMarked = ({
 
       if (isPortfolioDoc) {
         try {
-          enhancePortfolioDom(container, url);
+          enhancePortfolioDom(container, url, locale);
         } catch {
           /* Si falla el layout editorial, el markdown sigue visible */
         }
@@ -138,7 +143,25 @@ const useMarked = ({
     }
 
     prependFileToTitle(basename(url));
-  }, [bindLinks, getContainer, prependFileToTitle, readFile, url]);
+  }, [
+    bindLinks,
+    getContainer,
+    locale,
+    prependFileToTitle,
+    readFile,
+    ui.documentMissing,
+    url,
+  ]);
+
+  useEffect(() => {
+    if (!url || !findPortfolioDoc(url)) return;
+
+    const localizedUrl = localizePortfolioDocumentUrl(url, locale);
+
+    if (localizedUrl !== url) {
+      setProcessUrl(id, localizedUrl);
+    }
+  }, [id, locale, setProcessUrl, url]);
 
   useEffect(() => {
     let cancelled = false;
@@ -151,8 +174,7 @@ const useMarked = ({
           const container = getContainer();
 
           if (container instanceof HTMLElement) {
-            container.innerHTML =
-              "<p><strong>No se pudo cargar el visor de documentos.</strong> Recarga la página e inténtalo de nuevo.</p>";
+            container.innerHTML = `<p><strong>${ui.documentLoadError}</strong></p>`;
           }
         }
 
@@ -163,7 +185,7 @@ const useMarked = ({
     return () => {
       cancelled = true;
     };
-  }, [getContainer, libs, loading, setLoading]);
+  }, [getContainer, libs, loading, setLoading, ui.documentLoadError]);
 
   useEffect(() => {
     let cancelled = false;

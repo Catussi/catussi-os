@@ -1,5 +1,6 @@
-{
+﻿{
   "layoutVersion": 3,
+  "locale": "es",
   "wallpaperImage": "VANTA",
   "wallpaperFit": "fill",
   "closeEffect": "TV Effect",
@@ -40,7 +41,8 @@
         "CV_ICI.pdf",
         "OpsPulse.url",
         "eSports Analytics.url",
-        "README.md"
+        "README.md",
+        "en"
       ],
       "name",
       true

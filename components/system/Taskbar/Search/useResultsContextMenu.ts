@@ -4,11 +4,12 @@ import { OpenFolder } from "components/system/Taskbar/Search/Icons";
 import { useMenu } from "contexts/menu";
 import { type ContextMenuCapture } from "contexts/menu/useMenuContextState";
 import { useProcesses } from "contexts/process";
-import { ui } from "utils/i18n";
+import useUi from "hooks/useUi";
 
 const useResultsContextMenu = (url: string): ContextMenuCapture => {
   const { contextMenu } = useMenu();
   const { open } = useProcesses();
+  const ui = useUi();
 
   return useMemo(
     () =>
@@ -19,7 +20,7 @@ const useResultsContextMenu = (url: string): ContextMenuCapture => {
           label: ui.openFileLocation,
         },
       ]),
-    [contextMenu, open, url]
+    [contextMenu, open, ui, url]
   );
 };
 

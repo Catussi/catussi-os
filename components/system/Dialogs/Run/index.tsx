@@ -21,7 +21,7 @@ import {
   SHORTCUT_EXTENSION,
 } from "utils/constants";
 import { getExtension, haltEvent, notFound } from "utils/functions";
-import { ui } from "utils/i18n";
+import useUi from "hooks/useUi";
 import { getIpfsFileName, getIpfsResource } from "utils/ipfs";
 import { spawnSheep } from "utils/spawnSheep";
 import Icon from "styles/common/Icon";
@@ -39,8 +39,6 @@ export const resourceAliasMap: Record<string, string> = {
   vlc: "VideoPlayer",
 };
 
-const MESSAGE = ui.runMessage(PACKAGE_DATA.alias);
-
 const utilCommandMap: Record<string, () => void> = {
   esheep: spawnSheep,
   sheep: spawnSheep,
@@ -55,6 +53,8 @@ const Run: FC<ComponentProcessProps> = ({ id }) => {
   const { createPath, exists, lstat, readFile, updateFolder } = useFileSystem();
   const { foregroundId, runHistory, setRunHistory, updateRecentFiles } =
     useSession();
+  const ui = useUi();
+  const MESSAGE = ui.runMessage(PACKAGE_DATA.alias);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [isInputFocused, setIsInputFocused] = useState(true);
   const [isEmptyInput, setIsEmptyInput] = useState(!runHistory[0]);

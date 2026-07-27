@@ -22,7 +22,7 @@ import {
   ROOT_SHORTCUT,
 } from "utils/constants";
 import { getExtension, getFormattedSize, haltEvent, toSorted } from "utils/functions";
-import { ui } from "utils/i18n";
+import { getUi } from "utils/i18n";
 import { get9pSize } from "contexts/fileSystem/core";
 
 export type FileStat = Stats & {
@@ -233,6 +233,7 @@ export const createFileReaders = async (
 
   if (rejectedFiles.length > 0) {
     const maxSize = getFormattedSize(MAX_UPLOAD_FILE_SIZE);
+    const ui = getUi();
 
     window.alert(
       `${ui.filesTooLargeTitle(maxSize)}\n\n${rejectedFiles

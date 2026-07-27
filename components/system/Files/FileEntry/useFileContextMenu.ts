@@ -51,7 +51,7 @@ import {
   isYouTubeUrl,
   saveUnpositionedDesktopIcons,
 } from "utils/functions";
-import { ui } from "utils/i18n";
+import useUi from "hooks/useUi";
 import {
   IMAGE_DECODE_FORMATS,
   IMAGE_ENCODE_FORMATS,
@@ -114,6 +114,7 @@ const useFileContextMenu = (
   const { contextMenu } = useMenu();
   const hasWindowAI = useWindowAI();
   const { openTransferDialog } = useTransferDialog();
+  const ui = useUi();
   const { onContextMenuCapture, ...contextMenuHandlers } = useMemo(
     () =>
       contextMenu?.(() => {
@@ -717,6 +718,7 @@ const useFileContextMenu = (
       unMapFs,
       updateFolder,
       updateRecentFiles,
+      ui,
       url,
     ]
   );

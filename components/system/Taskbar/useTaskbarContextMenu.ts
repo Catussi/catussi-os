@@ -9,7 +9,7 @@ import { useSession } from "contexts/session";
 import { useViewport } from "contexts/viewport";
 import { useProcessesRef } from "hooks/useProcessesRef";
 import { AI_TITLE, MENU_SEPERATOR } from "utils/constants";
-import { ui } from "utils/i18n";
+import useUi from "hooks/useUi";
 import { toggleShowDesktop } from "utils/functions";
 import { useWebGPUCheck } from "hooks/useWebGPUCheck";
 import { useWindowAI } from "hooks/useWindowAI";
@@ -22,6 +22,7 @@ const useTaskbarContextMenu = (onStartButton = false): ContextMenuCapture => {
   const { fullscreenElement, toggleFullscreen } = useViewport();
   const hasWebGPU = useWebGPUCheck();
   const hasWindowAI = useWindowAI();
+  const ui = useUi();
 
   return useMemo(
     () =>
@@ -96,6 +97,7 @@ const useTaskbarContextMenu = (onStartButton = false): ContextMenuCapture => {
       setAiEnabled,
       stackOrder,
       toggleFullscreen,
+      ui,
     ]
   );
 };

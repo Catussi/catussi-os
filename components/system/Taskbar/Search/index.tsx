@@ -24,7 +24,7 @@ import StyledSuggestions from "components/system/Taskbar/Search/StyledSuggestion
 import StyledTabs from "components/system/Taskbar/Search/StyledTabs";
 import useSearchInputTransition from "components/system/Taskbar/Search/useSearchInputTransition";
 import {
-  SEARCH_BUTTON_TITLE,
+  getSearchButtonTitle,
   maybeCloseTaskbarMenu,
 } from "components/system/Taskbar/functions";
 import useTaskbarItemTransition from "components/system/Taskbar/useTaskbarItemTransition";
@@ -47,7 +47,7 @@ import {
   VIDEOS_FOLDER,
 } from "utils/constants";
 import { haltEvent, label, preloadLibs } from "utils/functions";
-import { ui } from "utils/i18n";
+import useUi from "hooks/useUi";
 import {
   FILE_INDEX,
   SEARCH_INPUT_PROPS,
@@ -106,6 +106,7 @@ const Search: FC<SearchProps> = ({ toggleSearch }) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const menuRef = useRef<HTMLElement | null>(null);
   const { recentFiles, updateRecentFiles } = useSession();
+  const ui = useUi();
   const { lstat, readFile } = useFileSystem();
   const [activeTab, setActiveTab] = useState<TabName>("All");
   const {
@@ -256,7 +257,7 @@ const Search: FC<SearchProps> = ({ toggleSearch }) => {
           menuRef.current,
           toggleSearch,
           inputRef.current,
-          SEARCH_BUTTON_TITLE,
+          getSearchButtonTitle(),
           true
         )
       }
